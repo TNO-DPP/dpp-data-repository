@@ -1,0 +1,18 @@
+{"[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+  },
+  "isort.args":  [
+    "--profile",
+    "black"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "prettier.useTabs": true
+}
