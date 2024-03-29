@@ -1,0 +1,167 @@
+@prefix dpp: <http://example.org/ontology/digitalproductpassport#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+## Import Prov-O ontology
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+
+## Extend PhotovoltaicCell with domain-specific properties for detailed characteristics
+dpp:PhotovoltaicCell a dpp:SolarPanelCell ;
+    dpp:electricalCharacteristic a dpp:ElectricalCharacteristic ;
+    dpp:physicalCharacteristic a dpp:PhysicalCharacteristic ;
+    dpp:environmentalImpact a dpp:EnvironmentalImpact .
+
+## Define new classes for characteristics and impact
+dpp:ElectricalCharacteristic a rdfs:Class .
+dpp:PhysicalCharacteristic a rdfs:Class .
+dpp:EnvironmentalImpact a rdfs:Class .
+
+## Properties for Electrical Characteristic
+dpp:peakPower a rdf:Property ;
+    rdfs:domain dpp:ElectricalCharacteristic ;
+    rdfs:range xsd:float .
+dpp:efficiency a rdf:Property ;
+    rdfs:domain dpp:ElectricalCharacteristic ;
+    rdfs:range xsd:float .
+
+## Properties for Physical Characteristic
+dpp:size a rdf:Property ;
+    rdfs:domain dpp:PhysicalCharacteristic ;
+    rdfs:range xsd:string .
+dpp:weight a rdf:Property ;
+    rdfs:domain dpp:PhysicalCharacteristic ;
+    rdfs:range xsd:float .
+
+## Properties for Environmental Impact
+dpp:co2Emissions a rdf:Property ;
+    rdfs:domain dpp:EnvironmentalImpact ;
+    rdfs:range xsd:float .
+dpp:recyclableMaterials a rdf:Property ;
+    rdfs:domain dpp:EnvironmentalImpact ;
+    rdfs:range xsd:boolean .
+
+## Activity Classes Specific to Supplier1
+dpp:CommissioningEvent a prov:Activity .
+dpp:PackingEvent a prov:Activity .
+dpp:ShippingEvent a prov:Activity .
+
+## Manufacturing Event Classes for Photovoltaic Cells
+dpp:MaterialPreparationEvent a prov:Activity .
+dpp:CellProductionEvent a prov:Activity .
+dpp:QualityInspectionEvent a prov:Activity .
+
+## Ownership Transfer Event class
+dpp:OwnershipTransferEvent a prov:Activity .
+
+## Prov-O related properties for Ownership Transfer
+dpp:wasTransferedFrom a rdf:Property ;
+	rdfs:subPropertyOf prov:agent ;
+	rdfs:domain dpp:OwnershipTransferEvent ;
+	rdfs:range prov:Agent .
+	
+dpp:wasTransferedTo a rdf:Property ;
+	rdfs:subPropertyOf prov:agent ;
+	rdfs:domain dpp:OwnershipTransferEvent ;
+	rdfs:range prov:Agent .
+
+dpp:contractId a rdf:Property ;
+	rdfs:domain dpp:OwnershipTransferEvent ;
+	rdfs:range xsd:string .
+
+
+## Prov-O related properties
+dpp:generatedFrom a prov:wasGeneratedBy ;
+    rdfs:range dpp:PhotovoltaicCell .
+
+dpp:activityUsed a rdf:Property ;
+	prov:used rdf:type ;
+	rdfs:range dpp:PhotovoltaicCell .
+
+## Define specific entity for Supplier1
+dpp:SupplierOrganization a rdfs:Class .
+dpp:Supplier1 a dpp:SupplierOrganization ;
+	prov:actedOnBehalfOf "Supplier1 Company Name" .
+
+## Example Detailed Instances for Supplier1
+# PhotovoltaicCell with detailed characteristics and environmental impact
+_:cell1 a dpp:PhotovoltaicCell ; 
+	dpp:uniqueId "cell-uuid-001" ;
+	dpp:electricalCharacteristic [
+		dpp:peakPower "320.0"^^xsd:float ;
+		dpp:efficiency "18.5"^^xsd:float
+	] ;
+	dpp:physicalCharacteristic [
+		dpp:size "1650x991x35 mm" ;
+		dpp:weight "19.5"^^xsd:float
+	] ;
+	dpp:environmentalImpact [
+		dpp:co2Emissions "1200.0"^^xsd:float ; # CO2 equivalent kg per unit
+		dpp:recyclableMaterials true^^xsd:boolean
+	] ;
+	dpp:chemicalComposition [
+		dpp:compoundName "Silicon" ;
+		dpp:compoundAmount "95.0"^^xsd:float
+	] . # and others as previously defined
+
+# Define detailed Commissioning Activity
+_:commissioning1 a dpp:CommissioningEvent ;
+	prov:startedAtTime "2023-05-01T08:00:00Z"^^xsd:dateTime ;
+	prov:endedAtTime "2023-05-01T12:00:00Z"^^xsd:dateTime ;
+	prov:wasAssociatedWith dpp:Supplier1 .
+
+
+## Example Manufacturing Events for a Photovoltaic Cell
+# Material Preparation Activity
+_:materialPreparation1 a dpp:MaterialPreparationEvent ;
+	prov:startedAtTime "2023-04-25T07:00:00Z"^^xsd:dateTime ;
+	prov:endedAtTime "2023-04-25T09:30:00Z"^^xsd:dateTime ;
+	prov:wasAssociatedWith dpp:Supplier1 .
+
+# Cell Production Activity
+_:cellProduction1 a dpp:CellProductionEvent ;
+	prov:startedAtTime "2023-04-26T08:00:00Z"^^xsd:dateTime ;
+	prov:endedAtTime "2023-04-26T16:00:00Z"^^xsd:dateTime ;
+	prov:used _:materialPreparation1 ;
+	prov:generated _:cell1 ;
+	prov:wasAssociatedWith dpp:Supplier1 .
+
+# Quality Inspection Activity
+_:qualityInspection1 a dpp:QualityInspectionEvent ;
+	prov:startedAtTime "2023-04-27T10:00:00Z"^^xsd:dateTime ;
+	prov:endedAtTime "2023-04-27T12:00:00Z"^^xsd:dateTime ;
+	prov:used _:cell1 ;
+	prov:wasAssociatedWith dpp:Supplier1 .
+
+
+# Define detailed Packing Activity
+_:packing1 a dpp:PackingEvent ;
+	prov:startedAtTime "2023-05-02T14:00:00Z"^^xsd:dateTime ;
+	prov:endedAtTime "2023-05-02T16:00:00Z"^^xsd:dateTime ;
+	prov:used _:cell1 ;
+	prov:wasAssociatedWith dpp:Supplier1 .
+
+# Define Shipping Activity with relation to the cell and an external agent
+_:shipping1 a dpp:ShippingEvent ;
+	prov:startedAtTime "2023-05-03T09:30:00Z"^^xsd:dateTime ;
+	prov:endedAtTime "2023-05-03T11:00:00Z"^^xsd:dateTime ;
+	prov:used _:cell1 ;
+	prov:wasAssociatedWith dpp:Supplier1 ;
+	prov:actedOnBehalfOf <urn:uuid:logistics_partner> .
+
+## Define specific entities for the Ownership Transfer
+_:existingOwner a prov:Agent ;
+	prov:actedOnBehalfOf "Existing Owner Company Name" .
+
+_:newOwner a prov:Agent ;
+	prov:actedOnBehalfOf "New Owner Company Name" .
+
+## Example Ownership Transfer Event for a Photovoltaic Cell
+_:ownershipTransfer1 a dpp:OwnershipTransferEvent ;
+	dpp:wasTransferedFrom _:existingOwner ;
+	dpp:wasTransferedTo _:newOwner ;
+	dpp:contractId "Contract-123" ;
+	prov:atTime "2023-06-01T15:00:00Z"^^xsd:dateTime ;
+	prov:used _:cell1 ;
+	prov:wasAssociatedWith dpp:Supplier1 .
+

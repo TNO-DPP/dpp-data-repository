@@ -1,0 +1,171 @@
+@prefix dpp: <http://example.org/ontology/digitalproductpassport#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+## Define the Retailer class
+dpp:Retailer a rdfs:Class .
+
+dpp:retailerName a rdf:Property ;
+    rdfs:domain dpp:Retailer ;
+    rdfs:range xsd:string .
+
+dpp:retailerLocation a rdf:Property ;
+    rdfs:domain dpp:Retailer ;
+    rdfs:range xsd:string .
+
+dpp:retailerContact a rdf:Property ;
+    rdfs:domain dpp:Retailer ;
+    rdfs:range xsd:string .
+
+## Solar Panel in the context of the retailer
+dpp:SolarPanel 
+    dpp:sellingPrice a rdf:Property ; # Sold at this particular price
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:float ;   
+
+    dpp:stock a rdf:Property ; # Current stock in the retailer's inventory
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:int ;
+
+    dpp:retailer a rdf:Property ; # Who is the retailer
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range dpp:Retailer ;
+
+## Define new Activity Classes for Retailer
+dpp:ContractSigningWithManufacturerEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:ContractSigningWithManufacturerPlan ;
+
+dpp:BatchReceivingFromManufacturerEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:BatchReceivingFromManufacturerPlan ;
+
+dpp:UnpackingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:UnpackingPlan ;
+
+dpp:PanelVerificationEvent a prov:Activity ; # Verifying if the panels received are as per the contract
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:PanelVerificationPlan ;
+
+dpp:InventoryUpdatingEvent a prov:Activity ; # Once panels are verified retailer will update the stock
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:InventoryUpdatingPlan ;
+
+dpp:SolarPanelSaleEvent a prov:Activity ; # When a panel gets sold
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:SolarPanelSalePlan ;
+
+## Prov-O related properties for Retailer activities
+dpp:activityUsed a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    prov:used rdf:type ;
+    rdfs:range dpp:Retailer ; 
+
+## Ownership Transfer Event class for sale from retailer to end-user
+dpp:OwnershipTransferEvent a prov:Activity ;
+    prov:wasInfluencedBy dpp:SolarPanel ; 
+    prov:used rdf:type ;
+    rdfs:range dpp:SolarPanel ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:RetailSaleOwnershipTransferPlan ;
+        prov:hadRole dpp:EndUser ;
+        
+    dpp:wasTransferedFrom a rdf:Property ;
+        rdfs:domain dpp:OwnershipTransferEvent ;
+        rdfs:range dpp:Retailer ;
+        rdfs:subPropertyOf prov:agent ;
+            
+    dpp:wasTransferedTo a rdf:Property ;
+        rdfs:domain dpp:OwnershipTransferEvent ;
+        rdfs:range dpp:EndUser ;
+        rdfs:subPropertyOf prov:agent ;
+               
+## Define EndUser class
+dpp:EndUser a rdfs:Class ; 
+    dpp:endUserName a rdf:Property ;
+    rdfs:domain dpp:EndUser ;
+    rdfs:range xsd:string ;
+
+    dpp:endUserLocation a rdf:Property ;
+    rdfs:domain dpp:EndUser ;
+    rdfs:range xsd:string ;
+
+    dpp:endUserContact a rdf:Property ;
+    rdfs:domain dpp:EndUser ;
+    rdfs:range xsd:string .
+
+
+## Additional properties for Solar Panel at Retailer Stage
+dpp:SolarPanel ;
+    dpp:shelfLife a rdf:Property ; # Shelf life at the retailer
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:date ;
+    
+    dpp:volume a rdf:Property ; # Stock volume occupied by the panel
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:string ;
+    
+    dpp:importTax a rdf:Property ; # Applicable import tax, if any
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:float ;
+   
+
+## Extend EndUser with some more detailed properties
+dpp:EndUser ;
+    dpp:endUserOccupation a rdf:Property ;
+    rdfs:domain dpp:EndUser ;
+    rdfs:range xsd:string ;
+    
+    dpp:endUserPurchaseHistory a rdf:Property ; # Could be a link to external database
+    rdfs:domain dpp:EndUser ;
+    rdfs:range xsd:string ;
+
+## Additional Event classes for Sales Transactions at Retail 
+dpp:SalesOrderProcessingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:SalesOrderProcessingPlan ;
+
+dpp:PaymentProcessingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:PaymentProcessingPlan ;
+
+dpp:DeliverySchedulingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:DeliverySchedulingPlan ;
+
+dpp:AfterSalesServiceEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Retailer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:AfterSalesServicePlan ;
+
+## Prov-O related properties for Sales Transactions to EndUser
+dpp:usedForSale a rdf:Property ;
+	rdfs:subPropertyOf prov:used ;
+	rdfs:domain dpp:SalesOrderProcessingEvent ;
+	rdfs:range dpp:SolarPanel .
+    
+dpp:processedPayment a rdf:Property ;
+	rdfs:subPropertyOf prov:used ;
+	rdfs:domain dpp:PaymentProcessingEvent ;
+	rdfs:range dpp:EndUser .
+ 
+dpp:scheduledDelivery a rdf:Property ;
+	rdfs:subPropertyOf prov:used ;
+	rdfs:domain dpp:DeliverySchedulingEvent ;
+	rdfs:range dpp:SolarPanel .
+    
+dpp:offeredService a rdf:Property ;
+	rdfs:subPropertyOf prov:used ;
+	rdfs:domain dpp:AfterSalesServiceEvent ;
+	rdfs:range dpp:SolarPanel .

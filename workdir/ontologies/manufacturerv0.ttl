@@ -1,0 +1,200 @@
+## Define new classes for Solar Panel and Supplier
+dpp:Manufacturer a rdfs:Class .
+dpp:SolarPanel a dpp:DigitalProductPassport ;
+    dpp:uniqueId a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range xsd:string ;
+    
+    dpp:ownership a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range dpp:OwnershipRecord ;
+
+    dpp:eventLog a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range dpp:EventRecord ;
+
+    dpp:attribute a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range dpp:Attribute ;
+
+    dpp:subComponent a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range dpp:DigitalProductPassport ;
+
+    dpp:electricalCharacteristic a dpp:ElectricalCharacteristic ;
+    dpp:mechanicalCharacteristic a dpp:MechanicalCharacteristic ;
+    dpp:environmentalImpact a dpp:EnvironmentalImpact .
+
+dpp:Manufacturer 
+    dpp:manufacturerName a rdf:Property ;
+    rdfs:domain dpp:Manufacturer ;
+    rdfs:range xsd:string .
+
+    dpp:manufacturerLocation a rdf:Property ;
+    rdfs:domain dpp:Manufacturer ;
+    rdfs:range xsd:string .
+
+## Activity Classes Specific to Manufacturer
+dpp:ContractSigningEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:ContractSigningPlan ;
+
+dpp:BatchReceivingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:BatchReceivingPlan ;
+
+dpp:UnpackingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:UnpackingPlan ;
+
+dpp:ProcessingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:ProcessingPlan ;
+
+dpp:AssemblingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:AssemblingPlan ;
+
+dpp:MovingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:MovingPlan ;
+
+dpp:SolarPanelProductionPlan a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:SolarPanelProductionPlan ;
+
+dpp:PackingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:PackingPlan ; 
+
+dpp:ShippingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+
+## Prov-O related properties
+dpp:generatedFrom a prov:wasGeneratedBy ;
+    rdfs:range dpp:SolarPanel .
+
+dpp:activityUsed a rdf:Property ;
+	prov:used rdf:type ;
+	rdfs:range dpp:SolarPanel .
+
+## Ownership Transfer Event class
+dpp:OwnershipTransferEvent a prov:Activity ;
+	prov:used rdf:type ;
+	rdfs:range dpp:SolarPanel ;
+
+	## Prov-O related properties for Ownership Transfer
+	dpp:wasTransferedFrom a rdf:Property ;
+        rdfs:domain dpp:OwnershipTransferEvent ;
+	    rdfs:range dpp:Manufacturer ;
+        rdfs:subPropertyOf prov:agent ;
+	    
+    dpp:wasTransferedTo a rdf:Property ;
+        rdfs:domain dpp:OwnershipTransferEvent ;
+	    rdfs:range dpp:Wholesaler ;
+        rdfs:subPropertyOf prov:agent ;
+	       
+    dpp:transferDate a rdf:Property ;
+        rdfs:domain dpp:OwnershipTransferEvent ;
+	    rdfs:range xsd:dateTime ;
+        dpp:attribute dpp:Attribute ;
+	
+    dpp:contractId a rdf:Property ;
+        rdfs:domain dpp:OwnershipTransferEvent ;
+	    rdfs:range xsd:string ;
+        dpp:attribute dpp:Attribute ;
+
+## Additional properties for Solar Panel
+dpp:SolarPanel 
+    dpp:capacity a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:string ;
+    
+    dpp:cellType a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:string ;
+
+    dpp:density a rdf:Property ;   # Reflects specific energy
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:float ;
+
+    dpp:surfaceArea a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:string ;
+
+    dpp:ratedPower a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:float ;
+
+    dpp:weight a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:float ;
+
+    dpp:lifespan a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range xsd:int ;
+
+    dpp:manufacturer a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range dpp:Manufacturer ;
+
+    dpp:sustainableMaterials a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range dpp:SustainableMaterials ;
+
+    dpp:nonToxicMaterials a rdf:Property ;
+    rdfs:domain dpp:SolarPanel ;
+    rdfs:range dpp:NonToxicMaterials .
+
+## Define new classes for characteristics and impact
+dpp:SustainableMaterials a rdfs:Class ;
+    dpp:attributeName a rdf:Property ;
+    rdfs:domain dpp:Attribute ;
+    rdfs:range xsd:string ;
+
+    dpp:attributeValue a rdf:Property ;
+    rdfs:domain dpp:Attribute ;
+    rdfs:range xsd:boolean .
+
+dpp:NonToxicMaterials a rdfs:Class ;
+    dpp:attributeName a rdf:Property ;
+    rdfs:domain dpp:Attribute ;
+    rdfs:range xsd:string ;
+
+    dpp:attributeValue a rdf:Property ;
+    rdfs:domain dpp:Attribute ;
+    rdfs:range xsd:boolean .
+
+## Define additional Activity Classes for Manufacturer
+dpp:SolarCellTestingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:SolarCellTestingPlan ;
+
+dpp:PanelLaminationEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:PanelLaminationPlan ;
+
+dpp:FrameAttachmentEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:FrameAttachmentPlan ;
+
+dpp:FinalTestingEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:FinalTestingPlan ;
+
+dpp:SafetyCheckEvent a prov:Activity ;
+    prov:wasAssociatedWith dpp:Manufacturer ;
+    prov:qualifiedAssociation a prov:Association ;
+        prov:hadPlan dpp:SafetyCheckPlan ;
