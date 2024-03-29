@@ -27,11 +27,12 @@ flowchart LR
 ```
 
 In this example, our companies are named the following:
-    - Supplier 1: SunSparkle Photons Inc. - Photovoltaic Cells
-    - Supplier 2: SolarEclipse Panels Ltd. - Solar Panel Frames
-    - Manufacturer: PhotonForge SolarWorks - Solar Panels Manufacturing and Assembly
-    - Retailer: LuminousOddity Solar Emporium - Retail sales for solar panels
-    - Remanufacturer: RenewCycle SolarTech GmbH - Remanufacturing facility for old/faulty Solar Panels with observability.
+
+- Supplier 1: SunSparkle Photons Inc. - Photovoltaic Cells
+- Supplier 2: SolarEclipse Panels Ltd. - Solar Panel Frames
+- Manufacturer: PhotonForge SolarWorks - Solar Panels Manufacturing and Assembly
+- Retailer: LuminousOddity Solar Emporium - Retail sales for solar panels
+- Remanufacturer: RenewCycle SolarTech GmbH - Remanufacturing facility for old/faulty Solar Panels with observability.
 
 Each of these entities have their own data models for the products that are the core aspect of their business. 
 To support a Provenance Tracking solution, a modification is thus made to adapt their internal data into a message model form/integration with DPP core ontologies that is interoperable with the rest of the ecosystem. To be ideal, the scope of the core ontology must be minimal, as many context-specific standards (for instance, in batteries), as well as function-specific standards (for instance, with GS1 EPCIS, FeDERATED) may come up. A generic non-normative standard is available with PROV-O, so we use that as a starting point.
