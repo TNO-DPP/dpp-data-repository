@@ -1,2 +1,3 @@
 fastapi[all]
 rdflib
+pyld[aiohttp]
