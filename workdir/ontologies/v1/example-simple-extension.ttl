@@ -1,0 +1,103 @@
+@prefix : <http://www.tno.nl/digitalproductpassport#> .
+@prefix se: <http://www.solareclipsepanels.com/ontology#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+
+# Instance of the company
+<urn:company:solareclipsepanels> a prov:Agent ;
+    rdfs:label "SolarEclipse Panels Ltd." .
+
+# Instance of buyer company
+<urn:company:photonforgesolarworks> a prov:Agent ;
+    rdfs:label "PhotonForge SolarWorks. Ltda" .
+
+# Instance of a digital product passport for a specific solar panel frame
+<urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> a :DigitalProductPassport ;
+    se:creationDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
+    se:lastUpdatedDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
+    ex:serialNumber "SEP-001-2023" .
+
+<urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> a :DigitalProductPassport ;
+    :currentOwner <urn:agent:current_owner> ;  # Replace with the actual current owner's URI
+    :economicOperator <urn:company:solareclipsepanels> ;
+    :creationDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
+    :lastUpdatedDateTime "2023-04-10T11:00:00Z"^^xsd:dateTime ;
+    :hasOwnershipLog [
+        a :OwnershipLog ;
+        :hasEvent 
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174009>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174007>
+    ] ;
+    :hasProductLog [
+        a :EventLog ;
+        :hasEvent
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174001>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174002>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174003>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174004>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174005>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174006>,
+            <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174008>
+    ] .
+
+
+# Instances of events occurring over the lifecycle of the product
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174001> a se:CommissioningEvent ;
+    prov:atTime "2023-04-01T10:00:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174002> a se:MaterialSelectionEvent ;
+    prov:atTime "2023-04-02T09:00:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174003> a se:FrameManufacturingEvent ;
+    prov:atTime "2023-04-05T13:30:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .
+
+<urn:company:solareclipsepanels:events:dpp:518e4567-e89b-12d3-a456-426614174009> a dpp:CreationEvent ;
+    prov:atTime "2023-04-05T14:30:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> ;
+    prov:generated <urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174004> a se:CoatingApplicationEvent ;
+    prov:atTime "2023-04-06T15:00:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174005> a se:QualityCheckEvent ;
+    prov:atTime "2023-04-07T10:00:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174006> a se:PackingEvent ;
+    prov:atTime "2023-04-08T14:00:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174007> a dpp:TransferEvent ;
+    prov:atTime "2023-04-09T16:00:00Z"^^xsd:dateTime ;
+    # prov:wasAssociatedWith <urn:company:solareclipsepanels> ;  # The company initiating the transfer
+    dpp:previousOwner <urn:company:solareclipsepanels> ;
+    dpp:newOwner <urn:company:photonforgesolarworks> ;
+    prov:used <urn:document:contract:321e4567-e89b-12d3-a456-426687660000> ;  # Reference to a contract
+    prov:generated <urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> ;  # The product passport/ still the same, maybe a different one
+    prov:wasInformedBy <urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174006> ;  # Previous event in the chain
+    # Perhaps additional aspects based on company specific information, like equipment
+    # prov:qualifiedInfluence [
+    #     a prov:Influence ;
+    #     prov:agent <urn:agent:new_owner> ;  # New owner of the product
+    #     prov:hadRole <urn:role:buyer>
+    # ] ;
+    # prov:qualifiedAssociation [
+    #     a prov:Association ;
+    #     prov:agent <urn:agent:broker> ;  # The broker or agent involved in the transfer
+    #     prov:hadRole <urn:role:facilitator>
+    # ] .
+
+# Example of a contract document reference, badly defined
+<urn:document:contract:321e4567-e89b-12d3-a456-426687660000> a odrl:Contract ;
+    prov:value "Contract Agreement for the Ownership Transfer of Solar Panel Frame" ;
+    prov:wasAttributedTo <urn:agent:broker> ;
+    prov:generatedAtTime "2023-04-09T15:30:00Z"^^xsd:dateTime .
+
+<urn:company:solareclipsepanels:events:123e4567-e89b-12d3-a456-426614174008> a se:ShippingEvent ;
+    prov:atTime "2023-04-10T11:00:00Z"^^xsd:dateTime ;
+    prov:wasAssociatedWith <urn:company:solareclipsepanels> .

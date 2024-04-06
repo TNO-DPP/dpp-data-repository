@@ -1,0 +1,59 @@
+@prefix dpp: <http://www.tno.nl/digitalproductpassport#> .
+@prefix se: <http://www.solareclipsepanels.com/ontology#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Namespaces for external vocabularies and classes not defined in the profile
+@prefix pfsw: <http://www.photonforgesolarworks.com/ontology#> .  # External downstream Solar Panel manufacturer
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .  # To define agents like companies or persons
+
+# Custom Events for SolarEclipse Panels Ltd. lifecycle
+se:CommissioningEvent a prov:Activity ;
+    rdfs:label "Commissioning Event" ;
+    rdfs:comment "Activity where a commission for solar panel frames is created." .
+
+se:MaterialSelectionEvent a prov:Activity ;
+    rdfs:label "Material Selection Event" ;
+    rdfs:comment "Activity of selecting materials for the frame construction." .
+
+se:FrameManufacturingEvent a prov:Activity ;
+    rdfs:label "Frame Manufacturing Event" ;
+    rdfs:comment "Activity representing the manufacturing process of solar panel frames." .
+
+se:CoatingApplicationEvent a prov:Activity ;
+    rdfs:label "Coating Application Event" ;
+    rdfs:comment "Activity where a protective coating is applied to the frames." .
+
+se:QualityCheckEvent a prov:Activity ;
+    rdfs:label "Quality Check Event" ;
+    rdfs:comment "Activity to ensure that the solar panel frames meet company standards." .
+
+se:PackingEvent a prov:Activity ;
+    rdfs:label "Packing Event" ;
+    rdfs:comment "Activity of packing the solar panel frames for shipment." .
+
+se:OwnershipTransferEvent a prov:Activity ;
+    rdfs:label "Ownership Transfer Event" ;
+    rdfs:comment "Activity representing the transfer of ownership, possibly to PhotonForge SolarWorks or another customer." .
+
+se:ShippingEvent a prov:Activity ;
+    rdfs:label "Shipping Event" ;
+    rdfs:comment "Activity where the solar panel frames are shipped to the customer." .
+
+# Definition of the company and relationships to the lifecycle events
+se:SolarEclipsePanelsLtd a prov:Agent, foaf:Organization ;
+    rdfs:label "SolarEclipse Panels Ltd." ;
+    rdfs:comment "Company that manufactures solar panel frames." .
+
+# Linking SolarEclipse Panels Ltd. to the CommissioningEvent as initial Activity in the lifecycle
+se:commissionedBy a rdf:Property ;
+    rdfs:domain se:CommissioningEvent ;
+    rdfs:range se:SolarEclipsePanelsLtd .
+
+# Links to upstream PhotonForge SolarWorks as potential customer
+se:sourcedTo a rdf:Property ;
+    rdfs:domain se:OwnershipTransferEvent ;
+    rdfs:range pfsw:PhotonForgeSolarWorks .

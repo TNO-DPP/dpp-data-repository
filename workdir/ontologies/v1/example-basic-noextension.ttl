@@ -1,0 +1,41 @@
+@prefix : <http://www.tno.nl/digitalproductpassport#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<urn:did:dpp:uuid> a :DigitalProductPassport ;
+    :currentOwner <http://example.org/current_owner> ;
+    :pastOwner <http://example.org/past_owner> ;
+    :economicOperator <http://example.org/economic_operator> ;
+    :subComponent <http://example.org/sub_component1>, <http://example.org/sub_component2> ;
+    :lastUpdatedDateTime "2024-04-02T12:00:00Z"^^xsd:dateTime ;
+    :creationDateTime "2024-04-01T08:30:00Z"^^xsd:dateTime ;
+    :hasOwnershipLog [
+        a :OwnershipLog ;
+        :hasEvent [
+            a :CreationEvent ;
+            prov:atTime "2024-04-01T08:30:00Z"^^xsd:dateTime ;
+            prov:wasAssociatedWith <http://example.org/manufacturer>
+        ], [
+            a :TransferEvent ;
+            prov:atTime "2024-04-03T10:45:00Z"^^xsd:dateTime ;
+            prov:wasAssociatedWith <http://example.org/retailer> ;
+            :hasRecipient <http://example.org/customer>
+        ]
+    ] ;
+    :hasProductLog [
+        a :ProductLog ;
+        :hasEvent [
+            a :ManufacturingEvent ;
+            prov:atTime "2024-04-01T08:30:00Z"^^xsd:dateTime ;
+            prov:wasAssociatedWith <http://example.org/manufacturer>
+        ], [
+            a :ShippingEvent ;
+            prov:atTime "2024-04-02T10:00:00Z"^^xsd:dateTime ;
+            prov:wasAssociatedWith <http://example.org/manufacturer> ;
+            :hasRecipient <http://example.org/retailer>
+        ]
+    ] .

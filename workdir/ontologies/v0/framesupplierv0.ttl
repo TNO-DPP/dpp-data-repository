@@ -1,3 +1,5 @@
+#  SolarEclipse Panels Ltd.
+
 @prefix dpp: <http://example.org/ontology/digitalproductpassport#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov:  <http://www.w3.org/ns/prov#> .

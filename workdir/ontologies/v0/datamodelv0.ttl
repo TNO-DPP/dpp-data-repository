@@ -5,30 +5,33 @@
 
 # Classes
 dpp:DigitalProductPassport a rdfs:Class .
-dpp:SolarPanel a dpp:DigitalProductPassport .
-dpp:SolarPanelCell a dpp:DigitalProductPassport .
-dpp:SolarPanelFrame a dpp:DigitalProductPassport .
+
+# General property
+dpp:subComponent a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range dpp:DigitalProductPassport .
+
+dpp:eventLog a rdf:Property ;
+    rdfs:domain dpp:DigitalProductPassport ;
+    rdfs:range prov:Activity .
 
 # General Properties
-dpp:uniqueId a rdf:Property ;
-    rdfs:domain dpp:DigitalProductPassport ;
-    rdfs:range xsd:string .
+# dpp:uniqueId a rdf:Property ;
+#     rdfs:domain dpp:DigitalProductPassport ;
+#     rdfs:range xsd:string .
 
 dpp:ownership a rdf:Property ;
     rdfs:domain dpp:DigitalProductPassport ;
     rdfs:range dpp:OwnershipRecord .
 
-dpp:eventLog a rdf:Property ;
-    rdfs:domain dpp:DigitalProductPassport ;
-    rdfs:range dpp:EventRecord .
+# dpp:eventLog a rdf:Property ;
+#     rdfs:domain dpp:DigitalProductPassport ;
+#     rdfs:range dpp:EventRecord .
 
 dpp:attribute a rdf:Property ;
     rdfs:domain dpp:DigitalProductPassport ;
     rdfs:range dpp:Attribute .
 
-dpp:subComponent a rdf:Property ;
-    rdfs:domain dpp:DigitalProductPassport ;
-    rdfs:range dpp:DigitalProductPassport .
 
 # Ownership Record
 dpp:OwnershipRecord a rdfs:Class .
@@ -76,43 +79,3 @@ dpp:attributeName a rdf:Property ;
 dpp:attributeValue a rdf:Property ;
     rdfs:domain dpp:Attribute ;
     rdfs:range xsd:string .
-
-# Instances
-dpp:solarPanel1234 a dpp:SolarPanel ;
-    dpp:uniqueId "uuid:1e8c68d0-8a29-11eb-8dcd-0242ac130003" ;
-    dpp:ownership _:ownershipRecord1234 ;
-    dpp:eventLog _:eventRecord1234 ;
-    dpp:attribute _:attribute1234 ;
-    dpp:subComponent dpp:solarPanelCell5678 ;
-    dpp:subComponent dpp:solarPanelFrame7890 .
-
-# Ownership Record Instance
-_:ownershipRecord1234 a dpp:OwnershipRecord ;
-    dpp:hasCurrentOwner _:ownerXYZ ;
-    dpp:ownershipTransferLog _:ownershipTransfer1234 .
-
-# Ownership Transfer Event Instance
-_:ownershipTransfer1234 a dpp:OwnershipTransferEvent ;
-    dpp:transferFrom _:ownerABC ;
-    dpp:transferTo _:ownerXYZ ;
-    dpp:transferDate "2023-04-01T10:00:00Z"^^xsd:dateTime .
-
-# Owners
-_:ownerABC a dpp:Owner ;
-    dpp:ownerName "Supplier ABC Inc." .
-
-_:ownerXYZ a dpp:Owner ;
-    dpp:ownerName "Manufacturer XYZ Ltd." .
-
-# Event Record Instance
-_:eventRecord1234 a dpp:EventRecord ;
-    dpp:hasEvent _:assemblyEvent1234 .
-
-# Assembly Event Instance
-_:assemblyEvent1234 a dpp:Event ;
-    # Properties specific to the assembly event can be added
-
-# Attribute Instance
-_:attribute1234 a dpp:Attribute ;
-    dpp:attributeName "Efficiency" ;
-    dpp:attributeValue "18.2%" .

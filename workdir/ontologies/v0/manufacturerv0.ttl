@@ -1,3 +1,5 @@
+# PhotonForge SolarWorks _ Manufacturer
+
 ## Define new classes for Solar Panel and Supplier
 dpp:Manufacturer a rdfs:Class .
 dpp:SolarPanel a dpp:DigitalProductPassport ;
