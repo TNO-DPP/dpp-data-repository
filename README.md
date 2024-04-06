@@ -84,3 +84,59 @@ User to Wallet API
 - Create events. Generate signature of event, sign and add to data store.
 - Receive credentials from third-parties.
   - Supporting an receiver-initiated or issuer-initiated credential issuance.
+
+
+
+
+## Initial version of API endpoints
+
+DPP-Templates
+
+1. POST /dpp-templates/ with body containing JSON-schema of attributes at least, but also events, credentials, other basic aspects - creates a partial or empty shell, returns UUID/idShort
+    - Must contain seeding option to pre-add basic information to repository.
+    - Should contain duplicating and reversioning capabilities, typically from the side of the UI.
+2. POST /dpp-templates/{uuid}/attributes - Add attributes to the attribute data model that weren't added before
+3. POST /dpp-templates/{uuid}/events - Add event models to the event data model that weren't added before.
+4. POST /dpp-templates/{uuid}/credentials - Add credential models to the template that are supported to be added to the content. These need not be directly represented, and could also be URL references to credential-schemas stored in a wallet.
+5. POST /dpp-templates/{uuid}/attachments - Attach files, such as images or PDFs to the DPP that can returned in a URL or embedded form when the DPP is requested in a complete form.
+6. POST /dpp-templates/{uuid}/publish/{version} - Lock a certain format with current format.
+7. CRUD for the above, to update and delete versions, not templates. A UUID is merely versioned with tags.
+8. Future work on ACLs- POST /dpp-templates/{uuid}/acls - this depends on where specifically we integrate the Access Control aspects. At the database level, it allows us to register a role as a user and limit queries at the data-querying level.
+At the template level, we'd have to specify it a bit more at the level that we get all the data, and create a subset. This is good enough as a hack.
+
+Make tags "latest" and "version_number" for a template.
+This shall be available henceforth as /dpp-templates/{id_short}?version=version_number with all the content.
+Also as /dpp-templates/{id_short} if version is latest.
+ It's possible to delete the versions.
+
+DPPs
+
+1. POST /dpps/{template_id_short}?version=latest/version_number - create a DPP with basic attributes (body contains attributes with optional or non-optional content)
+2. POST /dpp-templates/{id_short}/create?version=version_number - same as above, alternative endpoint, since it's a non-standard choice
+3. GET /dpps/{uuid} - basic compact pull with no signature.
+4. GET /dpps/{uuid}/self-signed - basic compact pull with self-signature
+5. GET /dpps/{uuid}/signed - compact pull with embedded signatures from wallet in response to a challenge nonce
+6. GET /dpps/{uuid}/full - pull dpp with all attachment links and images attached. (no signature, it's a bigger pull)
+7. GET /dpps/latest - UI-specific - get the last DPP that was generated
+8. GET /dpps/random - UI-specific - get a random DPP based on available IDs in the graph_db. These IDs is preferably cached at the backend.
+9. POST /dpps/{uuid}/events - Add event of type that matches the registered types in the registered version.
+    - Perhaps also POST /dpps/{uuid}/events/activity and POST /dpps/{uuid}/events/ownership
+10. GET /dpps/{uuid}/events/activity and GET /ddps/{uuid}/events/ownership - to get just the subsets of data about the DPP. Specifically for the UI, since it might be easier to get a modular amount of data.
+
+Other endpoints
+
+1. GET /credentials/available - (Find credentials available for use at the SSI wallet. Future work may support creating format for figuring out how to create a on-demand policy for association with a class of product and period of time, corresponding to the validity of the credential.)
+
+### Future:
+
+#### ID-resolution discussion
+
+- DID-based ProductPassport service resolution (Currently we try URN-based without signatures, then we add some DID-based signature validation, initially did:web-first. Then we add external signatures, selective disclosure and identity-based access control.)
+
+Due to the URN-based nature of DPPs, we assume that we must independently provide the link to the original source of information each time. For instance, <urn:solarframeworks:product:111> needs to find (with independent configuration about the location of the DPP passport, the data at this address) <http://dpp-data.solarframeworks.com/dpps/urn:solarframeworks:product:111>.
+
+A web-based approach can also be supported, if defined well. For instance, like with HATEOAS, the products are automatically named <http://dpp-data.solarframeworks.com/dpps/urn:solarframeworks:product:111>. The name is the URL. This is also doable, but depends on the company existing, and holding all the cards for ID resolution, not easily scalable or divestable.
+
+A DID-based approach solves this, because then, a company can support something like <did:solarframeworks:dpp-data:product:111> which supports the concept of a controller of a decentralized identifier - implying that the location of the ID resolution could be placed in a industry-supporting registry, managed by the EU, or other organizations, with a strategy towards updating the controller of a DID document.
+
+This will be expanded upon in a different document. Other strategies for globally unique IDs exist as well, and all have some tradeoffs and advantages.
