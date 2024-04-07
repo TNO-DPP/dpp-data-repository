@@ -158,4 +158,6 @@ In the Spherity demo, this is achieved using:
 "image": "https://20230614.dpp.spherity.com/jpmcc-t-shirt-back.png"
 ```
 
-but there are other means, if the intended image is supposed to be 
+but there are other means, if the intended image is supposed to be embedded.
+
+TODO: JSON-LD framing may prove to be useful as a means of restricting information, if queries and frames are pre-defined and baked-in.
