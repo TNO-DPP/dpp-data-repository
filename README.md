@@ -150,3 +150,12 @@ ex:Change a prov:Activity ;
     prov:hadValueBefore "oldValue" ;
     prov:hadValueAfter "newValue" .
 ```
+
+TODO: Also need to support a way to get images/logos associated with a special tag in the DPP-template, as well as the instance of the product.
+In the Spherity demo, this is achieved using:
+
+```json
+"image": "https://20230614.dpp.spherity.com/jpmcc-t-shirt-back.png"
+```
+
+but there are other means, if the intended image is supposed to be 

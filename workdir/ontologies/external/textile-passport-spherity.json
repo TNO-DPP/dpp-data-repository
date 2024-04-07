@@ -1,0 +1,33 @@
+{
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://schema.org",
+      "https://spherity.github.io/schemas/testing/breathable-t-shirt.json",
+      "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id": "https://20230614.dpp.spherity.com/credential.json",
+    "type": [
+      "VerifiableCredential",
+      "BreathableTShirt",
+      "Product"
+    ],
+    "issuer": "did:web:20230614.dpp.spherity.com",
+    "credentialSubject": {
+      "id": "did:web:20230614.dpp.spherity.com:products:tshirt",
+      "name": "Breathable T-Shirt",
+      "material": "100% Polyester, 140 g/m²",
+      "availablePrintTypes": [
+        "Print"
+      ],
+      "designedBy": "Spherity",
+      "image": "https://20230614.dpp.spherity.com/jpmcc-t-shirt-back.png"
+    },
+    "issuanceDate": "2023-06-12T08:57:02Z",
+    "proof": {
+      "type": "Ed25519Signature2020",
+      "created": "2023-06-12T08:57:02Z",
+      "verificationMethod": "did:web:20230614.dpp.spherity.com#99db5138a6608d85b13a20a58e14790149abd0c9717f23d2f2b995a8dc68fcae",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "z5dTDst4YxVvs2iwDytwRXFTDdKPnmjnEn6NA9RYE7hWH42CV39MLkcTGp8rpehjqpzpdMxj695eQh2g6j6iscdxF"
+    }
+  }
