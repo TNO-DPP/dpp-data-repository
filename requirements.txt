@@ -1,3 +1,4 @@
 fastapi[all]
 rdflib
 pyld[aiohttp]
+pytest
