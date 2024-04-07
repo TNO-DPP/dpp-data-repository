@@ -85,9 +85,6 @@ User to Wallet API
 - Receive credentials from third-parties.
   - Supporting an receiver-initiated or issuer-initiated credential issuance.
 
-
-
-
 ## Initial version of API endpoints
 
 DPP-Templates
@@ -121,7 +118,8 @@ DPPs
 8. GET /dpps/random - UI-specific - get a random DPP based on available IDs in the graph_db. These IDs is preferably cached at the backend.
 9. POST /dpps/{uuid}/events - Add event of type that matches the registered types in the registered version.
     - Perhaps also POST /dpps/{uuid}/events/activity and POST /dpps/{uuid}/events/ownership
-10. GET /dpps/{uuid}/events/activity and GET /ddps/{uuid}/events/ownership - to get just the subsets of data about the DPP. Specifically for the UI, since it might be easier to get a modular amount of data.
+10. POST /dpps/{uuid}/attachments - Add a file that is stored with a reference to it added to the DPP itself.
+11. GET /dpps/{uuid}/events/activity and GET /ddps/{uuid}/events/ownership - to get just the subsets of data about the DPP. Specifically for the UI, since it might be easier to get a modular amount of data.
 
 Other endpoints
 
@@ -140,3 +138,5 @@ A web-based approach can also be supported, if defined well. For instance, like 
 A DID-based approach solves this, because then, a company can support something like <did:solarframeworks:dpp-data:product:111> which supports the concept of a controller of a decentralized identifier - implying that the location of the ID resolution could be placed in a industry-supporting registry, managed by the EU, or other organizations, with a strategy towards updating the controller of a DID document.
 
 This will be expanded upon in a different document. Other strategies for globally unique IDs exist as well, and all have some tradeoffs and advantages.
+
+TODO: Figure out GeneratedBy, EventDeltas, and the integration of InstantaneousEvents vs Activities in Prov-O.
