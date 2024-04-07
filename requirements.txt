@@ -1,4 +1,5 @@
 fastapi[all]
 rdflib
 pyld[aiohttp]
+jsonschema
 pytest

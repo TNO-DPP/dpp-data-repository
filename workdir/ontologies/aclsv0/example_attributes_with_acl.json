@@ -1,0 +1,91 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Circularity Attributes with Access Control",
+    "description": "A set of attributes related to circularity with access control.",
+    "type": "object",
+    "properties": {
+      "recyclability": {
+        "type": "string",
+        "description": "Indicates whether the product is recyclable or not."
+      },
+      "reusability": {
+        "type": "string",
+        "description": "Indicates the level of reusability of the product."
+      },
+      "repairability": {
+        "type": "string",
+        "description": "Indicates the ease of repairing the product."
+      },
+      "removability": {
+        "type": "string",
+        "description": "Indicates the ease of removing components or materials for reuse or recycling."
+      },
+      "recycled_content": {
+        "type": "string",
+        "description": "Indicates the percentage of recycled content in the product."
+      },
+      "access_control": {
+        "type": "object",
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of roles with access rights to the attributes."
+          },
+          "identities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of identities with access rights to the attributes."
+          },
+          "access_rules": {
+            "type": "object",
+            "description": "Access control rules defining which roles or identities have access to specific attributes.",
+            "properties": {
+              "recyclability": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of roles or identities with access to 'recyclability'."
+              },
+              "reusability": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of roles or identities with access to 'reusability'."
+              },
+              "repairability": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of roles or identities with access to 'repairability'."
+              },
+              "removability": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of roles or identities with access to 'removability'."
+              },
+              "recycled_content": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of roles or identities with access to 'recycled_content'."
+              }
+            },
+            "required": ["recyclability", "reusability", "repairability", "removability", "recycled_content"]
+          }
+        }
+      }
+    },
+    "required": ["recyclability", "reusability", "repairability", "removability", "recycled_content", "access_control"]
+  }
+  
