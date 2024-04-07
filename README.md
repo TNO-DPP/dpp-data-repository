@@ -125,7 +125,7 @@ Other endpoints
 
 1. GET /credentials/available - (Find credentials available for use at the SSI wallet. Future work may support creating format for figuring out how to create a on-demand policy for association with a class of product and period of time, corresponding to the validity of the credential.)
 
-### Future:
+### Future
 
 #### ID-resolution discussion
 
@@ -140,3 +140,13 @@ A DID-based approach solves this, because then, a company can support something 
 This will be expanded upon in a different document. Other strategies for globally unique IDs exist as well, and all have some tradeoffs and advantages.
 
 TODO: Figure out GeneratedBy, EventDeltas, and the integration of InstantaneousEvents vs Activities in Prov-O.
+
+i.e. something like this to be added to the base ontology as a custom type of annotation that may be supported by specific events that want to describe deltas. Would enable attribute history for infrequent changes, but is infeasible for broader changes.
+
+```turtle
+ex:Change a prov:Activity ;
+    prov:wasAssociatedWith ex:ChangeEvent ;
+    prov:used ex:Attribute ;
+    prov:hadValueBefore "oldValue" ;
+    prov:hadValueAfter "newValue" .
+```

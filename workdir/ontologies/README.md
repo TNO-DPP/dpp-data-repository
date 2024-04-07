@@ -34,7 +34,6 @@ In this example, our companies are named the following:
 - Retailer: LuminousOddity Solar Emporium - Retail sales for solar panels
 - Remanufacturer: RenewCycle SolarTech GmbH - Remanufacturing facility for old/faulty Solar Panels with observability.
 
-
 ### Event sequences
 
 The optimal-flow sequences are as follows:
@@ -119,7 +118,6 @@ flowchart LR
     I[Packing Event] --> J
     J[Ownership Transfer Event] --> V[Shipping Event]
 ```
-
 
 Each of these entities have their own data models for the products that are the core aspect of their business.
 
