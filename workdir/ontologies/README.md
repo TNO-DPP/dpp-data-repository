@@ -121,6 +121,78 @@ flowchart LR
 
 Each of these entities have their own data models for the products that are the core aspect of their business.
 
+## All together now
+
+### Ownership Log
+
+```mermaid
+flowchart
+    A[PV Cell manufacturer] --> |Creation Event| A
+    A[PV Cell manufacturer] --> |Transfer Event| C
+    B[Panel Frame Manufacturer] --> |Creation Event| B
+    B[Panel Frame Manufacturer] --> |Transfer Event| C
+    C[Panel Manufacturer] --> |Creation Event| C
+    C[Panel Manufacturer] --> |Transfer Event| D[End User]
+    C[Panel Manufacturer] --> |Transfer Event| E
+    E[End User] --> |Transfer Event| F[Remanufacturer]
+    F --> |Destruction Event| F
+
+    
+
+```
+
+### Event Log (annotated based on who has the data)
+
+```mermaid
+flowchart
+    A[Commissioning Event] --> |PV Cell manufacturer| B
+    B[Material Preparation Event] --> |PV Cell manufacturer|C
+    C[Cell Production Event] --> |PV Cell manufacturer|D
+    D[Quality Inspection Event] --> |PV Cell manufacturer|E
+    E[Packing Event] --> |PV Cell manufacturer| F[Shipping Event]
+
+    G[Commissioning Event] --> |Panel Frame Manufacturer| H
+    H[Material Selection Event] --> |Panel Frame Manufacturer|I
+    I[Frame Manufacturing Event] --> |Panel Frame Manufacturer|J
+    J[Coating Application Event] --> |Panel Frame Manufacturer|K
+    K[Quality Check Event] --> |Panel Frame Manufacturer|L
+    L[Packing Event] --> |Panel Frame Manufacturer|M[Shipping Event]
+
+    F --> 1
+    M --> 2
+    1[Batch Receiving Event] --> |PV Cell manufacturer| 3
+    2[Batch Receiving Event] --> |Panel Frame Manufacturer| 3
+    3[Unpacking Event] --> |Panel Manufacturer| 4
+    4[Processing Event] --> |Panel Manufacturer|5
+    5[Panel Lamination Event] --> |Panel Manufacturer|6
+    6[Frame Attachment Event] --> |Panel Manufacturer|7
+    7[Assembling Event] --> |Panel Manufacturer|8
+    8[Solar Cell Testing Event] --> |Panel Manufacturer|9
+    9[Packing Event] --> |Panel Manufacturer|10[Shipping Event]
+
+    10[Batch Receiving Event] --> |Panel Manufacturer|11
+    11[Unpacking Event] --> |Retailer|12
+    12[Panel Verification Event] --> |Retailer|13
+    13[Inventory Updating Event] --> |Retailer|14
+    14[Sales Order Processing Event] --> |Retailer|15
+    15[Payment Processing Event] --> |Retailer|16
+    16[Packing Event] --> |Retailer to End User 1|17[Shipping Event]
+    16[Packing Event] --> |Retailer to End User 2|18[Shipping Event]
+
+    18 --> |Sent to remanufacturer after damn neighbour kids <br/> broke a panel again| 18R
+    18R[Item Receiving Event] --> |Remanufacturer| 19
+    19[Schedule Planning Event] --> |Remanufacturer|20
+    20[Disassembly Event] --> |Remanufacturer|21
+    21[Inspection Event] --> |Remanufacturer|24
+    21[Inspection Event] --> |Remanufacturer|25
+    21[Inspection Event] --> |Remanufacturer|26
+    24[Salvaging Event] --> |Remanufacturer|40[Return Information Event]
+    25[Refurbishing Event] --> |Remanufacturer|27
+    26[Part Swapping Event] --> |Remanufacturer|27
+    27[Remanufactured Panel Assembly Event] --> |Remanufacturer|28
+    28[Packing Event] --> |Remanufacturer|29[Shipping Event]
+```
+
 To support a Provenance Tracking solution, a modification is thus made to adapt their internal data into a message model form based on DPP core ontologies/concepts to make it interoperable with the rest of the ecosystem. To be ideal, the scope of the core ontology must be minimal, as many context-specific standards (for instance, in batteries), as well as function-specific standards (for instance, in events, with GS1 EPCIS, FeDERATED) may come up. A generic non-normative event standard is available with PROV-O, so we use that as a starting point. However, we assume that application-profiles should be defined by each of the end-user organizations or interest groups, to enable true decentralization.
 
 The ontologies in this folder represent an example of ontologies defined by each of these organizations in the supply chain in the previous paragraph, along with the core ontology, and an instance graph for demonstration of a comprehensive full-scale ontology.

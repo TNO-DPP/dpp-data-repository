@@ -161,3 +161,89 @@ In the Spherity demo, this is achieved using:
 but there are other means, if the intended image is supposed to be embedded.
 
 TODO: JSON-LD framing may prove to be useful as a means of restricting information, if queries and frames are pre-defined and baked-in.
+
+
+## Pages
+
+The number of pages to be designed based on the endpoints
+
+- Template Designer
+  - List all
+  - Create new
+- Passport Visualizer
+  - View (and Interact)
+- Credential Manager
+  - List all
+- Settings (general backend settings)
+
+
+### Front-end breadcrumbs
+Templates contain 4 types of information:
+
+- Attributes added (basic are automatically added)
+- Event-types and preferred order (basic DPP events are automatically added)
+- Credentials associated (VC templates, types, pulled or custom added)
+- Attachments (files of multiple formats that can be connected to a template)
+
+Pages:
+
+- Home -> Templates -> ID -> versionNumber/latest -> Attributes
+- Home -> Templates -> ID -> versionNumber/latest -> Events
+- Home -> Templates -> ID -> versionNumber/latest -> Credentials
+- Home -> Templates -> ID -> versionNumber/latest -> Attachments
+    (view and CRUD form components to add to the data structure)
+- Home -> Templates -> ID -> versionNumber/latest
+    (list tables containing templates)
+- Home -> Templates -> ID
+    (list versions, create a new version, duplicate existing one for modification)
+- Home -> Templates (blocks/complex tree-view containing the available templates for DPPs)
+
+- Home -> Templates -> New
+(define new template based on nothing)
+- Home -> Templates -> New -> Attributes
+- Home -> Templates -> New -> Events
+- Home -> Templates -> New -> Credentials
+- Home -> Templates -> New -> Attachments
+(add aspects to this new template, after which you return to the main New page to save with a name and version)
+
+- Home -> DPPs
+    Form for specific UUID, filters over types on a table of DPPs.
+    (Button - Random DPP)
+    (Button - Latest issued DPP)
+    (Button - Create DPP based on template)
+
+- Home -> DPPs -> UUID
+    (View mode)
+    (Visual representation of DPP data)
+    (Raw JSON mode)
+    (Rich visualization mode) - Additional perspectives, such as external data sources.
+
+- Home -> DPPs -> UUID -> Update
+    (Interactive mode)
+    (Add event)
+    (Add attachment)
+    (Update attribute - Create UpdateAttributeEvent with delta over attribute)
+    (Add credential - based on available and valid credentials in connected Credential Wallets.)
+
+- Home -> Credentials
+
+- Home -> Settings
+
+## Deadlines
+
+May 22nd. - First version of content and integration with the DWI and ERP teams.
+
+- Jeroen will provide a Bill-of-Materials, a hierarchical list of subcomponents in the product by next week. We must discuss how to describe that data best, and discuss with the DWI team to identify the events and updates they will be doing on Ansomatic (current progress is limited).
+- To be discussed: the additional UI views to demonstrate in the UI about the general structure of the data.
+- ERP provides us less data, we may provide some information to both DWI and ERP instead.
+
+## Tasks for tomorrow
+
+- Set out MVP and dependencies with other teams. Make plan in the morning standup.
+  - ERP
+  - DWI
+    - Ask about specifics of the connection to DPP
+      - Getting DPP data to DWI
+      - Getting DWI update data to DPP
+  - Systems - Jeroen and the Bill of Materials/Data Model.
+- Discussion about what to visualize for the TEF-level in the additional screens in the dashboard.

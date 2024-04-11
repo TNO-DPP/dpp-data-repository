@@ -13,12 +13,12 @@
     rdfs:label "PhotonForge SolarWorks. Ltda" .
 
 # Instance of a digital product passport for a specific solar panel frame
-<urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> a :DigitalProductPassport ;
-    se:creationDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
-    se:lastUpdatedDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
-    ex:serialNumber "SEP-001-2023" .
+# <urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> a :DigitalProductPassport ;
+#     se:creationDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
+#     se:lastUpdatedDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
+#     ex:serialNumber "SEP-001-2023" .
 
-<urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> a :DigitalProductPassport ;
+<urn:company:solareclipsepanels:dpp:123e4567-e89b-12d3-a456-426614174000> a :SolarPanelPassport ;
     :currentOwner <urn:agent:current_owner> ;  # Replace with the actual current owner's URI
     :economicOperator <urn:company:solareclipsepanels> ;
     :creationDateTime "2023-04-01T00:00:00Z"^^xsd:dateTime ;
