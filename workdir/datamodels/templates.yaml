@@ -1,0 +1,300 @@
+# Example for a Datamodel template for an oscillator circuit - AI Matters TEF.
+
+OscillatorModulePassport:
+  optional: false
+  attributes:
+    article_number: 6SCMM
+    supplier: TNO
+    manufacturer: TNO
+  credentials: []
+  attachments: []
+  events:
+    supported: []
+    ownership: []
+    activity: []
+  subpassports:
+    - PanheadScrewGroupPassport:
+        optional: true
+        attributes:
+          article_number: 146077
+          name: 
+            - value: Panhead Screws
+              language: en
+            - value: Lenskopschroeven
+              language: nl
+          quantity: 4
+          dimensions:
+            - quantity: 4
+              length: 
+                value: 6
+                unit: mm
+              diameter:
+                value: 4
+                unit: mm
+          type: T-profiel
+          specification: DIN 7985
+          supplier: Conrad
+          manufacturer: Toolcraft
+        credentials: []
+        attachments: []
+        subpassports: []
+        events:
+          supported: []
+          ownership: []
+          activity: []
+    - SpacerBoltsGroupPassport:
+        optional: true
+        attributes:
+          article_number: S47040X10
+          name: 
+            - value: SpacerBolts
+              language: en
+            - value: Afstandsbouten
+              language: nl
+          material: Galvanized Steel
+          quantity: 4
+          dimensions:
+            - quantity: 2
+              length: 
+                value: 6
+                unit: mm
+              diameter:
+                value: 4
+                unit: mm          
+            - quantity: 2
+              length: 
+                value: 8
+                unit: mm
+              diameter:
+                value: 4
+                unit: mm          
+          supplier: Conrad
+          manufacturer: PB Fastener
+        credentials: []
+        attachments: []
+        subpassports: []
+        events:
+          supported: []
+          ownership: []
+          activity: []
+    - InstallationHousingModulePassport:
+        optional: true
+        attributes:
+          article_number: 3625-11-t
+          name: 
+            - value: Installation Housing
+              language: en
+            - value: Installatiebehuizing
+              language: nl
+          material: Polycarbonate, Polysterene (EPS)
+          quantity: 1
+          dimensions:
+            length: 
+              value: 360
+              unit: mm
+            diameter:
+              value: 254
+              unit: mm               
+            width: 
+              value: 111
+              unit: mm
+          color:
+            value: Grey-White
+            system: RAL 7035
+        events:
+          supported: []
+          ownership: []
+          activity: []
+        credentials: []
+        attachments: []
+        subpassports: []
+    - OscillatorCircuitPassport:
+        optional: false
+        attributes:
+          article_number: 6SCEO
+          name:
+            - value: Elenco electronics oscillator circuit
+              language: en            
+          manufacturer: TNO
+          supplier: TNO
+        events:
+          supported: []
+          ownership: []
+          activity: []
+        credentials: []
+        attachments: []
+        subpassports:
+          - SnapWireGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                supplier: Kiwi Electronics
+                manufacturer: Elenco
+                group_members:
+                  - name: 1-Snap
+                    article_number: 6SC01
+                    quantity: 3
+                  - name: 2-Snap
+                    article_number: 6SC02
+                    quantity: 7
+                  - name: 3-Snap
+                    article_number: 6SC03
+                    quantity: 1
+                  - name: 4-Snap
+                    article_number: 6SC04                  
+                    quantity: 1
+                  - name: 6-Snap
+                    article_number: 6SC06                  
+                    quantity: 1
+          - PowerGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                group_members:
+                - name: BatteryHolder
+                  article_number: 6SCB1
+                  supplier: Kiwi Electronics
+                  manufacturer: Elenco
+                  quantity: 1
+                  compatible_with: 
+                    formfactor: AA
+                    voltage:
+                      value: 1.5
+                      unit: Volt
+                - name: Battery
+                  article_number: 1587159-8J
+                  supplier: Conrad
+                  manufacturer: Varta
+                  quantity: 2
+                  formfactor: AA
+                  voltage:
+                    value: 1.5
+                    unit: Volt
+          - LEDGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                supplier: Kiwi Electronics
+                manufacturer: Elenco
+                group_members:
+                - name: Red LED
+                  article_number: 6SCD1                
+                  quantity: 1
+                - name: Green LED
+                  article_number: 6SCD2                
+                  quantity: 0
+
+          - CapacitorGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                supplier: Kiwi Electronics
+                manufacturer: Elenco
+                group_members:
+                - name: 10uF Capacitor
+                  article_number: 6SCC3
+                  quantity: 1
+                  capacitance:
+                    value: 10
+                    unit: microfarad
+                - name: 100uF Capacitor
+                  article_number: 6SCC4
+                  quantity: 1
+                  capacitance:
+                    value: 100
+                    unit: microfarad                  
+
+          - ResistorGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                supplier: Kiwi Electronics
+                manufacturer: Elenco              
+                group_members:
+                - name: 1kOhm Resistor
+                  article_number: 6SCC3
+                  quantity: 1
+                  resistance:
+                    value: 1000
+                    unit: Ohm
+                - name: 5.1kOhm Resistor
+                  article_number: 6SCC3
+                  quantity: 1
+                  resistance:
+                    value: 5100
+                    unit: Ohm
+                - name: 10kOhm Resistor
+                  article_number: 6SCC3
+                  quantity: 1
+                  resistance:
+                    value: 10000
+                    unit: Ohm
+                - name: Adjustable Resistor
+                  article_number: 6SCC3                
+                  quantity: 1
+                  # range would be useful
+
+          - TransistorGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                supplier: Kiwi Electronics
+                manufacturer: Elenco
+                group_members:
+                - name: PNP Transistor
+                  type: PNP
+                - name: NPN Transistor
+                  type: NPN
+
+          - MiscGroupPassport:
+              optional: false
+              events:
+                supported: []
+                ownership: []
+                activity: []
+              credentials: []
+              attachments: []
+              attributes:
+                supplier: Kiwi Electronics
+                manufacturer: Elenco              
+                group_members:
+                - name: Slide Switch
+                  type: Switch
+                - name: Base Grid
+                  dimensions:
+                    length: 
+                      value: 11
+                      unit: inch
+                    breadth:
+                      value: 7.7
+                      unit: inch
