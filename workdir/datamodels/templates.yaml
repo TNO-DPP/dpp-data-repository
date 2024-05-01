@@ -237,25 +237,25 @@ OscillatorModulePassport:
                 manufacturer: Elenco              
                 group_members:
                 - name: 1kOhm Resistor
-                  article_number: 6SCC3
+                  article_number: 6SCR2
                   quantity: 1
                   resistance:
                     value: 1000
                     unit: Ohm
                 - name: 5.1kOhm Resistor
-                  article_number: 6SCC3
+                  article_number: 6SCR3
                   quantity: 1
                   resistance:
                     value: 5100
                     unit: Ohm
                 - name: 10kOhm Resistor
-                  article_number: 6SCC3
+                  article_number: 6SCR4
                   quantity: 1
                   resistance:
                     value: 10000
                     unit: Ohm
                 - name: Adjustable Resistor
-                  article_number: 6SCC3                
+                  article_number: 6SCRV                
                   quantity: 1
                   # range would be useful
 
@@ -273,8 +273,10 @@ OscillatorModulePassport:
                 group_members:
                 - name: PNP Transistor
                   type: PNP
+                  article_number: 6SCQ1                  
                 - name: NPN Transistor
                   type: NPN
+                  article_number: 6SCQ2
 
           - MiscGroupPassport:
               optional: false
@@ -290,7 +292,9 @@ OscillatorModulePassport:
                 group_members:
                 - name: Slide Switch
                   type: Switch
+                  article_number: 6SCS1                  
                 - name: Base Grid
+                  article_number: 6SCBG
                   dimensions:
                     length: 
                       value: 11
