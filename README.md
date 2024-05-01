@@ -111,9 +111,11 @@ DPPs
 1. POST /dpps/{template_id_short}?version=latest/version_number - create a DPP with basic attributes (body contains attributes with optional or non-optional content)
 2. POST /dpp-templates/{id_short}/create?version=version_number - same as above, alternative endpoint, since it's a non-standard choice
 3. GET /dpps/{uuid} - basic compact pull with no signature.
+3.5. GET /dpps/{uuid}/bom - [{"quantity, id, name"}]
 4. GET /dpps/{uuid}/self-signed - basic compact pull with self-signature
 5. GET /dpps/{uuid}/signed - compact pull with embedded signatures from wallet in response to a challenge nonce
 6. GET /dpps/{uuid}/full - pull dpp with all attachment links and images attached. (no signature, it's a bigger pull)
+6.5. POST /dpps/batch/ ["", "", ""]
 7. GET /dpps/latest - UI-specific - get the last DPP that was generated
 8. GET /dpps/random - UI-specific - get a random DPP based on available IDs in the graph_db. These IDs is preferably cached at the backend.
 9. POST /dpps/{uuid}/events - Add event of type that matches the registered types in the registered version.
@@ -176,8 +178,8 @@ The number of pages to be designed based on the endpoints
   - List all
 - Settings (general backend settings)
 
-
 ### Front-end breadcrumbs
+
 Templates contain 4 types of information:
 
 - Attributes added (basic are automatically added)
@@ -186,6 +188,9 @@ Templates contain 4 types of information:
 - Attachments (files of multiple formats that can be connected to a template)
 
 Pages:
+
+Home -> Templates (List all templates page) - TemplateView.vue
+Home -> Templates -> ID
 
 - Home -> Templates -> ID -> versionNumber/latest -> Attributes
 - Home -> Templates -> ID -> versionNumber/latest -> Events
@@ -206,19 +211,20 @@ Pages:
 - Home -> Templates -> New -> Attachments
 (add aspects to this new template, after which you return to the main New page to save with a name and version)
 
-- Home -> DPPs
+- [MVP] Home -> DPP Visualization
+- [MVP] Home -> DPPs
     Form for specific UUID, filters over types on a table of DPPs.
     (Button - Random DPP)
     (Button - Latest issued DPP)
     (Button - Create DPP based on template)
 
-- Home -> DPPs -> UUID
+- [MVP] Home -> DPPs -> UUID
     (View mode)
     (Visual representation of DPP data)
     (Raw JSON mode)
     (Rich visualization mode) - Additional perspectives, such as external data sources.
 
-- Home -> DPPs -> UUID -> Update
+- [MVP] Home -> DPPs -> UUID -> Update
     (Interactive mode)
     (Add event)
     (Add attachment)
@@ -228,6 +234,8 @@ Pages:
 - Home -> Credentials
 
 - Home -> Settings
+
+- Home -> Sign in
 
 ## Deadlines
 
