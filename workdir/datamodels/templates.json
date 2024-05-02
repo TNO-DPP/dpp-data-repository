@@ -3,8 +3,12 @@
         "optional": false,
         "attributes": {
             "article_number": "6SCMM",
-            "supplier": "TNO",
-            "manufacturer": "TNO"
+            "supplier": {
+                "name": "TNO"
+            },
+            "manufacturer": {
+                "name": "TNO"
+            }
         },
         "credentials": [],
         "attachments": [],
@@ -45,8 +49,13 @@
                         ],
                         "type": "T-profiel",
                         "specification": "DIN 7985",
-                        "supplier": "Conrad",
-                        "manufacturer": "Toolcraft"
+                        "supplier": {
+                            "name": "Conrad",
+                            "link": "https://www.conrad.nl/nl/p/toolcraft-146077-lenskopschroeven-m4-6-mm-t-profiel-din-7985-staal-galvanisch-verzinkt-200-stuk-s-146077.html"
+                        },
+                        "manufacturer": {
+                            "name": "Toolcraft"
+                        }
                     },
                     "credentials": [],
                     "attachments": [],
@@ -99,8 +108,14 @@
                                 }
                             }
                         ],
-                        "supplier": "Conrad",
-                        "manufacturer": "PB Fastener"
+                        "supplier": {
+                            "name": "Conrad",
+                            "link": "https://www.conrad.nl/nl/p/pb-fastener-s47040x10-afstandsbouten-l-10-mm-m4-x-6-m4-x-8-staal-verzinkt-10-stuk-s-521769.html"
+                        },
+                        "manufacturer": {
+                            "name": "PB Fastener",
+                            "link": "https://www.pb-fastener.de/produkt/stahl-verzinkt-mit-innen-und-aussengewinde-k70402"
+                        }
                     },
                     "credentials": [],
                     "attachments": [],
@@ -146,6 +161,14 @@
                         "color": {
                             "value": "Grey-White",
                             "system": "RAL 7035"
+                        },
+                        "supplier": {
+                            "name": "Conrad",
+                            "link": "https://www.conrad.nl/nl/p/spelsberg-tk-ps-3625-11-t-installatiebehuizing-360-x-254-x-111-polycarbonaat-polystereen-eps-grijs-wit-ral-7035-1-531010.html"
+                        },
+                        "manufacturer": {
+                            "name": "Spelsberg",
+                            "link": "https://www.spelsberg.nl/industriele-lege-behuizingen/met/zonder-voorgestanste-metrische-uitbreekopeningen/11101201/"
                         }
                     },
                     "events": {
@@ -169,8 +192,12 @@
                                 "language": "en"
                             }
                         ],
-                        "manufacturer": "TNO",
-                        "supplier": "TNO"
+                        "supplier": {
+                            "name": "TNO"
+                        },
+                        "manufacturer": {
+                            "name": "TNO"
+                        }
                     },
                     "events": {
                         "supported": [],
@@ -191,33 +218,71 @@
                                 "credentials": [],
                                 "attachments": [],
                                 "attributes": {
-                                    "supplier": "Kiwi Electronics",
-                                    "manufacturer": "Elenco",
                                     "group_members": [
                                         {
                                             "name": "1-Snap",
                                             "article_number": "6SC01",
-                                            "quantity": 3
+                                            "quantity": 3,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/single-snap-conductor.html"
+                                            }
                                         },
                                         {
                                             "name": "2-Snap",
                                             "article_number": "6SC02",
-                                            "quantity": 7
+                                            "quantity": 7,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/conductor-with-2-snaps.html"
+                                            }
                                         },
                                         {
                                             "name": "3-Snap",
                                             "article_number": "6SC03",
-                                            "quantity": 1
+                                            "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/conductor-with-3-snaps.html"
+                                            }
                                         },
                                         {
                                             "name": "4-Snap",
                                             "article_number": "6SC04",
-                                            "quantity": 1
+                                            "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/conductor-with-4-snaps.html"
+                                            }
                                         },
                                         {
                                             "name": "6-Snap",
                                             "article_number": "6SC06",
-                                            "quantity": 1
+                                            "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/conductor-with-6-snaps.html"
+                                            }
                                         }
                                     ]
                                 }
@@ -238,8 +303,14 @@
                                         {
                                             "name": "BatteryHolder",
                                             "article_number": "6SCB1",
-                                            "supplier": "Kiwi Electronics",
-                                            "manufacturer": "Elenco",
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/battery-holder-3v-2-x-aa.html"
+                                            },
                                             "quantity": 1,
                                             "compatible_with": {
                                                 "formfactor": "AA",
@@ -252,8 +323,14 @@
                                         {
                                             "name": "Battery",
                                             "article_number": "1587159-8J",
-                                            "supplier": "Conrad",
-                                            "manufacturer": "Varta",
+                                            "supplier": {
+                                                "name": "Conrad",
+                                                "link": "https://www.conrad.nl/nl/p/varta-longlife-power-aa-batterij-penlite-alkaline-1-5-v-40-stuk-s-1587159.html"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Varta",
+                                                "link": "https://www.varta-ag.com/en/consumer/product-categories/batteries/alkaline/longlife-power-aa"
+                                            },
                                             "quantity": 2,
                                             "formfactor": "AA",
                                             "voltage": {
@@ -276,18 +353,32 @@
                                 "credentials": [],
                                 "attachments": [],
                                 "attributes": {
-                                    "supplier": "Kiwi Electronics",
-                                    "manufacturer": "Elenco",
                                     "group_members": [
                                         {
                                             "name": "Red LED",
                                             "article_number": "6SCD1",
-                                            "quantity": 1
+                                            "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/red-led.html"
+                                            }
                                         },
                                         {
                                             "name": "Green LED",
                                             "article_number": "6SCD2",
-                                            "quantity": 0
+                                            "quantity": 0,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/green-led.html"
+                                            }
                                         }
                                     ]
                                 }
@@ -304,13 +395,19 @@
                                 "credentials": [],
                                 "attachments": [],
                                 "attributes": {
-                                    "supplier": "Kiwi Electronics",
-                                    "manufacturer": "Elenco",
                                     "group_members": [
                                         {
                                             "name": "10uF Capacitor",
                                             "article_number": "6SCC3",
                                             "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/10-aef-capacitor.html"
+                                            },
                                             "capacitance": {
                                                 "value": 10,
                                                 "unit": "microfarad"
@@ -320,6 +417,14 @@
                                             "name": "100uF Capacitor",
                                             "article_number": "6SCC4",
                                             "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/100aef-capacitor.html"
+                                            },
                                             "capacitance": {
                                                 "value": 100,
                                                 "unit": "microfarad"
@@ -340,13 +445,19 @@
                                 "credentials": [],
                                 "attachments": [],
                                 "attributes": {
-                                    "supplier": "Kiwi Electronics",
-                                    "manufacturer": "Elenco",
                                     "group_members": [
                                         {
                                             "name": "1kOhm Resistor",
                                             "article_number": "6SCR2",
                                             "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/1ke-resistor.html"
+                                            },
                                             "resistance": {
                                                 "value": 1000,
                                                 "unit": "Ohm"
@@ -356,6 +467,14 @@
                                             "name": "5.1kOhm Resistor",
                                             "article_number": "6SCR3",
                                             "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/5-1ke-resistor.html"
+                                            },
                                             "resistance": {
                                                 "value": 5100,
                                                 "unit": "Ohm"
@@ -365,6 +484,14 @@
                                             "name": "10kOhm Resistor",
                                             "article_number": "6SCR4",
                                             "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/10ke-resistor.html"
+                                            },
                                             "resistance": {
                                                 "value": 10000,
                                                 "unit": "Ohm"
@@ -373,7 +500,19 @@
                                         {
                                             "name": "Adjustable Resistor",
                                             "article_number": "6SCRV",
-                                            "quantity": 1
+                                            "quantity": 1,
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/adjustable-resistor-50ke.html"
+                                            },
+                                            "resistance": {
+                                                "value": 50000,
+                                                "unit": "Ohm"
+                                            }
                                         }
                                     ]
                                 }
@@ -396,12 +535,28 @@
                                         {
                                             "name": "PNP Transistor",
                                             "type": "PNP",
-                                            "article_number": "6SCQ1"
+                                            "article_number": "6SCQ1",
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/pnp-transistor.html"
+                                            }
                                         },
                                         {
                                             "name": "NPN Transistor",
                                             "type": "NPN",
-                                            "article_number": "6SCQ2"
+                                            "article_number": "6SCQ2",
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/npn-transistor.html"
+                                            }
                                         }
                                     ]
                                 }
@@ -424,7 +579,15 @@
                                         {
                                             "name": "Slide Switch",
                                             "type": "Switch",
-                                            "article_number": "6SCS1"
+                                            "article_number": "6SCS1",
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/slide-switch.html"
+                                            }
                                         },
                                         {
                                             "name": "Base Grid",
@@ -438,6 +601,14 @@
                                                     "value": 7.7,
                                                     "unit": "inch"
                                                 }
+                                            },
+                                            "supplier": {
+                                                "name": "Kiwi Electronics",
+                                                "link": "https://www.kiwi-electronics.com/nl/experimenteren-met-elektronica-407/snap-circuits-basis-kits-223/snap-circuits-300plus-experiments-sc310-1112"
+                                            },
+                                            "manufacturer": {
+                                                "name": "Elenco",
+                                                "link": "https://shop.elenco.com/consumers/base-grid-11-x-7-7.html"
                                             }
                                         }
                                     ]
