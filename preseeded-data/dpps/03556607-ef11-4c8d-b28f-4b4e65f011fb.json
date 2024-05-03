@@ -22,6 +22,8 @@
         "subpassports": [
             {
                 "PanheadScrewGroupPassport": {
+                    "id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+                    "title": "Panhead Screws",
                     "optional": true,
                     "attributes": {
                         "article_number": 146077,
@@ -60,7 +62,13 @@
                         }
                     },
                     "credentials": [],
-                    "attachments": [],
+                    "attachments": [
+                        {
+                            "type": "image",
+                            "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956/attachments/146077.png",
+                            "id": "146077"
+                    }
+                    ],
                     "subpassports": [],
                     "events": {
                         "supported": [],
@@ -71,6 +79,8 @@
             },
             {
                 "SpacerBoltsGroupPassport": {
+                    "id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+                    "title": "Spacer Bolts",                    
                     "optional": true,
                     "attributes": {
                         "article_number": "S47040X10",
@@ -120,7 +130,13 @@
                         }
                     },
                     "credentials": [],
-                    "attachments": [],
+                    "attachments": [
+                        {
+                            "type": "image",
+                            "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200/attachments/S47040X10.png",
+                            "id": "S47040X10"
+                    }
+                    ],
                     "subpassports": [],
                     "events": {
                         "supported": [],
@@ -131,6 +147,8 @@
             },
             {
                 "InstallationHousingModulePassport": {
+                    "id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+                    "title": "Installation Housing",   
                     "optional": true,
                     "attributes": {
                         "article_number": "3625-11-t",
@@ -179,12 +197,20 @@
                         "activity": []
                     },
                     "credentials": [],
-                    "attachments": [],
+                    "attachments": [
+                        {
+                            "type": "image",
+                            "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f/attachments/3625-11-t.png",
+                            "id": "3625-11-t"
+                    }
+                    ],
                     "subpassports": []
                 }
             },
             {
                 "OscillatorCircuitPassport": {
+                    "id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                    "title": "Oscillator Circuit",   
                     "optional": false,
                     "attributes": {
                         "article_number": "6SCEO",
@@ -211,6 +237,8 @@
                     "subpassports": [
                         {
                             "SnapWireGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+                                "title": "Snap Wire Group",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -218,7 +246,33 @@
                                     "activity": []
                                 },
                                 "credentials": [],
-                                "attachments": [],
+                                "attachments": [
+                                    {
+                                        "type": "image",
+                                        "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC01.png",
+                                        "id": "6SC01"
+                                },
+                                    {
+                                        "type": "image",
+                                        "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC02.png",
+                                        "id": "6SC02"
+                                },
+                                    {
+                                        "type": "image",
+                                        "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC03.png",
+                                        "id": "6SC03"
+                                },
+                                    {
+                                        "type": "image",
+                                        "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC04.png",
+                                        "id": "6SC04"
+                                },
+                                    {
+                                        "type": "image",
+                                        "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC06.png",
+                                        "id": "6SC06"
+                                }
+                                ],
                                 "attributes": {
                                     "group_members": [
                                         {
@@ -292,6 +346,8 @@
                         },
                         {
                             "PowerGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+                                "title": "Battery Holder and batteries (sourced from Varta)",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -346,6 +402,8 @@
                         },
                         {
                             "LEDGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+                                "title": "LED Group",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -388,6 +446,8 @@
                         },
                         {
                             "CapacitorGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+                                "title": "Capacitor Group",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -438,6 +498,8 @@
                         },
                         {
                             "ResistorGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+                                "title": "Resistor Group",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -522,6 +584,8 @@
                         },
                         {
                             "TransistorGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+                                "title": "Transistor Group",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -566,6 +630,8 @@
                         },
                         {
                             "MiscGroupPassport": {
+                                "id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+                                "title": "Miscellaneous parts in Oscillator Circuit",   
                                 "optional": false,
                                 "events": {
                                     "supported": [],
