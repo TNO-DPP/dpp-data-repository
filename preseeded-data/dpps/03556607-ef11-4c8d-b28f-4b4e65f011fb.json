@@ -16,8 +16,63 @@
         "attachments": [],
         "events": {
             "supported": [],
-            "ownership": [],
-            "activity": []
+            "ownership": [
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#"
+                    },
+                    "@id": "urn:manufacturer:TNO:creationEvent:bdef91ab-4545-44c0-b066-3fcbcc97fa86",
+                    "@type": "dpp:CreationEvent",
+                    "prov:generated": {
+                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@type": "prov:Entity"
+                    },
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2024-05-03T12:00:00Z"
+                    }
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#"
+                    },
+                    "@id": "urn:manufacturer:TNO:transferEvent:8a492fd9-41f8-4780-837d-c14b8fbbd9fb",
+                    "@type": "dpp:TransferEvent",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2024-05-04T09:00:00Z"
+                    },
+                    "prov:wasStartedBy": {
+                        "@id": "urn:manufacturer:TNO:creationEvent:bdef91ab-4545-44c0-b066-3fcbcc97fa86"
+                    },
+                    "prov:used": {
+                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb"
+                    }
+                }
+            ],
+            "activity": [
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "dpp-elenco": "http://www.tno.nl/digitalproductpassport/elenco#"
+                    },
+                    "@id": "urn:manufacturer:TNO:manufacturingEvent:85059ab2-1152-4cab-a207-0cc83b630ffa",
+                    "@type": "dpp-elenco:ManufacturingEvent",
+                    "prov:generated": {
+                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@type": "prov:Entity"
+                    },
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2024-05-03T12:00:00Z"
+                    }
+                }
+            ]
         },
         "subpassports": [
             {
@@ -67,7 +122,7 @@
                             "type": "image",
                             "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956/attachments/146077.png",
                             "id": "146077"
-                    }
+                        }
                     ],
                     "subpassports": [],
                     "events": {
@@ -80,7 +135,7 @@
             {
                 "SpacerBoltsGroupPassport": {
                     "id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
-                    "title": "Spacer Bolts",                    
+                    "title": "Spacer Bolts",
                     "optional": true,
                     "attributes": {
                         "article_number": "S47040X10",
@@ -135,7 +190,7 @@
                             "type": "image",
                             "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200/attachments/S47040X10.png",
                             "id": "S47040X10"
-                    }
+                        }
                     ],
                     "subpassports": [],
                     "events": {
@@ -148,7 +203,7 @@
             {
                 "InstallationHousingModulePassport": {
                     "id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
-                    "title": "Installation Housing",   
+                    "title": "Installation Housing",
                     "optional": true,
                     "attributes": {
                         "article_number": "3625-11-t",
@@ -202,7 +257,7 @@
                             "type": "image",
                             "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f/attachments/3625-11-t.png",
                             "id": "3625-11-t"
-                    }
+                        }
                     ],
                     "subpassports": []
                 }
@@ -210,7 +265,7 @@
             {
                 "OscillatorCircuitPassport": {
                     "id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
-                    "title": "Oscillator Circuit",   
+                    "title": "Oscillator Circuit",
                     "optional": false,
                     "attributes": {
                         "article_number": "6SCEO",
@@ -238,7 +293,7 @@
                         {
                             "SnapWireGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
-                                "title": "Snap Wire Group",   
+                                "title": "Snap Wire Group",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -251,27 +306,27 @@
                                         "type": "image",
                                         "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC01.png",
                                         "id": "6SC01"
-                                },
+                                    },
                                     {
                                         "type": "image",
                                         "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC02.png",
                                         "id": "6SC02"
-                                },
+                                    },
                                     {
                                         "type": "image",
                                         "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC03.png",
                                         "id": "6SC03"
-                                },
+                                    },
                                     {
                                         "type": "image",
                                         "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC04.png",
                                         "id": "6SC04"
-                                },
+                                    },
                                     {
                                         "type": "image",
                                         "link": "http://dpp-data-repository.nl/dpps/urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd/attachments/6SC06.png",
                                         "id": "6SC06"
-                                }
+                                    }
                                 ],
                                 "attributes": {
                                     "group_members": [
@@ -347,7 +402,7 @@
                         {
                             "PowerGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
-                                "title": "Battery Holder and batteries (sourced from Varta)",   
+                                "title": "Battery Holder and batteries (sourced from Varta)",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -403,7 +458,7 @@
                         {
                             "LEDGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
-                                "title": "LED Group",   
+                                "title": "LED Group",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -447,7 +502,7 @@
                         {
                             "CapacitorGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
-                                "title": "Capacitor Group",   
+                                "title": "Capacitor Group",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -499,7 +554,7 @@
                         {
                             "ResistorGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
-                                "title": "Resistor Group",   
+                                "title": "Resistor Group",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -585,7 +640,7 @@
                         {
                             "TransistorGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
-                                "title": "Transistor Group",   
+                                "title": "Transistor Group",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
@@ -631,7 +686,7 @@
                         {
                             "MiscGroupPassport": {
                                 "id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
-                                "title": "Miscellaneous parts in Oscillator Circuit",   
+                                "title": "Miscellaneous parts in Oscillator Circuit",
                                 "optional": false,
                                 "events": {
                                     "supported": [],
