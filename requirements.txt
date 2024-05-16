@@ -3,3 +3,4 @@ rdflib
 pyld[aiohttp]
 jsonschema
 pytest
+pillow
