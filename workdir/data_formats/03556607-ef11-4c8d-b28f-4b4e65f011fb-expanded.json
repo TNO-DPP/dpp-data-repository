@@ -1,0 +1,160 @@
+{
+    "OscillatorModulePassport": {
+        "id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+        "title": "Oscillator Module",
+        "attributes": {
+            "article_number": "6SCMM",
+            "supplier": {
+                "name": "TNO"
+            },
+            "manufacturer": {
+                "name": "TNO"
+            }
+        },
+        "credentials": [],
+        "attachments": [
+            {
+                "type": "document",
+                "source": "instance",
+                "source_id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                "attachment_id": "gnb1xed5",
+                "description": "Product Warranty",
+                "file_name": "SAMPLE_WARRANTY.pdf"
+            }
+        ],
+        "events": {
+            "ownership": [
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#"
+                    },
+                    "@id": "urn:Elenco:events:ownership:00001",
+                    "@type": "dpp:CreationEvent",
+                    "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
+                    "prov:generated": {
+                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@type": "prov:Entity"
+                    },
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-12-27T10:00:00Z"
+                    },
+                    "dpp:createdBy": {
+                        "@type": "prov:Organization",
+                        "prov:name": "TNO"
+                    }
+                }
+            ],
+            "activity": [
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "elenco": "http://example.com/elenco#"
+                    },
+                    "@type": "elenco:CommissioningEvent",
+                    "@id": "urn:Elenco:events:activity:00020",
+                    "prov:startedAtTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-12-26T09:00:00Z"
+                    },
+                    "prov:endedAtTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-12-26T09:30:00Z"
+                    },
+                    "prov:description": "Commissioning the OscillatorCircuit initially without any additional groups.",
+                    "prov:used": {
+                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@type": "dpp:DigitalProductPassport"
+                    }
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "elenco": "http://example.com/elenco#"
+                    },
+                    "@type": "elenco:IntegrationEvent",
+                    "@id": "urn:Elenco:events:activity:00028",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-12-27T08:00:00Z"
+                    },
+                    "prov:description": "Integrating the fully assembled OscillatorCircuit into the OscillatorModule.",
+                    "prov:used": [
+                        {
+                            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                            "@type": "dpp:DigitalProductPassport"
+                        },
+                        {
+                            "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                            "@type": "dpp:DigitalProductPassport"
+                        }
+                    ]
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "elenco": "http://example.com/elenco#"
+                    },
+                    "@type": "elenco:FinalAssemblyEvent",
+                    "@id": "urn:Elenco:events:activity:00029",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-12-27T10:00:00Z"
+                    },
+                    "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
+                    "prov:used": [
+                        {
+                            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                            "@type": "dpp:DigitalProductPassport"
+                        },
+                        {
+                            "@id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+                            "@type": "dpp:DigitalProductPassport"
+                        },
+                        {
+                            "@id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+                            "@type": "dpp:DigitalProductPassport"
+                        },
+                        {
+                            "@id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+                            "@type": "dpp:DigitalProductPassport"
+                        }
+                    ]
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "elenco": "http://example.com/elenco#"
+                    },
+                    "@type": "elenco:ShippingEvent",
+                    "@id": "urn:Elenco:events:activity:00030",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-12-27T12:00:00Z"
+                    },
+                    "prov:description": "Packaging and preparation for shipping of the complete OscillatorModule.",
+                    "prov:used": {
+                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@type": "dpp:DigitalProductPassport"
+                    }
+                }
+            ]
+        },
+        "subpassports": [
+            "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+            "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+            "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+            "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c"
+        ]
+    }
+}
