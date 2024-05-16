@@ -1,0 +1,1121 @@
+[
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco-ontology#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:activity:00001",
+        "@type": "elenco:BatchReceivingEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-15T13:15:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-15T13:35:00Z"
+        },
+        "prov:description": "Receiving Panhead Screws batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-12GH56",
+        "elenco:batchID": "BATCH-100234",
+        "prov:used": {
+            "@id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00001",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-15T13:35:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-15T14:00:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco-ontology#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:activity:00002",
+        "@type": "elenco:BatchReceivingEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-25T13:15:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-25T13:35:00Z"
+        },
+        "prov:description": "Receiving Installation Housing batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-12GH56",
+        "elenco:batchID": "BATCH-100234",
+        "prov:used": {
+            "@id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00002",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-25T13:35:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-25T14:00:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco-ontology#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:activity:00003",
+        "@type": "elenco:BatchReceivingEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-20T10:15:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-20T10:45:00Z"
+        },
+        "prov:description": "Receiving SpacerBolts batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-34JK78",
+        "elenco:batchID": "BATCH-200456",
+        "prov:used": {
+            "@id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00003",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-20T10:46:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-06-20T11:00:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco-ontology#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:activity:00004",
+        "@type": "elenco:BatchReceivingEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-01T11:00:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-01T11:30:00Z"
+        },
+        "prov:description": "Receiving assorted LED batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-56MN91",
+        "elenco:batchID": "BATCH-300789",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00004",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-01T11:30:01Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-01T11:45:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco-ontology#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:activity:00005",
+        "@type": "elenco:BatchReceivingEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-22T09:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-22T10:00:00Z"
+        },
+        "prov:description": "Receiving assorted capacitance Capacitors batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-78QR23",
+        "elenco:batchID": "BATCH-400321",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00005",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-22T10:05:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-22T10:30:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco-ontology#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:activity:00006",
+        "@type": "elenco:BatchReceivingEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-29T14:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-29T15:00:00Z"
+        },
+        "prov:description": "Receiving assorted resistance Resistors batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-90ST45",
+        "elenco:batchID": "BATCH-500654",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00006",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-29T15:05:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-07-29T15:20:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@type": "elenco:BatchReceivingEvent",
+        "@id": "urn:Elenco:events:activity:00007",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-10T15:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-10T16:00:00Z"
+        },
+        "prov:description": "Receiving some specific transistors in a batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-34JK78",
+        "elenco:batchID": "BATCH-600987",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00007",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-10T15:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-10T16:00:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@type": "elenco:BatchReceivingEvent",
+        "@id": "urn:Elenco:events:activity:00008",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-24T09:45:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-24T10:15:00Z"
+        },
+        "prov:description": "Receiving specifically manufactured SnapWires in a batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-45UV67",
+        "elenco:batchID": "BATCH-700123",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00008",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-24T10:20:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-08-24T10:30:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@type": "elenco:BatchReceivingEvent",
+        "@id": "urn:Elenco:events:activity:00009",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-05T12:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-05T13:00:00Z"
+        },
+        "prov:description": "Receiving battery holder plastic pieces in a batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-67WX89",
+        "elenco:batchID": "BATCH-800456",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00009",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-05T14:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-05T15:00:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@type": "elenco:BatchReceivingEvent",
+        "@id": "urn:Elenco:events:activity:00010",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T11:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T12:00:00Z"
+        },
+        "prov:description": "Receiving AA Batteries in a batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Conrad"
+        },
+        "elenco:contractID": "CONTRACT-6123A1",
+        "elenco:batchID": "BATCH-100526",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00010",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T12:05:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T12:30:00Z"
+        },
+        "prov:description": "Transfer of ownership from Conrad to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Conrad"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@type": "elenco:BatchReceivingEvent",
+        "@id": "urn:Elenco:events:activity:00011",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T10:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T11:00:00Z"
+        },
+        "prov:description": "Receiving Slide Switches in a batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-6123A2",
+        "elenco:batchID": "BATCH-100529",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00011",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T11:05:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-04T11:30:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "elenco": "http://example.com/elenco#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@type": "elenco:BatchReceivingEvent",
+        "@id": "urn:Elenco:events:activity:00012",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-03T10:30:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-03T11:00:00Z"
+        },
+        "prov:description": "Receiving base grids in a batch from manufacturer and adding to inventory.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "elenco:contractID": "CONTRACT-6123A2",
+        "elenco:batchID": "BATCH-100429",
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00012",
+        "@type": "dpp:TransferEvent",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-03T11:15:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-09-03T11:30:00Z"
+        },
+        "prov:description": "Transfer of ownership from Elenco to TNO.",
+        "prov:wasAssociatedWith": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:used": {
+            "@id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+            "@type": "dpp:DigitalProductPassport"
+        },
+        "dpp:previousOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "Elenco"
+        },
+        "dpp:newOwner": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:CommissioningEvent",
+        "@id": "urn:Elenco:events:activity:00020",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T09:00:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T09:30:00Z"
+        },
+        "prov:description": "Commissioning the OscillatorCircuit initially without any additional groups.",
+        "prov:used": {
+            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00021",
+        "@type": "dpp:CreationEvent",
+        "prov:generated": {
+            "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+            "@type": "prov:Entity"
+        },
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T08:00:00Z"
+        },
+        "dpp:createdBy": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        },
+        "prov:description": "Creation of Oscillator Circuit Product Passport concept."
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:MaterialPreparationEvent",
+        "@id": "urn:Elenco:events:activity:00021",
+        "prov:startedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T08:00:00Z"
+        },
+        "prov:endedAtTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T08:30:00Z"
+        },
+        "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:AttachmentEvent",
+        "@id": "urn:Elenco:events:activity:00022",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T15:00:00Z"
+        },
+        "prov:description": "Attaching MiscGroup to the OscillatorCircuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:AttachmentEvent",
+        "@id": "urn:Elenco:events:activity:00023",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T11:00:00Z"
+        },
+        "prov:description": "Attaching PowerGroup to the OscillatorCircuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:AttachmentEvent",
+        "@id": "urn:Elenco:events:activity:00024",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T12:00:00Z"
+        },
+        "prov:description": "Attaching LEDGroup to the OscillatorCircuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:PlacingEvent",
+        "@id": "urn:Elenco:events:activity:00025",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T13:00:00Z"
+        },
+        "prov:description": "Placing CapacitorGroup and ResistorGroup on the OscillatorCircuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:AttachmentEvent",
+        "@id": "urn:Elenco:events:activity:00026",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T14:00:00Z"
+        },
+        "prov:description": "Attaching TransistorGroup to the OscillatorCircuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:AttachmentEvent",
+        "@id": "urn:Elenco:events:activity:00027",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-26T10:00:00Z"
+        },
+        "prov:description": "Attaching SnapWireGroup to the OscillatorCircuit.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:IntegrationEvent",
+        "@id": "urn:Elenco:events:activity:00028",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-27T08:00:00Z"
+        },
+        "prov:description": "Integrating the fully assembled OscillatorCircuit into the OscillatorModule.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:FinalAssemblyEvent",
+        "@id": "urn:Elenco:events:activity:00029",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-27T10:00:00Z"
+        },
+        "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
+        "prov:used": [
+            {
+                "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+                "@type": "dpp:DigitalProductPassport"
+            },
+            {
+                "@id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+                "@type": "dpp:DigitalProductPassport"
+            }
+        ]
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "@id": "urn:Elenco:events:ownership:00001",
+        "@type": "dpp:CreationEvent",
+        "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
+        "prov:generated": {
+            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+            "@type": "prov:Entity"
+        },
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-27T10:00:00Z"
+        },
+        "dpp:createdBy": {
+            "@type": "prov:Organization",
+            "prov:name": "TNO"
+        }
+    },
+    {
+        "@context": {
+            "prov": "http://www.w3.org/ns/prov#",
+            "dpp": "http://www.tno.nl/digitalproductpassport#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "elenco": "http://example.com/elenco#"
+        },
+        "@type": "elenco:ShippingEvent",
+        "@id": "urn:Elenco:events:activity:00030",
+        "prov:atTime": {
+            "@type": "xsd:dateTime",
+            "@value": "2022-12-27T12:00:00Z"
+        },
+        "prov:description": "Packaging and preparation for shipping of the complete OscillatorModule.",
+        "prov:used": {
+            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+            "@type": "dpp:DigitalProductPassport"
+        }
+    }
+]
