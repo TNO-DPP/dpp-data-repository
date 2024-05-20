@@ -4,3 +4,5 @@ pyld[aiohttp]
 jsonschema
 pytest
 pillow
+genson
+colorlog
