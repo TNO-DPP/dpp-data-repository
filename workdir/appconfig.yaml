@@ -1,55 +1,80 @@
+mode: dev # dev/production
+# dev tries to clear the database on shutdown.
+# production doesn't do anything specific.
+
 attachment:
-  # Places files locally inside folder 'attachments/'. dev-purposes only!
+  # Places files locally inside folder './data/attachments/'. dev-purposes only!
   # Has separate location for template-attachments and dpp-instance-attachments
   type: local
-  
+  path: ./data/attachments
   # type: s3 # s3-compatible-storage - supported by MinIO as a self-hosted solution
 
 credentials:
-  # stores credentials inside folder 'credentials/' as JSON files. dev-purposes only!
-  # Has separate location for 
-  type: local
+  received:
+    # stores credentials inside folder 'credentials/' as JSON files. dev-purposes only!
+    # Some metadata regbarding categories of products or types of products may be included as
+    # supporting documentation.
+    type: local
+    path: ./data/credentials
 
-  # In the case of credentials stored in an external wallet, it is intended to be possible to 
+  # In the case of credentials stored in an external wallet, it is intended to be possible to
   # support on-demand presentations of credentials to integrate into the DPP.
   # type: wallet
-  
+
 data:
   # stores all template and dpp-data in memory as Classes. dev-purposes only!
   type: inmemory
-  
+
   # Considering that all data is primarily JSON-based, we support a JSON approach.
   # type: mongodb
   # path: http://mongodb:27017
   # database: dpp-data-repository
   # username: username
-  # password: password 
+  # password: password
 
 identities:
-  # Defined URNs with UUIDs for all DPPs.
-  # Templates are still considered local. dev-purposes only!
-  type: local 
-  base: "urn:manufacturer:TNO"
-  
-  # UUIDs but with base URIs supported by the base URL of the application.
-  # type: http-uri
-  # basepath: http://dpp-data-repository.com/dpps/
-  
-  # UUIDs but published as a Decentralized Identifier, intended to be managed through a wallet.
-  # type: did-uri
-  # method: web
-  # config:
-  #   wallet: 
+  # Parsing/reading strategy will try to stay agnostic of what arrives or is read.
+
+  # Generation strategy needs to be configured, and may eventually be a hybrid
+  # approach (requested by variable)
+  generation_strategy:
+    # Defined URNs with UUIDs for all DPPs.
+    # Templates are still considered local. dev-purposes only!
+    - type: local
+      base: "urn:manufacturer:TNO"
+
+    # UUIDs but with base URIs supported by the base URL of the application.
+    # - type: http-uri
+    #   basepath: http://dpp-data-repository.com/dpps/ <uuid>
+
+    # UUIDs but published as a Decentralized Identifier, intended to be managed through a wallet.
+    # - type: did-uri
+    #   method: web
+    #   config:
+    #     wallet:
+
+  # For the purpose of signing, it may be supported to have a couple types of identities.
+  # Public keys should be made available at a standardized endpoint, such as behind /jwks.json, or
+  # within a DID document.
+  self-reference:
+    - type: local
+      identity: "urn:manufacturer:TNO"
+      jwks: ./identity/local/
+    # - type: wallet
+    #   identity: "did:web:dpp-data-repository.com:manufacturer:TNO"
+    #   key: abc
 
 # System configuration
 system:
   title: DPP Data Repository
   subtitle: A proof-of-concept implementation of a Digital Product Passport infrastructure.
 
+preseeded-data:
+  path: ./preseeded-data
+
 federation:
   # Sources of DPP information that can be pulled in on demand.
-  # TODO: Handle collisions visually, by doing a live-merge of all information if possible, and  
-  dpp-data-repositories: 
+  # TODO: Handle collisions visually, by doing a live-merge of all information if possible, and
+  dpp-data-repositories:
     - http://dpp-data-repository-2.com/
     - http://dpp-data-repository-3.com/
-

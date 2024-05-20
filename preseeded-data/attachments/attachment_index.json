@@ -1,0 +1,240 @@
+{
+    "gnb1xed5": {
+        "type": "document",
+        "source": "instance",
+        "source_id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+        "attachment_id": "gnb1xed5",
+        "description": "Product Warranty",
+        "file_name": "SAMPLE_WARRANTY.pdf"
+    },
+    "dzt42h8e": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
+        "template_id": "PanheadScrewGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "dzt42h8e",
+        "description": "Catalogue Image",
+        "file_name": "146077.png"
+    },
+    "abda5n4s": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+        "template_id": "SpacerBoltsGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "abda5n4s",
+        "description": "Catalogue Image",
+        "file_name": "S47040X10.png"
+    },
+    "gfphxnga": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Spelsberg:89fd9a93-8a2d-4967-8556-47839d29995f",
+        "template_id": "InstallationHousingModulePassport",
+        "template_version": "vLatest",
+        "attachment_id": "gfphxnga",
+        "description": "Catalogue Image",
+        "file_name": "3625-11-t.png"
+    },
+    "ui7w6r8n": {
+        "type": "document",
+        "source": "template",
+        "source_id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+        "template_id": "OscillatorCircuitPassport",
+        "template_version": "vLatest",
+        "attachment_id": "ui7w6r8n",
+        "description": "User Manual",
+        "file_name": "SC-100_REV-J_LR_compressed.png"
+    },
+    "39ivzw2b": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+        "template_id": "SnapWireGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "39ivzw2b",
+        "description": "1-Snap - Catalogue Image",
+        "file_name": "6SC01.png"
+    },
+    "q2n8xk0r": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+        "template_id": "SnapWireGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "q2n8xk0r",
+        "description": "2-Snap - Catalogue Image",
+        "file_name": "6SC02.png"
+    },
+    "9y4pjwbj": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+        "template_id": "SnapWireGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "9y4pjwbj",
+        "description": "3-Snap - Catalogue Image",
+        "file_name": "6SC03.png"
+    },
+    "2d33ffcf": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+        "template_id": "SnapWireGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "2d33ffcf",
+        "description": "4-Snap - Catalogue Image",
+        "file_name": "6SC04.png"
+    },
+    "6rnhpcni": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:60c04dbb-3656-4b25-831e-1ed0f4ec3cfd",
+        "template_id": "SnapWireGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "6rnhpcni",
+        "description": "6-Snap - Catalogue Image",
+        "file_name": "6SC06.png"
+    },
+    "ceqm4e5y": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+        "template_id": "PowerGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "ceqm4e5y",
+        "description": "Battery Holder - Catalogue Image",
+        "file_name": "6SCB1.png"
+    },
+    "ezur65s0": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:3ee8ba6d-9af0-457f-9552-adb368be098f",
+        "template_id": "PowerGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "ezur65s0",
+        "description": "Battery - Catalogue Image",
+        "file_name": "BAA15.png"
+    },
+    "ehb84n38": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+        "template_id": "LEDGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "ehb84n38",
+        "description": "Red LED - Catalogue Image",
+        "file_name": "6SCD1.png"
+    },
+    "hpxq84tu": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
+        "template_id": "LEDGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "hpxq84tu",
+        "description": "Catalogue Image",
+        "file_name": "Green LED - 6SCD2.png"
+    },
+    "7qott6o1": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+        "template_id": "CapacitorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "7qott6o1",
+        "description": "10uF Capacitor - Catalogue Image",
+        "file_name": "6SCC3.png"
+    },
+    "0fd2qqis": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:e6b441cb-020a-462e-974f-0a7fbbc3d51c",
+        "template_id": "CapacitorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "0fd2qqis",
+        "description": "100uF Capacitor - Catalogue Image",
+        "file_name": "6SCC4.png"
+    },
+    "rjhffpy4": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+        "template_id": "ResistorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "rjhffpy4",
+        "description": "1kOhm Resistor - Catalogue Image",
+        "file_name": "6SCR2.png"
+    },
+    "uspw4ecn": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+        "template_id": "ResistorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "uspw4ecn",
+        "description": "5.1kOhm Resistor - Catalogue Image",
+        "file_name": "6SCR3.png"
+    },
+    "zzcbqufn": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+        "template_id": "ResistorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "zzcbqufn",
+        "description": "10kOhm Resistor - Catalogue Image",
+        "file_name": "6SCR4.png"
+    },
+    "l40ny8pi": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
+        "template_id": "ResistorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "l40ny8pi",
+        "description": "Adjustable Resistor - Catalogue Image",
+        "file_name": "6SCR4.png"
+    },
+    "s7s6oybk": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+        "template_id": "TransistorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "s7s6oybk",
+        "description": "PNP Transistor - Catalogue Image",
+        "file_name": "6SCQ1.png"
+    },
+    "siycyr7o": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
+        "template_id": "TransistorGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "siycyr7o",
+        "description": "NPN Transistor - Catalogue Image",
+        "file_name": "6SCQ2.png"
+    },
+    "01hrihco": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+        "template_id": "MiscGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "01hrihco",
+        "description": "Base Grid - Catalogue Image",
+        "file_name": "6SCBG.png"
+    },
+    "yt9x0891": {
+        "type": "image",
+        "source": "template",
+        "source_id": "urn:manufacturer:Elenco:ac9522ea-8c2c-4120-a74f-08f510e1efa3",
+        "template_id": "MiscGroupPassport",
+        "template_version": "vLatest",
+        "attachment_id": "yt9x0891",
+        "description": "Slide Switch - Catalogue Image",
+        "file_name": "6SCS1.png"
+    }
+}
