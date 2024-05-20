@@ -1,4 +1,6 @@
 include:
   - project: just-ci/templates
     file: templates/container.yml
-    ref: v6.28.4
+    ref: v6.29.2
+variables:
+  GITLAB_RECOMMENDED_AUTO_FIX: "true"
