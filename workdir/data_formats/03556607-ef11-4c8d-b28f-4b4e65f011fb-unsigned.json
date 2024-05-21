@@ -1,7 +1,6 @@
 {
     "@context": [
-        "https://www.w3.org/ns/credentials/v2",
-        "https://www.w3.org/ns/credentials/examples/v2"
+        "https://www.w3.org/ns/credentials/v2"
     ],
     "id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
     "type": [
