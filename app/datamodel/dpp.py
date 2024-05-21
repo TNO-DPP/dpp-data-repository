@@ -1,36 +1,101 @@
-from typing import List, Optional
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Any, Dict, List, Optional, Union
 
-from pydantic import UUID4, BaseModel, HttpUrl
-
-
-class Attribute(BaseModel):
-    name: str
-    value: Optional[str] = None
+from app.datamodel.attachment import AttachmentReference
 
 
-class Event(BaseModel):
-    type: str
-    content: dict
+@dataclass
+class InstantiationSource:
+    template_id: str
+    version: str = "vLatest"
 
 
-class CreateDPPRequest(BaseModel):
-    attributes: List[Attribute]
+# Design principle: Everything is by reference and pulled from the DataStore.
+# No full objects are stored inside a class.
+@dataclass
+class DigitalProductPassport:
+    # This becomes the outer key of the product passport.
+    passport_type: str  # Type of DigitalProductPassport. Nothing is ever a simple DigitalProductPassport.
 
+    id: str  # Unique identifier
+    title: str  # Title string that contains a basic name for display
 
-class EventAddRequest(BaseModel):
-    event_type: str
-    details: dict
+    # Optional, could be not recorded as a snub on something.
+    instantiated_from: Optional[InstantiationSource]
 
+    # Can start with empty, or can import from existing.
+    events: Dict[str, List[str]] = field(
+        default_factory=lambda: {
+            "activity": [],
+            "ownership": [],
+        }
+    )
 
-class FileAttachment(BaseModel):
-    file_url: HttpUrl
+    # attributes are flexible, and probably contain all context-specific information.
+    # Hence, plain empty dict to start with, but can include other aspects.
+    attributes: Dict[str, Any] = field(default_factory=dict)
 
+    # TODO: Credentials are not well-defined right now.
+    # May contain direct credentials or string references to a Credential
+    credentials: List[Dict | str] = field(default_factory=list)
 
-class FileAttachmentModel(BaseModel):
-    file_name: str
-    file_url: HttpUrl
+    # Attachment references should contain this information, even in compact form.
+    attachments: List[str] = field(default_factory=list)
+    # attachments: List[AttachmentReference] = field(default_factory=list)
 
+    # Subpassports are by default empty, but may contain sub-instantiations.
+    subpassports: List[str] = field(default_factory=list)
+    # subpassports: List[Union[str, "DigitalProductPassport"]] = field(
+    #     default_factory=list
+    # )
 
-class UpdateFileAttachmentModel(BaseModel):
-    file_name: Optional[str]
-    file_url: Optional[HttpUrl]
+    # The creation of a DigitalProductPassport instance cannot happen from here, but must instead
+    # happen at a store level, in order to distribute templates, events, credentials across locations
+    # Thus, no direct deserialization exists.
+
+    # # Recursive method to convert dictionary to data class
+    # @classmethod
+    # def from_dict(cls, data: Dict[str, Any]) -> "DigitalProductPassport":
+    #     passport_type = list(data.keys())[0]
+    #     passport_data = data[passport_type]
+    #     events = passport_data.get("events", {"activity": [], "ownership": []})
+    #     subpassports = [
+    #         cls.from_dict(sub) if isinstance(sub, dict) else sub
+    #         for sub in passport_data.get("subpassports", [])
+    #     ]
+    #     return cls(
+    #         id=passport_data["id"],
+    #         instantiated_from=passport_data.get("instantiated_from", None),
+    #         passport_type=passport_type,
+    #         title=passport_data["title"],
+    #         attributes=passport_data["attributes"],
+    #         credentials=passport_data.get("credentials", []),
+    #         attachments=passport_data.get("attachments", []),
+    #         events=events,
+    #         subpassports=subpassports,
+    #     )
+
+    # Similarly, the serialization is also a store-level interface, and is handled accordingly.
+    # Recursive method to convert data class to dictionary
+    # def to_dict(self) -> Dict[str, Any]:
+    #     events = {
+    #         key: [
+    #             item.to_dict() if isinstance(item, DigitalProductPassport) else item
+    #             for item in value
+    #         ]
+    #         for key, value in self.events.items()
+    #     }
+    #     subpassports = [
+    #         sub.to_dict() if isinstance(sub, DigitalProductPassport) else sub
+    #         for sub in self.subpassports
+    #     ]
+    #     return {
+    #         "id": self.id,
+    #         "title": self.title,
+    #         "attributes": self.attributes,
+    #         "credentials": self.credentials,
+    #         "attachments": self.attachments,
+    #         "events": events,
+    #         "subpassports": subpassports,
+    #     }
