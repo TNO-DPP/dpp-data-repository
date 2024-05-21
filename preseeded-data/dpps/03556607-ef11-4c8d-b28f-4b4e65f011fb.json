@@ -23,7 +23,7 @@
                 "source_id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                 "attachment_id": "gnb1xed5",
                 "description": "Product Warranty",
-                "file_name": "SAMPLE_WARRANTY.pdf"
+                "file_name": "SAMPLE-WARRANTY.pdf"
             }
         ],
         "events": {
@@ -1141,7 +1141,7 @@
                             "template_version": "vLatest",
                             "attachment_id": "ui7w6r8n",
                             "description": "User Manual",
-                            "file_name": "SC-100_REV-J_LR_compressed.png"
+                            "file_name": "SC-100_REV-J_LR_compressed.pdf"
                         }
                     ],
                     "subpassports": [
@@ -1909,8 +1909,8 @@
                                         "template_id": "LEDGroupPassport",
                                         "template_version": "vLatest",
                                         "attachment_id": "hpxq84tu",
-                                        "description": "Catalogue Image",
-                                        "file_name": "Green LED - 6SCD2.png"
+                                        "description": "Green LED - Catalogue Image",
+                                        "file_name": "6SCD2.png"
                                     }
                                 ],
                                 "subpassports": [],
