@@ -2,7 +2,7 @@
     "gnb1xed5": {
         "type": "document",
         "source": "instance",
-        "source_id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+        "source_id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
         "attachment_id": "gnb1xed5",
         "description": "Product Warranty",
         "file_name": "SAMPLE-WARRANTY.pdf"
@@ -40,7 +40,7 @@
     "ui7w6r8n": {
         "type": "document",
         "source": "template",
-        "source_id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+        "source_id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
         "template_id": "OscillatorCircuitPassport",
         "template_version": "vLatest",
         "attachment_id": "ui7w6r8n",
@@ -236,5 +236,15 @@
         "attachment_id": "yt9x0891",
         "description": "Slide Switch - Catalogue Image",
         "file_name": "6SCS1.png"
+    },
+    "qs4h5762": {
+        "type": "image",
+        "source": "instance",
+        "source_id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+        "template_id": "TShirtProductPassport",
+        "template_version": "v1",
+        "attachment_id": "qs4h5762",
+        "description": "Blue Patterned TShirt on male model",
+        "file_name": "tshirt.jpg"
     }
 }

@@ -1,0 +1,163 @@
+{
+    "TShirtProductPassport": {
+        "id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+        "title": "T-Shirt - Patterned - Blue",
+        "instantiated_from": {
+            "template_id": "TShirtProductPassport",
+            "version": "v1"
+        },
+        "manufacturer": {
+            "id": "urn:manufacturer:StyleEase",
+            "name": "StyleEase",
+            "facility_id": "FAC654321"
+        },
+        "economic_operator": {
+            "id": "urn:manufacturer:Elenco",
+            "name": "Elenco"
+        },
+        "current_owner": {
+            "id": "urn:manufacturer:TNO",
+            "name": "TNO"
+        },
+        "registration_id": "REG987654",
+        "batch_id": "BATCH1274",
+        "creation_timestamp": "2023-01-15T10:00:00Z",
+        "attributes": {
+            "article_number": "TS123BLUE",
+            "supplier": {
+                "name": "ThreadLine"
+            },
+            "manufacturer": {
+                "name": "StyleEase",
+                "address": "123 Fashion Street, Style City, Country"
+            },
+            "fabric": "100% Cotton",
+            "size": "L",
+            "color": "Blue",
+            "care_instructions": "Machine wash cold, tumble dry low",
+            "country_of_origin": "Bangladesh"
+        },
+        "credentials": [],
+        "subpassports": [],
+        "attachments": [
+            {
+                "type": "image",
+                "source": "instance",
+                "source_id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                "template_id": "TShirtProductPassport",
+                "template_version": "v1",
+                "attachment_id": "qs4h5762",
+                "description": "Blue Patterned TShirt on male model",
+                "file_name": "tshirt.jpg"   
+            }
+        ],
+        "events": {
+            "ownership": [
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#"
+                    },
+                    "@id": "urn:StyleEase:events:ownership:00001",
+                    "@type": "dpp:CreationEvent",
+                    "prov:description": "Creation of DPP for the Blue Patterned T-Shirt.",
+                    "prov:generated": {
+                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@type": "prov:Entity"
+                    },
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2023-01-15T10:00:00Z"
+                    },
+                    "dpp:createdBy": {
+                        "@type": "prov:Organization",
+                        "prov:name": "StyleEase"
+                    }
+                }
+            ],
+            "activity": [
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "styleease": "http://example.com/styleease#"
+                    },
+                    "@type": "styleease:MaterialReceivingEvent",
+                    "@id": "urn:StyleEase:events:activity:00010",
+                    "prov:startedAtTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-10-05T16:30:00Z"
+                    },
+                    "prov:endedAtTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2022-10-05T17:00:00Z"
+                    },
+                    "prov:description": "Receiving batch of fabric from upstream supplier Threadline.",
+                    "prov:used": {
+                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@type": "dpp:DigitalProductPassport"
+                    }
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "styleease": "http://example.com/styleease#"
+                    },
+                    "@type": "styleease:ManufacturingEvent",
+                    "@id": "urn:StyleEase:events:activity:00011",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2023-01-10T10:00:00Z"
+                    },
+                    "prov:description": "Cutting, sewing, and assembling batches of T-Shirts from the fabric.",
+                    "prov:used": {
+                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@type": "dpp:DigitalProductPassport"
+                    }
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "styleease": "http://example.com/styleease#"
+                    },
+                    "@type": "styleease:PackagingEvent",
+                    "@id": "urn:StyleEase:events:activity:00012",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2023-01-14T15:00:00Z"
+                    },
+                    "prov:description": "Folding, bagging, and labeling the TShirt.",
+                    "prov:used": {
+                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@type": "dpp:DigitalProductPassport"
+                    }
+                },
+                {
+                    "@context": {
+                        "prov": "http://www.w3.org/ns/prov#",
+                        "dpp": "http://www.tno.nl/digitalproductpassport#",
+                        "xsd": "http://www.w3.org/2001/XMLSchema#",
+                        "styleease": "http://example.com/styleease#"
+                    },
+                    "@type": "styleease:ShippingEvent",
+                    "@id": "urn:StyleEase:events:activity:00013",
+                    "prov:atTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2023-01-15T16:00:00Z"
+                    },
+                    "prov:description": "Shipping the packaged TShirt to buyer TNO.",
+                    "prov:used": {
+                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@type": "dpp:DigitalProductPassport"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,11 +1,27 @@
 {
     "OscillatorModulePassport": {
-        "id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+        "id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
         "title": "Oscillator Module",
         "instantiated_from": {
             "template_id": "OscillatorModulePassport",
             "version": "vLatest"
         },
+        "manufacturer": {
+            "id": "urn:manufacturer:Elenco",
+            "name": "Elenco",
+            "facility_id": "FAC123456"
+        },
+        "economic_operator": {
+            "id": "urn:manufacturer:Elenco",
+            "name": "Elenco"
+        },
+        "current_owner": {
+            "id": "urn:manufacturer:TNO",
+            "name": "TNO"
+        },
+        "registration_id": "REG202345",
+        "batch_id": "BATCH7890",
+        "creation_timestamp": "2022-12-27T10:00:00Z",
         "attributes": {
             "article_number": "6SCMM",
             "supplier": {
@@ -20,7 +36,7 @@
             {
                 "type": "document",
                 "source": "instance",
-                "source_id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                "source_id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                 "attachment_id": "gnb1xed5",
                 "description": "Product Warranty",
                 "file_name": "SAMPLE-WARRANTY.pdf"
@@ -38,7 +54,7 @@
                     "@type": "dpp:CreationEvent",
                     "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
                     "prov:generated": {
-                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                         "@type": "prov:Entity"
                     },
                     "prov:atTime": {
@@ -47,7 +63,7 @@
                     },
                     "dpp:createdBy": {
                         "@type": "prov:Organization",
-                        "prov:name": "TNO"
+                        "prov:name": "Elenco"
                     }
                 }
             ],
@@ -71,7 +87,7 @@
                     },
                     "prov:description": "Commissioning the OscillatorCircuit initially without any additional groups.",
                     "prov:used": {
-                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                         "@type": "dpp:DigitalProductPassport"
                     }
                 },
@@ -91,11 +107,11 @@
                     "prov:description": "Integrating the fully assembled OscillatorCircuit into the OscillatorModule.",
                     "prov:used": [
                         {
-                            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                            "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                             "@type": "dpp:DigitalProductPassport"
                         },
                         {
-                            "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                            "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                             "@type": "dpp:DigitalProductPassport"
                         }
                     ]
@@ -116,7 +132,7 @@
                     "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
                     "prov:used": [
                         {
-                            "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                            "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                             "@type": "dpp:DigitalProductPassport"
                         },
                         {
@@ -148,7 +164,7 @@
                     },
                     "prov:description": "Packaging and preparation for shipping of the complete OscillatorModule.",
                     "prov:used": {
-                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                         "@type": "dpp:DigitalProductPassport"
                     }
                 }
@@ -296,7 +312,7 @@
                                 "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -357,7 +373,7 @@
                                 "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -530,7 +546,7 @@
                                 "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -591,7 +607,7 @@
                                 "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -744,7 +760,7 @@
                                 "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -805,7 +821,7 @@
                                 "prov:description": "Final assembly of the OscillatorModule including installation housing, mounting screws and spacer bolts.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -842,7 +858,7 @@
             },
             {
                 "OscillatorCircuitPassport": {
-                    "id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                    "id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                     "title": "Oscillator Circuit",
                     "attributes": {
                         "article_number": "6SCEO",
@@ -870,7 +886,7 @@
                                 "@id": "urn:Elenco:events:ownership:00021",
                                 "@type": "dpp:CreationEvent",
                                 "prov:generated": {
-                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                     "@type": "prov:Entity"
                                 },
                                 "prov:atTime": {
@@ -905,7 +921,7 @@
                                 "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -966,7 +982,7 @@
                                 "prov:description": "Attaching MiscGroup to the OscillatorCircuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -991,7 +1007,7 @@
                                 "prov:description": "Attaching PowerGroup to the OscillatorCircuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -1016,7 +1032,7 @@
                                 "prov:description": "Attaching LEDGroup to the OscillatorCircuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -1041,7 +1057,7 @@
                                 "prov:description": "Placing CapacitorGroup and ResistorGroup on the OscillatorCircuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -1070,7 +1086,7 @@
                                 "prov:description": "Attaching TransistorGroup to the OscillatorCircuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -1095,7 +1111,7 @@
                                 "prov:description": "Attaching SnapWireGroup to the OscillatorCircuit.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -1120,11 +1136,11 @@
                                 "prov:description": "Integrating the fully assembled OscillatorCircuit into the OscillatorModule.",
                                 "prov:used": [
                                     {
-                                        "@id": "urn:manufacturer:TNO:03556607-ef11-4c8d-b28f-4b4e65f011fb",
+                                        "@id": "urn:manufacturer:Elenco:03556607-ef11-4c8d-b28f-4b4e65f011fb",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
-                                        "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                        "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                         "@type": "dpp:DigitalProductPassport"
                                     }
                                 ]
@@ -1136,7 +1152,7 @@
                         {
                             "type": "document",
                             "source": "template",
-                            "source_id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                            "source_id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                             "template_id": "OscillatorCircuitPassport",
                             "template_version": "vLatest",
                             "attachment_id": "ui7w6r8n",
@@ -1236,7 +1252,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -1297,7 +1313,7 @@
                                             "prov:description": "Attaching SnapWireGroup to the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -1587,7 +1603,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -1648,7 +1664,7 @@
                                             "prov:description": "Attaching PowerGroup to the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -1818,7 +1834,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -1879,7 +1895,7 @@
                                             "prov:description": "Attaching LEDGroup to the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2037,7 +2053,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2098,7 +2114,7 @@
                                             "prov:description": "Placing CapacitorGroup and ResistorGroup on the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2268,7 +2284,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2329,7 +2345,7 @@
                                             "prov:description": "Placing CapacitorGroup and ResistorGroup on the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2553,7 +2569,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2614,7 +2630,7 @@
                                             "prov:description": "Attaching TransistorGroup to the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2837,7 +2853,7 @@
                                             "prov:description": "Preparation of materials for constructing the Oscillator Circuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
@@ -2898,7 +2914,7 @@
                                             "prov:description": "Attaching MiscGroup to the OscillatorCircuit.",
                                             "prov:used": [
                                                 {
-                                                    "@id": "urn:manufacturer:TNO:3e19ba83-af5b-4dfe-a405-2f081068573c",
+                                                    "@id": "urn:manufacturer:Elenco:3e19ba83-af5b-4dfe-a405-2f081068573c",
                                                     "@type": "dpp:DigitalProductPassport"
                                                 },
                                                 {
