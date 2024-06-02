@@ -25,9 +25,9 @@ class FileSystemAttachmentStore(BaseAttachmentStore):
         super().__init__()
         self.FILE_DIRECTORY = Path(os.path.join(os.getcwd(), attachment_config["path"]))
         if reset:
-            print("clearing")
-            logger.debug("Found existing data, permanently deleting existing data.")
-            shutil.rmtree(self.FILE_DIRECTORY)
+            if os.path.exists(self.FILE_DIRECTORY):
+                logger.debug("Found existing data, permanently deleting existing data.")
+                shutil.rmtree(self.FILE_DIRECTORY)
         self.FILE_DIRECTORY.mkdir(parents=True, exist_ok=True)
         self.DPP_FILE_DIRECTORY = Path(os.path.join(self.FILE_DIRECTORY, "dpps"))
         self.DPP_FILE_DIRECTORY.mkdir(exist_ok=True)

@@ -2,20 +2,24 @@ import json
 import logging
 
 from fastapi import Depends, FastAPI, HTTPException, Request, status
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
-from app.api.dpp import dpp_app
-from app.api.template import dpp_template_app
 from app.config import config, format_multiline_log
-from app.datastores.utils import import_preseeded_data
+from app.datastores.utils import import_preseeded_data, initialize_stores
 
-app = FastAPI()
-app.include_router(dpp_app)
-app.include_router(dpp_template_app)
+# List of allowed origins
+origins = [
+    "http://localhost:3000",
+    "http://localhost:3006",
+    "http://localhost:8001",
+    # Add other origins as needed
+]
 
-startup_logger = logging.getLogger("Startup")
+
+startup_logger = logging.getLogger("startup")
+
 if config["mode"] == "dev":
-
     logging.getLogger().setLevel(logging.DEBUG)
     startup_logger.log(logging.DEBUG, "Setting log-level to DEBUG")
 
@@ -27,16 +31,33 @@ startup_logger.log(
 # Startup steps
 # 1. Initialize stores of data. Clear if already containing
 #   data (not applicable for in-memory storage, also not for file-system storage.)
-
-# import_preseeded_data()
-
-#   - Have data model for Attachment References, Credentials, Templates, DPPs, Events. Update all as needed.
 # 2. Copy pre-seeded content and add to data stores.
 # 3. Give some information logs about loaded information.
 
+data_store, attachment_store, credential_store = initialize_stores()
+import_preseeded_data(data_store, attachment_store)
 
-# Shutdown steps
-#
+
+# Common call for API endpoints
+def get_datastores():
+    return data_store, attachment_store, credential_store
+
+
+from app.api.dpp import dpp_app
+from app.api.template import dpp_template_app
+
+app = FastAPI()
+app.include_router(dpp_app)
+app.include_router(dpp_template_app)
+
+# Add CORSMiddleware to the app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allow specified origins
+    allow_credentials=True,  # Allow cookies and other credentials
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 
 # Finally, the catch-all that loads the UI

@@ -2,7 +2,7 @@ import random
 import string
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 
 from fastapi import UploadFile
 from fastapi.responses import FileResponse
@@ -51,7 +51,11 @@ class BaseAttachmentStore(ABC):
 
     # For specific images that may need backend reshaping
     @abstractmethod
-    def retrieve_attachment_thumbnail(self, attachment_id: str) -> FileResponse:
+    def retrieve_attachment_thumbnail(
+        self,
+        attachment_id: str,
+        dimensions: Tuple[Optional[int], Optional[int]] = (None, None),
+    ) -> FileResponse:
         pass
 
     # Receive attachment ID, replace attachment that already existed.

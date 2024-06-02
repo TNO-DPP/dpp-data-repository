@@ -26,7 +26,7 @@ def initialize_stores():
         data_storage_type = "inmemory"  # For DPPs, DPP templates and events
     else:
         attachment_storage_type = config["attachment"]["type"]
-        credential_storage_type = config["credential"]["type"]
+        # credential_storage_type = config["credentials"]["type"]
         data_storage_type = config["data"]["type"]  # For DPPs, DPP templates and events
 
     attachment_store = None

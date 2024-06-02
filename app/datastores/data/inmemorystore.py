@@ -53,6 +53,7 @@ class InMemoryStore(BaseDataStore):
     def get_random_dpp_document_id(self) -> str | None:
         return random.choice(list(self.dpp_store.keys()))
 
+    # TODO: Sort by creation date.
     def get_latest_added_dpp_document_id(self) -> str | None:
         return list(self.dpp_store.keys())[-1] if self.dpp_store else None
 
@@ -113,25 +114,12 @@ class InMemoryStore(BaseDataStore):
     ) -> None:
         self.dpp_store[document_id] = dpp_object
 
-    def filter_events(self, dpp_id: str, event_store: Dict[str, Any]):
-        # Filter events
-        filtered_events = []
-        for event in event_store.values():
-            if "prov:used" in event:
-                used_field = event["prov:used"]
-                if isinstance(used_field, list):
-                    if any(ref["@id"] == dpp_id for ref in used_field):
-                        filtered_events.append(event)
-                elif isinstance(used_field, dict):
-                    if used_field["@id"] == dpp_id:
-                        filtered_events.append(event)
-        return filtered_events
-
     def filter_events_full(
         self,
         dpp_id: str,
         dpp_store: Dict[str, DigitalProductPassport],
         event_store: Dict[str, List[Dict]],
+        event_type: str = "activity",
     ):
         list_dpp_hierarchy = []
 
@@ -142,9 +130,15 @@ class InMemoryStore(BaseDataStore):
 
         traverse(dpp_id)
 
-        filtered_events_full = []
+        filtered_events_ids_full = set()
         for dpp_id in list_dpp_hierarchy:
-            filtered_events_full += self.filter_events(dpp_id, event_store)
+            event_id_list = self.dpp_store[dpp_id].events[event_type]
+
+            filtered_events_ids_full.update(event_id_list)
+            # filtered_events_full += self.filter_events(dpp_id, event_store)
+        filtered_events_full = [
+            self.event_store[event] for event in list(filtered_events_ids_full)
+        ]
         return filtered_events_full
 
     def sort_events(self, event_list: List[Dict]) -> List[Dict]:
@@ -167,14 +161,18 @@ class InMemoryStore(BaseDataStore):
     def get_dpp_events(
         self, document_id: str, sorted: bool = True, event_type: str = "activity"
     ) -> List[Dict]:
-        event_list = self.filter_events(document_id, self.event_store)
+        event_list = [
+            self.event_store[event]
+            for event in self.dpp_store[document_id].events[event_type]
+        ]
+        # event_list = self.filter_events(document_id, self.event_store, event_type)
         return self.sort_events(event_list)
 
     def get_dpp_full_events(
         self, document_id: str, sorted: bool = True, event_type: str = "activity"
     ) -> List[Dict]:
         event_list = self.filter_events_full(
-            document_id, self.dpp_store, self.event_store
+            document_id, self.dpp_store, self.event_store, event_type
         )
         return self.sort_events(event_list)
 
