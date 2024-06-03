@@ -13,6 +13,7 @@ from app.datastores.data.basedatastore import (
     DPPResponseContentFormats,
     DPPResponseFormats,
     DPPResponseSignatureFormats,
+    FilterConditions,
 )
 
 logger = logging.getLogger("Immemorydatastore")
@@ -264,6 +265,18 @@ class InMemoryStore(BaseDataStore):
         return {
             "total_events": sum(len(events) for events in self.event_store.values()),
         }
+
+    def attach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
+        raise NotImplementedError
+
+    def attach_subpassport(self, document_id: str, subpassport_document: Dict) -> None:
+        raise NotImplementedError
+
+    def detach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
+        raise NotImplementedError
+
+    def search_for_dpp(self, filter_conditions: FilterConditions) -> List[str]:
+        raise NotImplementedError
 
     # TODO: Handle all DPP template endpoints
     def get_dpp_template(self, template_id: str, version="latest") -> Dict:

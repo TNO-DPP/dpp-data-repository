@@ -23,6 +23,16 @@ class DPPResponseContentFormats(Enum):
     COMPLETE = "complete"
 
 
+class FilterConditions:
+    name_contains: Optional[str] = None
+    passport_type: List[str] = []
+    tags: List[str] = []
+    batch_id: Optional[str] = None
+    registration_id: Optional[str] = None
+    current_country_code: Optional[str] = None
+    origin_country_code: Optional[str] = None
+
+
 class BaseDataStore(ABC):
     ### DPPs
 
@@ -205,6 +215,26 @@ class BaseDataStore(ABC):
     # This will be stored a bit more at a granular level, but aggregated at the higher-level.
     @abstractmethod
     def get_dpp_template_ids_with_metadata(self) -> Dict:
+        pass
+
+    # Attach subpassport by ID
+    @abstractmethod
+    def attach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
+        pass
+
+    # Attach subpassport by content
+    @abstractmethod
+    def attach_subpassport(self, document_id: str, subpassport_document: Dict) -> None:
+        pass
+
+    # Attach and detach subpassports
+    @abstractmethod
+    def detach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
+        pass
+
+    # Search function with filter conditions
+    @abstractmethod
+    def search_for_dpp(self, filter_conditions: FilterConditions) -> List[str]:
         pass
 
     # TODO: Handle credentials later, because the signature part may be a bit tricky.
