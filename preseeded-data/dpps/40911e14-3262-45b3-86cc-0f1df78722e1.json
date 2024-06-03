@@ -1,27 +1,91 @@
 {
     "TShirtProductPassport": {
-        "id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+        "id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
         "title": "T-Shirt - Patterned - Blue",
         "instantiated_from": {
             "template_id": "TShirtProductPassport",
             "version": "v1"
         },
         "manufacturer": {
-            "id": "urn:manufacturer:StyleEase",
-            "name": "StyleEase",
-            "facility_id": "FAC654321"
+            "id": "urn:manufacturer:ThreadLine",
+            "name": "ThreadLine",
+            "full_name": "ThreadLine Apparel, BV",
+            "facility": [
+                {
+                    "id": "urn:factories:ThreadLine:FAC987654",
+                    "name": "ThreadLine Production Facility",
+                    "address": "Plot 5, Road 2, Dhaka Export Processing Zone, Savar, Dhaka, Bangladesh",
+                    "country_code": "BD",
+                    "description": "Design, Cutting, Sewing, Customization, Packaging"
+                }
+            ],
+            "batch_id": "urn:batches:manufacturing:ThreadLine:BATCH4321"
         },
-        "economic_operator": {
-            "id": "urn:manufacturer:Elenco",
-            "name": "Elenco"
-        },
+        "economic_operator": [
+            {
+                "id": "urn:manufacturer:Elenco",
+                "name": "Elenco",
+                "full_name": "Elenco Electronics, LLC",
+                "repository_address": [
+                    {
+                        "hostname": "backend.demo.digital-passport.org"
+                    }
+                ]
+            }
+        ],
         "current_owner": {
             "id": "urn:manufacturer:TNO",
-            "name": "TNO"
+            "name": "TNO",
+            "full_name": "Nederlandse Organisatie voor Toegepast Natuurwetenschappelijk Onderzoek",
+            "facility": [
+                {
+                    "id": "urn:factories:TNO:BIC771824",
+                    "name": "AI Matters TEF Remanufacturing Cell",
+                    "address": "BIC 1 5657 BX Eindhoven",
+                    "country_code": "NL",
+                    "description": "Remanufacturing"
+                }
+            ]
         },
-        "registration_id": "REG987654",
-        "batch_id": "BATCH1274",
+        "tags": [
+            "Apparel",
+            "Fashion",
+            "Textiles"
+        ],
+        "known_past_owners": [
+            {
+                "id": "urn:manufacturer:ThreadLine",
+                "name": "ThreadLine",
+                "full_name": "ThreadLine Apparel, BV",
+                "facility": [
+                    {
+                        "id": "urn:factories:ThreadLine:FAC987654",
+                        "name": "ThreadLine Production Facility",
+                        "address": "Plot 5, Road 2, Dhaka Export Processing Zone, Savar, Dhaka, Bangladesh",
+                        "country_code": "BD",
+                        "description": "Design, Cutting, Sewing, Customization, Packaging"
+                    }
+                ]
+            },
+            {
+                "id": "urn:manufacturer:StyleEase",
+                "name": "StyleEase",
+                "full_name": "StyleEase, BV",
+                "facility": [
+                    {
+                        "id": "urn:factories:StyleEase:FAC123789",
+                        "name": "StyleEase Headquarters",
+                        "address": "Hoogstraat 45, 3011 PP Rotterdam, Netherlands",
+                        "country_code": "NL",
+                        "description": "Headquarters and Sales"
+                    }
+                ]
+            }
+        ],
+        "registration_id": "urn:registration:dppregistry:REG987654",
+        "batch_id": "urn:batches:manufacturing:Elenco:BATCH1274",
         "creation_timestamp": "2023-01-15T10:00:00Z",
+        "destruction_timestamp": null,
         "attributes": {
             "article_number": "TS123BLUE",
             "supplier": {
@@ -29,7 +93,7 @@
             },
             "manufacturer": {
                 "name": "StyleEase",
-                "address": "123 Fashion Street, Style City, Country"
+                "address": "Hoogstraat 45, 3011 PP Rotterdam, Netherlands"
             },
             "fabric": "100% Cotton",
             "size": "L",
@@ -38,17 +102,18 @@
             "country_of_origin": "Bangladesh"
         },
         "credentials": [],
+        "parent": null,
         "subpassports": [],
         "attachments": [
             {
                 "type": "image",
                 "source": "instance",
-                "source_id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                "source_id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
                 "template_id": "TShirtProductPassport",
                 "template_version": "v1",
                 "attachment_id": "qs4h5762",
                 "description": "Blue Patterned TShirt on male model",
-                "file_name": "tshirt.jpg"   
+                "file_name": "tshirt.jpg"
             }
         ],
         "events": {
@@ -59,18 +124,30 @@
                         "dpp": "http://www.tno.nl/digitalproductpassport#",
                         "xsd": "http://www.w3.org/2001/XMLSchema#"
                     },
-                    "@id": "urn:StyleEase:events:ownership:00001",
-                    "@type": "dpp:CreationEvent",
-                    "prov:description": "Creation of DPP for the Blue Patterned T-Shirt.",
-                    "prov:generated": {
-                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
-                        "@type": "prov:Entity"
+                    "@id": "urn:ThreadLine:events:ownership:00024",
+                    "@type": "dpp:TransferEvent",
+                    "prov:startedAtTime": {
+                        "@type": "xsd:dateTime",
+                        "@value": "2023-01-15T09:30:00Z"
                     },
-                    "prov:atTime": {
+                    "prov:endedAtTime": {
                         "@type": "xsd:dateTime",
                         "@value": "2023-01-15T10:00:00Z"
                     },
-                    "dpp:createdBy": {
+                    "prov:description": "Transfer of ownership of T-shirts from ThreadLine to StyleEase.",
+                    "prov:wasAssociatedWith": {
+                        "@type": "prov:Organization",
+                        "prov:name": "TNO"
+                    },
+                    "prov:used": {
+                        "@id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@type": "prov:Entity"
+                    },
+                    "dpp:previousOwner": {
+                        "@type": "prov:Organization",
+                        "prov:name": "ThreadLine"
+                    },
+                    "dpp:newOwner": {
                         "@type": "prov:Organization",
                         "prov:name": "StyleEase"
                     }
@@ -94,9 +171,9 @@
                         "@type": "xsd:dateTime",
                         "@value": "2022-10-05T17:00:00Z"
                     },
-                    "prov:description": "Receiving batch of fabric from upstream supplier Threadline.",
+                    "prov:description": "Acceptance of T-shirts from ThreadLine into StyleEase's inventory.",
                     "prov:used": {
-                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
                         "@type": "dpp:DigitalProductPassport"
                     }
                 },
@@ -107,15 +184,15 @@
                         "xsd": "http://www.w3.org/2001/XMLSchema#",
                         "styleease": "http://example.com/styleease#"
                     },
-                    "@type": "styleease:ManufacturingEvent",
+                    "@type": "styleease:QualityInspectionEvent",
                     "@id": "urn:StyleEase:events:activity:00011",
                     "prov:atTime": {
                         "@type": "xsd:dateTime",
                         "@value": "2023-01-10T10:00:00Z"
                     },
-                    "prov:description": "Cutting, sewing, and assembling batches of T-Shirts from the fabric.",
+                    "prov:description": "Assessment of the received T-shirts to ensure they meet quality standards.",
                     "prov:used": {
-                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
                         "@type": "dpp:DigitalProductPassport"
                     }
                 },
@@ -132,9 +209,9 @@
                         "@type": "xsd:dateTime",
                         "@value": "2023-01-14T15:00:00Z"
                     },
-                    "prov:description": "Folding, bagging, and labeling the TShirt.",
+                    "prov:description": "Preparation of T-shirts for retail or shipping, including labeling and packing.",
                     "prov:used": {
-                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
                         "@type": "dpp:DigitalProductPassport"
                     }
                 },
@@ -151,9 +228,9 @@
                         "@type": "xsd:dateTime",
                         "@value": "2023-01-15T16:00:00Z"
                     },
-                    "prov:description": "Shipping the packaged TShirt to buyer TNO.",
+                    "prov:description": "Transaction and transfer of T-shirts to a third-party retailer or customer.",
                     "prov:used": {
-                        "@id": "urn:manufacturer:StyleEase:40911e14-3262-45b3-86cc-0f1df78722e1",
+                        "@id": "urn:manufacturer:ThreadLine:40911e14-3262-45b3-86cc-0f1df78722e1",
                         "@type": "dpp:DigitalProductPassport"
                     }
                 }
