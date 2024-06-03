@@ -47,6 +47,14 @@ def import_dpp_into_storage(
         passport_type=passport_type,
         id=passport_id,
         title=passport_data["title"],
+        manufacturer=passport_data.get("manufacturer", None),
+        economic_operator=passport_data.get("economic_operator", None),
+        current_owner=passport_data.get("current_owner", None),
+        known_past_owners=passport_data.get("known_past_owners", []),
+        registration_id=passport_data.get("registration_id", None),
+        batch_id=passport_data.get("batch_id", None),
+        creation_timestamp=passport_data.get("creation_timestamp", None),
+        destruction_timestamp=passport_data.get("destruction_timestamp", None),
         instantiated_from=passport_data.get("instantiated_from", None),
         attributes=passport_data["attributes"],  # Anything inside goes in as-is
         credentials=passport_data[
@@ -121,7 +129,15 @@ def import_dpp_into_storage(
                 except Exception as e:
                     logger.error("Error adding DPP event " + event_id + "-" + str(e))
             else:
-                logger.debug("Activity event already present. Skipping " + event_id)
+                existing_event = data_store.get_event(event_id)
+                try:
+                    assert existing_event == event
+                    logger.debug("Activity event already present. Skipping " + event_id)
+                except:
+                    logger.error(
+                        "Input activity event different from existing added event with the same ID ->"
+                        + event_id
+                    )
         except Exception as e:
             print(e)
             logger.error("Cannot find ID for activity event in " + passport_id)
@@ -140,7 +156,17 @@ def import_dpp_into_storage(
                 except Exception as e:
                     logger.error("Error adding DPP event " + event_id + "-" + str(e))
             else:
-                logger.debug("Ownership event already present. Skipping " + event_id)
+                existing_event = data_store.get_event(event_id)
+                try:
+                    assert existing_event == event
+                    logger.debug(
+                        "Ownership event already present. Skipping " + event_id
+                    )
+                except:
+                    logger.error(
+                        "Input ownership event different from existing added event with the same ID ->"
+                        + event_id
+                    )
         except:
             logger.error("Cannot find ID for ownership event in " + passport_id)
 
@@ -264,6 +290,15 @@ def prepare_dpp_response_content(
         "title": dpp_object.title,
         "attributes": dpp_object.attributes,
         "credentials": dpp_object.credentials,  # Handle this at a later time.
+        "current_owner": dpp_object.current_owner,
+        "known_past_owners": dpp_object.known_past_owners,
+        "manufacturer": dpp_object.manufacturer,
+        "economic_operator": dpp_object.economic_operator,
+        "tags": dpp_object.tags,
+        "registration_id": dpp_object.registration_id,
+        "batch_id": dpp_object.batch_id,
+        "creation_timestamp": dpp_object.creation_timestamp,
+        "destruction_timestamp": dpp_object.destruction_timestamp,
     }
     if content_format == DPPResponseContentFormats.COMPACT.value:
         output_content[dpp_type]["attachments"] = dpp_object.attachments

@@ -11,6 +11,30 @@ class InstantiationSource:
     version: str = "vLatest"
 
 
+@dataclass
+class Factory:
+    id: str
+    name: str
+    address: Optional[str]
+    country_code: Optional[str]
+    description: Optional[str]
+
+
+@dataclass
+class RepositoryAddress:
+    hostname: str
+
+
+@dataclass
+class Entity:
+    id: str
+    name: str
+    full_name: Optional[str]
+    facility: Optional[List[Factory] | Factory] = None
+    repository_address: Optional[List[RepositoryAddress] | RepositoryAddress] = None
+    batch_id: Optional[str] = None
+
+
 # Design principle: Everything is by reference and pulled from the DataStore.
 # No full objects are stored inside a class.
 @dataclass
@@ -23,6 +47,16 @@ class DigitalProductPassport:
 
     # Optional, could be not recorded as a snub on something.
     instantiated_from: Optional[InstantiationSource]
+    manufacturer: Optional[Entity]
+    economic_operator: Optional[List[Entity] | Entity]
+    current_owner: Optional[Entity]
+    known_past_owners: Optional[List[Entity] | Entity]
+
+    registration_id: Optional[str] = None
+    batch_id: Optional[str] = None
+    creation_timestamp: Optional[str] = None
+    destruction_timestamp: Optional[str] = None
+    tags: Optional[List[str]] = field(default_factory=list)
 
     # Can start with empty, or can import from existing.
     events: Dict[str, List[str]] = field(
@@ -53,49 +87,3 @@ class DigitalProductPassport:
     # The creation of a DigitalProductPassport instance cannot happen from here, but must instead
     # happen at a store level, in order to distribute templates, events, credentials across locations
     # Thus, no direct deserialization exists.
-
-    # # Recursive method to convert dictionary to data class
-    # @classmethod
-    # def from_dict(cls, data: Dict[str, Any]) -> "DigitalProductPassport":
-    #     passport_type = list(data.keys())[0]
-    #     passport_data = data[passport_type]
-    #     events = passport_data.get("events", {"activity": [], "ownership": []})
-    #     subpassports = [
-    #         cls.from_dict(sub) if isinstance(sub, dict) else sub
-    #         for sub in passport_data.get("subpassports", [])
-    #     ]
-    #     return cls(
-    #         id=passport_data["id"],
-    #         instantiated_from=passport_data.get("instantiated_from", None),
-    #         passport_type=passport_type,
-    #         title=passport_data["title"],
-    #         attributes=passport_data["attributes"],
-    #         credentials=passport_data.get("credentials", []),
-    #         attachments=passport_data.get("attachments", []),
-    #         events=events,
-    #         subpassports=subpassports,
-    #     )
-
-    # Similarly, the serialization is also a store-level interface, and is handled accordingly.
-    # Recursive method to convert data class to dictionary
-    # def to_dict(self) -> Dict[str, Any]:
-    #     events = {
-    #         key: [
-    #             item.to_dict() if isinstance(item, DigitalProductPassport) else item
-    #             for item in value
-    #         ]
-    #         for key, value in self.events.items()
-    #     }
-    #     subpassports = [
-    #         sub.to_dict() if isinstance(sub, DigitalProductPassport) else sub
-    #         for sub in self.subpassports
-    #     ]
-    #     return {
-    #         "id": self.id,
-    #         "title": self.title,
-    #         "attributes": self.attributes,
-    #         "credentials": self.credentials,
-    #         "attachments": self.attachments,
-    #         "events": events,
-    #         "subpassports": subpassports,
-    #     }
