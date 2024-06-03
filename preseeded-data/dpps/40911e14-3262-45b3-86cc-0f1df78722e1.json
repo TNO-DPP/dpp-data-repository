@@ -99,7 +99,26 @@
             "size": "L",
             "color": "Blue",
             "care_instructions": "Machine wash cold, tumble dry low",
-            "country_of_origin": "Bangladesh"
+            "country_of_origin": "Bangladesh",
+            "carbon_emissions": {
+                "manufacture": "2.5 kg CO2e",
+                "transport": {
+                    "factory_to_port": "0.5 kg CO2e",
+                    "port_to_warehouse": "1.2 kg CO2e",
+                    "warehouse_to_store": "0.8 kg CO2e"
+                }
+            },
+            "water_usage": "2700 liters",
+            "material_composition": {
+                "cotton": "100%",
+                "dyes_and_chemicals": "2% (weight by weight)",
+                "thread": "100% polyester"
+            },
+            "waste_generation": {
+                "textile_waste": "200 grams",
+                "packaging_waste": "50 grams"
+            },
+            "product_state": "New"
         },
         "credentials": [],
         "parent": null,
