@@ -51,6 +51,7 @@ def import_dpp_into_storage(
         economic_operator=passport_data.get("economic_operator", None),
         current_owner=passport_data.get("current_owner", None),
         known_past_owners=passport_data.get("known_past_owners", []),
+        tags=passport_data.get("tags", []),
         registration_id=passport_data.get("registration_id", None),
         batch_id=passport_data.get("batch_id", None),
         creation_timestamp=passport_data.get("creation_timestamp", None),
@@ -105,91 +106,6 @@ def import_dpp_into_storage(
         else:
             raise Exception("Unidentifiable object found.")
 
-    # Events
-    activity_event_ids_to_store: List[str] = []
-    ownership_event_ids_to_store: List[str] = []
-    try:
-        input_activity_events: List = passport_data["events"]["activity"]
-        input_ownership_events: List = passport_data["events"]["ownership"]
-    except:
-        logger.error("Cannot read events for " + passport_id)
-    for event in input_activity_events:
-        try:
-            event_id = get_id_value(event)
-            # print("========")
-            # print(event)
-            # print(event_id)
-            # print("========")
-            activity_event_ids_to_store.append(event_id)
-            # TODO: better validation of existing events.
-            # Current handling, prefer existing event in the Event store
-            if data_store.get_event(event_id) is None:
-                try:
-                    data_store.add_dpp_event(passport_id, event, "activity")
-                except Exception as e:
-                    logger.error("Error adding DPP event " + event_id + "-" + str(e))
-            else:
-                existing_event = data_store.get_event(event_id)
-                try:
-                    assert existing_event == event
-                    logger.debug("Activity event already present. Skipping " + event_id)
-                except:
-                    logger.error(
-                        "Input activity event different from existing added event with the same ID ->"
-                        + event_id
-                    )
-        except Exception as e:
-            print(e)
-            logger.error("Cannot find ID for activity event in " + passport_id)
-
-    # input()
-
-    for event in input_ownership_events:
-        try:
-            event_id = get_id_value(event)
-            ownership_event_ids_to_store.append(event_id)
-            # TODO: better validation of existing events.
-            # Current handling, prefer existing event in the Event store
-            if data_store.get_event(event_id) is None:
-                try:
-                    data_store.add_dpp_event(passport_id, event, "ownership")
-                except Exception as e:
-                    logger.error("Error adding DPP event " + event_id + "-" + str(e))
-            else:
-                existing_event = data_store.get_event(event_id)
-                try:
-                    assert existing_event == event
-                    logger.debug(
-                        "Ownership event already present. Skipping " + event_id
-                    )
-                except:
-                    logger.error(
-                        "Input ownership event different from existing added event with the same ID ->"
-                        + event_id
-                    )
-        except:
-            logger.error("Cannot find ID for ownership event in " + passport_id)
-
-    # Log number of events found.
-    logger.debug(
-        "Found "
-        + str(len(activity_event_ids_to_store))
-        + " activity events for "
-        + passport_id
-    )
-    logger.debug(
-        "Found "
-        + str(len(ownership_event_ids_to_store))
-        + " ownership events for "
-        + passport_id
-    )
-
-    # Add references to DPP object
-    passport_obj.events = {
-        "activity": activity_event_ids_to_store,
-        "ownership": ownership_event_ids_to_store,
-    }
-
     # Subpassports
     subpassport_ids_to_store: List[str] = []
     # Recursive calls for hierarchical objects
@@ -228,6 +144,83 @@ def import_dpp_into_storage(
         + passport_id
         + " to the store."
     )
+
+    # Events
+    activity_event_ids_to_store: List[str] = []
+    ownership_event_ids_to_store: List[str] = []
+    try:
+        input_activity_events: List = passport_data["events"]["activity"]
+        input_ownership_events: List = passport_data["events"]["ownership"]
+    except:
+        logger.error("Cannot read events for " + passport_id)
+    for event in input_activity_events:
+        try:
+            event_id = get_id_value(event)
+            activity_event_ids_to_store.append(event_id)
+            # TODO: better validation of existing events.
+            # Current handling, prefer existing event in the Event store
+            if data_store.get_event(event_id) is None:
+                try:
+                    data_store.add_dpp_event(passport_id, event, "activity")
+                except Exception as e:
+                    logger.error("Error adding DPP event " + event_id + "-" + str(e))
+            else:
+                existing_event = data_store.get_event(event_id)
+                try:
+                    assert existing_event == event
+                except:
+                    logger.error(
+                        "Input activity event different from existing added event with the same ID ->"
+                        + event_id
+                    )
+        except Exception as e:
+            print(e)
+            logger.error("Cannot find ID for activity event in " + passport_id)
+
+    # input()
+
+    for event in input_ownership_events:
+        try:
+            event_id = get_id_value(event)
+            ownership_event_ids_to_store.append(event_id)
+            # TODO: better validation of existing events.
+            # Current handling, prefer existing event in the Event store
+            if data_store.get_event(event_id) is None:
+                try:
+                    data_store.add_dpp_event(passport_id, event, "ownership")
+                except Exception as e:
+                    logger.error("Error adding DPP event " + event_id + "-" + str(e))
+            else:
+                existing_event = data_store.get_event(event_id)
+                try:
+                    assert existing_event == event
+                except:
+                    logger.error(
+                        "Input ownership event different from existing added event with the same ID ->"
+                        + event_id
+                    )
+        except:
+            logger.error("Cannot find ID for ownership event in " + passport_id)
+
+    # Log number of events found.
+    logger.debug(
+        "Found "
+        + str(len(activity_event_ids_to_store))
+        + " activity events for "
+        + passport_id
+    )
+    logger.debug(
+        "Found "
+        + str(len(ownership_event_ids_to_store))
+        + " ownership events for "
+        + passport_id
+    )
+
+    # Add references to DPP object
+    passport_obj.events = {
+        "activity": activity_event_ids_to_store,
+        "ownership": ownership_event_ids_to_store,
+    }
     logger.debug(
         format_multiline_log(
             json.dumps(data_store.get_dpp_database_metadata(), indent=4)
@@ -421,9 +414,15 @@ def deserialize_dpp(
         wrapper["id"] = dpp_object.id
         wrapper["type"] = [dpp_object.passport_type, "DigitalProductPassport"]
         # TODO: Identify the latest owner of the product from the ownership log.
-        wrapper["issuer"] = "urn:manufacturer:TNO"
+        wrapper["issuer"] = (
+            dpp_object.current_owner.id
+            if dpp_object.current_owner is not None
+            else "unknown"
+        )
         # TODO: Identify the dpp:CreationEvent and the time of the event.
-        wrapper["validFrom"] = "2022-12-27T10:00:00Z"
+        wrapper["validFrom"] = (
+            dpp_object.creation_timestamp if not None else "2000-01-01T12:00:00Z"
+        )
         wrapper["credentialSubject"] = output_content
         output_content = wrapper
 

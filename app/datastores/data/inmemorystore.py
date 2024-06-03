@@ -195,7 +195,12 @@ class InMemoryStore(BaseDataStore):
             event_id = str(uuid.uuid4())
             event["id"] = event_id
         if document_id not in self.dpp_store:
-            logger.warn("Adding event with unknown DPP reference")
+            logger.warn(
+                "Adding event -> "
+                + event_id
+                + " with unknown DPP reference -> "
+                + document_id
+            )
         else:
             # Add event reference to DPP.
             self.dpp_store[document_id].events[event_type].append(event_id)
@@ -204,6 +209,7 @@ class InMemoryStore(BaseDataStore):
         else:
             # Add event to event store.
             self.event_store[event_id] = event
+            logger.debug("Event added-> " + event_id)
 
         return event_id
 

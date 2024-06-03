@@ -1536,15 +1536,15 @@
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
-                                        "@id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
-                                        "@type": "dpp:DigitalProductPassport"
-                                    },
-                                    {
                                         "@id": "urn:manufacturer:Toolcraft:e1b87277-f1a4-48cb-827a-c58d33ae7956",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
                                         "@id": "urn:manufacturer:PBFastener:b2df65df-1bda-446e-90e6-e496fc087200",
+                                        "@type": "dpp:DigitalProductPassport"
+                                    },
+                                    {
+                                        "@id": "urn:manufacturer:Elenco:a1bcdd7b-03b1-4360-a70c-fb8bff228299",
                                         "@type": "dpp:DigitalProductPassport"
                                     },
                                     {
@@ -3424,7 +3424,7 @@
                                                 "dpp": "http://www.tno.nl/digitalproductpassport#",
                                                 "xsd": "http://www.w3.org/2001/XMLSchema#"
                                             },
-                                            "@id": "urn:Elenco:events:ownership:00027",
+                                            "@id": "urn:Elenco:events:ownership:00028",
                                             "@type": "dpp:CreationEvent",
                                             "prov:generated": {
                                                 "@id": "urn:manufacturer:Elenco:296b5c7e-7a06-4cb2-9203-5f3ae18f3a75",
@@ -3844,7 +3844,7 @@
                                                 "dpp": "http://www.tno.nl/digitalproductpassport#",
                                                 "xsd": "http://www.w3.org/2001/XMLSchema#"
                                             },
-                                            "@id": "urn:Elenco:events:ownership:00028",
+                                            "@id": "urn:Elenco:events:ownership:00029",
                                             "@type": "dpp:CreationEvent",
                                             "prov:generated": {
                                                 "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
@@ -4200,7 +4200,7 @@
                                                 "dpp": "http://www.tno.nl/digitalproductpassport#",
                                                 "xsd": "http://www.w3.org/2001/XMLSchema#"
                                             },
-                                            "@id": "urn:Elenco:events:ownership:00029",
+                                            "@id": "urn:Elenco:events:ownership:00030",
                                             "@type": "dpp:CreationEvent",
                                             "prov:generated": {
                                                 "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
@@ -4222,7 +4222,7 @@
                                                 "dpp": "http://www.tno.nl/digitalproductpassport#",
                                                 "xsd": "http://www.w3.org/2001/XMLSchema#"
                                             },
-                                            "@id": "urn:Elenco:events:ownership:00030",
+                                            "@id": "urn:Elenco:events:ownership:00031",
                                             "@type": "dpp:CreationEvent",
                                             "prov:generated": {
                                                 "@id": "urn:manufacturer:Elenco:584252bc-5746-4a30-b6c0-21f2da8cb917",
