@@ -12,7 +12,7 @@ class InstantiationSource:
 
 
 @dataclass
-class Factory:
+class Facility:
     id: str
     name: str
     address: Optional[str]
@@ -30,7 +30,7 @@ class Entity:
     id: str
     name: str
     full_name: Optional[str]
-    facility: Optional[List[Factory] | Factory] = None
+    facility: Optional[List[Facility] | Facility] = None
     repository_address: Optional[List[RepositoryAddress] | RepositoryAddress] = None
     batch_id: Optional[str] = None
 
@@ -56,8 +56,9 @@ class DigitalProductPassport:
     batch_id: Optional[str] = None
     creation_timestamp: Optional[str] = None
     destruction_timestamp: Optional[str] = None
-    tags: Optional[List[str]] = field(default_factory=list)
+    tags: List[str] = field(default_factory=list)
 
+    parent: Optional[str] = None
     # Can start with empty, or can import from existing.
     events: Dict[str, List[str]] = field(
         default_factory=lambda: {

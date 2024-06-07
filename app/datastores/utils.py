@@ -11,7 +11,7 @@ from app.datastores.attachments.filesystemattachmentstore import (
     FileSystemAttachmentStore,
 )
 from app.datastores.data.basedatastore import BaseDataStore
-from app.datastores.data.inmemorystore import InMemoryStore
+from app.datastores.data.inmemorystore import InMemoryStore, InMemoryStoreStatistics
 
 logger = logging.getLogger("utils")
 
@@ -44,10 +44,11 @@ def initialize_stores():
 
     if data_storage_type == "inmemory":
         data_store = InMemoryStore(config["identities"], attachment_store)
+        data_store_statistics = InMemoryStoreStatistics(data_store)
     else:
         raise NotImplementedError()
 
-    return data_store, attachment_store, credential_store
+    return data_store, attachment_store, credential_store, data_store_statistics
 
 
 def import_preseeded_data(

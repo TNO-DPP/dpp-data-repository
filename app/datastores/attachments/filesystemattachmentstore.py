@@ -17,7 +17,7 @@ from app.config import format_multiline_log
 from app.datamodel.attachment import AttachmentReference, AttachmentSourceType
 from app.datastores.attachments.baseattachmentstore import BaseAttachmentStore
 
-logger = logging.getLogger("FSAttachmentStore")
+logger = logging.getLogger("fs-file-store")
 
 
 class FileSystemAttachmentStore(BaseAttachmentStore):
@@ -227,6 +227,10 @@ class FileSystemAttachmentStore(BaseAttachmentStore):
                 # Determine the format from the original image
                 image_format = img.format or "jpeg"
 
+                # Convert RGBA to RGB if saving as JPEG
+                if image_format.lower() == "jpeg" and img.mode == "RGBA":
+                    img = img.convert("RGB")
+
                 # Save the resized image to a temporary file
                 with tempfile.NamedTemporaryFile(
                     delete=False, suffix=f".{image_format.lower()}"
@@ -240,16 +244,7 @@ class FileSystemAttachmentStore(BaseAttachmentStore):
                     media_type=media_type,
                     filename=f"thumbnail_{attachment_reference.file_name}",
                 )
-                # # Save the resized image to a buffer
-                # buffer = io.BytesIO()
-                # img.save(buffer, format=image_format)
-                # buffer.seek(0)
-                # media_type = f"image/{image_format.lower()}"
-                # return FileResponse(
-                #     buffer,
-                #     media_type=media_type,
-                #     filename=f"thumbnail_{attachment_reference.file_name}",
-                # )
+
         except Exception as e:
             raise Exception(f"Error generating thumbnail: {e}")
 

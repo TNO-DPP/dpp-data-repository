@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 
 from app.config import format_multiline_log
 from app.datamodel.attachment import AttachmentReference
-from app.datamodel.dpp import DigitalProductPassport
+from app.datamodel.dpp import DigitalProductPassport, Entity
 from app.datastores.attachments.baseattachmentstore import BaseAttachmentStore
 from app.datastores.data.basedatastore import (
     BaseDataStore,
@@ -35,8 +35,12 @@ logger = logging.getLogger("serde")
 
 
 def import_dpp_into_storage(
-    input_dict, data_store: BaseDataStore, attachment_store: BaseAttachmentStore
+    input_dict,
+    data_store: BaseDataStore,
+    attachment_store: BaseAttachmentStore,
+    parent_id=None,
 ):
+
     # Data store imports
     # Attachment store compares and identifies conflicts - with priority on DPP data,
     #   if the link matches
@@ -111,7 +115,7 @@ def import_dpp_into_storage(
     # Recursive calls for hierarchical objects
     for subpassport in passport_data["subpassports"]:
         if type(subpassport) is str:
-            logger.debug("Attempting subpassport import (ref)" + subpassport)
+            logger.debug("Attempting subpassport import (ref) ->" + subpassport)
             # check store for existing passport
             if data_store.get_dpp_document(subpassport) is None:
                 logger.error(
@@ -122,9 +126,8 @@ def import_dpp_into_storage(
                 assert type(subpassport) == dict
                 subpassport_type = list(subpassport.keys())[0]
                 subpassport_id = get_id_value(subpassport[subpassport_type])
-                logger.debug("Attempting subpassport import (obj)" + subpassport_id)
                 logger.debug(
-                    "Importing subpassport "
+                    "Attempting subpassport import (obj) -> "
                     + subpassport_type
                     + " -> "
                     + subpassport_id
@@ -133,8 +136,12 @@ def import_dpp_into_storage(
                 subpassport_ids_to_store.append(subpassport_id)
             except Exception as e:
                 raise Exception("Unable to parse subpassport for " + passport_id)
-    # Assigning identified objects to
+
+    # Assigning identified objects to each other
     passport_obj.subpassports = subpassport_ids_to_store
+    for subpassport_id in subpassport_ids_to_store:
+        subpassport = data_store.get_dpp_object(subpassport_id)
+        subpassport.parent = passport_id
 
     data_store.add_dpp_object(passport_id, passport_obj)
     logger.info(
@@ -292,6 +299,7 @@ def prepare_dpp_response_content(
         "batch_id": dpp_object.batch_id,
         "creation_timestamp": dpp_object.creation_timestamp,
         "destruction_timestamp": dpp_object.destruction_timestamp,
+        "parent": dpp_object.parent,  # Reference to parent
     }
     if content_format == DPPResponseContentFormats.COMPACT.value:
         output_content[dpp_type]["attachments"] = dpp_object.attachments
@@ -317,7 +325,6 @@ def prepare_dpp_response_content(
         output_content[dpp_type]["events"]["ownership"] += data_store.get_dpp_events(
             dpp_object.id, event_type="ownership"
         )
-
         # Keep references to subpassports
         output_content[dpp_type]["subpassports"] = dpp_object.subpassports
 
@@ -414,15 +421,18 @@ def deserialize_dpp(
         wrapper["id"] = dpp_object.id
         wrapper["type"] = [dpp_object.passport_type, "DigitalProductPassport"]
         # TODO: Identify the latest owner of the product from the ownership log.
-        wrapper["issuer"] = (
-            dpp_object.current_owner.id
-            if dpp_object.current_owner is not None
-            else "unknown"
-        )
+
+        if dpp_object.current_owner is not None:
+            current_owner: Entity = dpp_object.current_owner
+            wrapper["issuer"] = current_owner.id
+        else:
+            wrapper["issuer"] = "unknown"
+
         # TODO: Identify the dpp:CreationEvent and the time of the event.
-        wrapper["validFrom"] = (
-            dpp_object.creation_timestamp if not None else "2000-01-01T12:00:00Z"
-        )
+        if dpp_object.creation_timestamp is not None:
+            wrapper["validFrom"] = dpp_object.creation_timestamp
+        else:
+            wrapper["validFrom"] = "2000-01-01T12:00:00Z"
         wrapper["credentialSubject"] = output_content
         output_content = wrapper
 

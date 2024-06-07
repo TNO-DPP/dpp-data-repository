@@ -19,7 +19,13 @@ from pydantic import UUID4, BaseModel, HttpUrl
 from app.datamodel.attachment import AttachmentReference
 from app.datamodel.dpp import DigitalProductPassport
 from app.datastores.attachments.baseattachmentstore import BaseAttachmentStore
-from app.datastores.data.basedatastore import BaseDataStore, DPPResponseContentFormats
+from app.datastores.data.basedatastore import (
+    BaseDataStore,
+    BaseStoreStatistics,
+    DPPResponseContentFormats,
+    DPPResponseFormats,
+    FilterConditions,
+)
 from app.main import get_datastores
 
 logger = logging.getLogger("dpp-api")
@@ -70,6 +76,45 @@ async def get_random_dpp(datastores=Depends(get_datastores)):
     return JSONResponse({"result": random_dpp_id})
 
 
+@dpp_app.get("/metadata")
+async def get_metadata(datastores=Depends(get_datastores)):
+    """
+    Get metadata.
+    """
+    data_store_statistics: BaseStoreStatistics = datastores[3]
+    return JSONResponse(data_store_statistics.to_dict())
+
+
+@dpp_app.post("/search")
+async def search_backend(
+    filter_conditions: FilterConditions, datastores=Depends(get_datastores)
+):
+    """
+    Search backend with filter conditions.
+    """
+    data_store: BaseDataStore = datastores[0]
+    return JSONResponse(data_store.search_for_dpp(filter_conditions))
+
+
+@dpp_app.post("/{document_id}")
+async def post_dpp(
+    document_id: str, document: Dict, datastores=Depends(get_datastores)
+):
+    """
+    Publish a DPP document as-is.
+    Issues:
+        - DPPs with existing content
+        - DPPs with references that don't exist
+        - DPPs with references that have existing content
+    May work with DPPs with no existing connections.
+    """
+    logger.debug("Publishing DPP with ID -> " + document_id)
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    data_store.add_dpp_document(document_id, dpp_document=document)
+    return JSONResponse({"result": "added successfully"})
+
+
 # Get a basic DPP without signature
 @dpp_app.get("/{document_id}")
 async def get_dpp_basic(document_id: str, datastores=Depends(get_datastores)):
@@ -83,6 +128,28 @@ async def get_dpp_basic(document_id: str, datastores=Depends(get_datastores)):
     return JSONResponse(result)
 
 
+# Get a compact DPP without signature
+@dpp_app.get("/{document_id}/compact")
+async def get_dpp_compact(document_id: str, datastores=Depends(get_datastores)):
+    """
+    Get basic DPP details without signature.
+    """
+    logger.debug("Retrieving DPP with ID -> " + document_id)
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    try:
+        result = data_store.get_dpp_document(
+            document_id,
+            content_format=DPPResponseContentFormats.COMPACT.value,
+        )
+        return JSONResponse(result)
+    except Exception as e:
+        logger.error(
+            f"Unexpected error retrieving DPP document with ID {document_id}: {str(e)}"
+        )
+        raise HTTPException(status_code=500, detail="Unexpected server error")
+
+
 @dpp_app.get("/{document_id}/full")
 async def get_dpp_full(document_id: str, datastores=Depends(get_datastores)):
     """
@@ -91,10 +158,83 @@ async def get_dpp_full(document_id: str, datastores=Depends(get_datastores)):
     logger.debug("Retrieving full DPP with ID -> " + document_id)
     data_store: BaseDataStore = datastores[0]
     attachment_store: BaseAttachmentStore = datastores[1]
-    result = data_store.get_dpp_document(
-        document_id, content_format=DPPResponseContentFormats.FULL.value
-    )
-    return JSONResponse(result)
+    try:
+        result = data_store.get_dpp_document(
+            document_id, content_format=DPPResponseContentFormats.FULL.value
+        )
+        return JSONResponse(result)
+    except Exception as e:
+        logger.error(
+            f"Unexpected error retrieving DPP document with ID {document_id}: {str(e)}"
+        )
+        raise HTTPException(status_code=500, detail="Unexpected server error")
+
+
+@dpp_app.get("/{document_id}/attributes")
+async def get_dpp_attributes(document_id: str, datastores=Depends(get_datastores)):
+    """
+    Get DPP attribute information.
+    """
+    logger.debug("Retrieving attributes of DPP -> " + document_id)
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    try:
+        result = data_store.get_dpp_object(document_id).attributes
+        return JSONResponse(result)
+    except Exception as e:
+        logger.error(
+            f"Unexpected error retrieving DPP document with ID {document_id}: {str(e)}"
+        )
+        raise HTTPException(status_code=500, detail="Unexpected server error")
+
+
+@dpp_app.get("/{document_id}/general")
+async def get_dpp_general_information(
+    document_id: str, datastores=Depends(get_datastores)
+):
+    """
+    Get basic DPP details.
+    """
+    logger.debug("Retrieving attributes of DPP -> " + document_id)
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    try:
+        dpp_object = data_store.get_dpp_object(document_id)
+        output_content = {
+            "id": dpp_object.id,
+            "title": dpp_object.title,
+            "attributes": dpp_object.attributes,
+            "credentials": dpp_object.credentials,  # Handle this at a later time.
+            "current_owner": dpp_object.current_owner,
+            "known_past_owners": dpp_object.known_past_owners,
+            "manufacturer": dpp_object.manufacturer,
+            "economic_operator": dpp_object.economic_operator,
+            "tags": dpp_object.tags,
+            "registration_id": dpp_object.registration_id,
+            "batch_id": dpp_object.batch_id,
+            "creation_timestamp": dpp_object.creation_timestamp,
+            "destruction_timestamp": dpp_object.destruction_timestamp,
+            "parent": dpp_object.parent,  # Reference to parent
+        }
+        # print(data_store.get_dpp_object(document_id).attributes)
+        return JSONResponse(output_content)
+    except Exception as e:
+        logger.error(
+            f"Unexpected error retrieving DPP document with ID {document_id}: {str(e)}"
+        )
+        raise HTTPException(status_code=500, detail="Unexpected server error")
+
+
+@dpp_app.get("/{document_id}/credentials")
+async def get_dpp_credentials(document_id: str, datastores=Depends(get_datastores)):
+    """
+    Get DPP credential information.
+    """
+    logger.debug("Retrieving attributes of DPP -> " + document_id)
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    print(data_store.get_dpp_object(document_id).credentials)
+    return JSONResponse(data_store.get_dpp_object(document_id).attributes)
 
 
 @dpp_app.post("/{document_id}/events/activity")

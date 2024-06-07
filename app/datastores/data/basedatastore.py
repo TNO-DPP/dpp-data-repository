@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
+from dataclasses import field
+from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional
+
+from pydantic.dataclasses import dataclass
 
 from app.datamodel.dpp import DigitalProductPassport
 
@@ -23,14 +27,15 @@ class DPPResponseContentFormats(Enum):
     COMPLETE = "complete"
 
 
+@dataclass
 class FilterConditions:
     name_contains: Optional[str] = None
-    passport_type: List[str] = []
-    tags: List[str] = []
-    batch_id: Optional[str] = None
+    passport_type: List[str] = field(default_factory=list)
+    tags: List[str] = field(default_factory=list)
+    batch_ids: List[str] = field(default_factory=list)
     registration_id: Optional[str] = None
-    current_country_code: Optional[str] = None
-    origin_country_code: Optional[str] = None
+    current_country_codes: List[str] = field(default_factory=list)
+    origin_country_codes: List[str] = field(default_factory=list)
 
 
 class BaseDataStore(ABC):
@@ -100,7 +105,7 @@ class BaseDataStore(ABC):
         self,
         document_id: str,
         dpp_document: Dict,
-        template_id: Optional[str],
+        template_id: Optional[str] = None,
         template_version: Optional[str] = "latest",
     ) -> None:
         pass
@@ -234,7 +239,9 @@ class BaseDataStore(ABC):
 
     # Search function with filter conditions
     @abstractmethod
-    def search_for_dpp(self, filter_conditions: FilterConditions) -> List[str]:
+    def search_for_dpp(
+        self, filter_conditions: FilterConditions
+    ) -> List[Dict[str, str]]:
         pass
 
     # TODO: Handle credentials later, because the signature part may be a bit tricky.
@@ -255,3 +262,62 @@ class BaseDataStore(ABC):
     # @abstractmethod
     # def get_attachment(self, attachment_id):
     #     pass
+
+
+# On-demand statistics are not better than cached statistics, but will do for now.
+# Making this perfect involves adding statistics-logic to every single function.
+# This may however result in a number of queries being run simultaneously.
+class BaseStoreStatistics(ABC):
+    @abstractmethod
+    def passports_by_batch(self) -> Dict[str, int]:
+        pass
+
+    @abstractmethod
+    def number_of_batches(self) -> int:
+        pass
+
+    @abstractmethod
+    def number_of_unique_tags(self) -> int:
+        pass
+
+    @abstractmethod
+    def number_of_single_passports(self) -> int:
+        pass
+
+    @abstractmethod
+    def number_of_connected_passports(self) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_in_time_range(
+        self, start_time: datetime, end_time: datetime
+    ) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_last_day(self) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_last_week(self) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_last_month(self) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_last_year(self) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_last_5_years(self) -> int:
+        pass
+
+    @abstractmethod
+    def passports_created_all_time(self) -> int:
+        pass
+
+    @abstractmethod
+    def to_dict(self):
+        pass

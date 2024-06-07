@@ -34,13 +34,15 @@ startup_logger.log(
 # 2. Copy pre-seeded content and add to data stores.
 # 3. Give some information logs about loaded information.
 
-data_store, attachment_store, credential_store = initialize_stores()
+data_store, attachment_store, credential_store, data_store_statistics = (
+    initialize_stores()
+)
 import_preseeded_data(data_store, attachment_store)
 
 
 # Common call for API endpoints
 def get_datastores():
-    return data_store, attachment_store, credential_store
+    return data_store, attachment_store, credential_store, data_store_statistics
 
 
 from app.api.dpp import dpp_app

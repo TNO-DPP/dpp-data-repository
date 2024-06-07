@@ -2,21 +2,25 @@ import json
 import logging
 import random
 import uuid
-from datetime import datetime
+from collections import defaultdict
+from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List
 
-from app.datamodel.dpp import DigitalProductPassport
-from app.datamodel.serde import deserialize_dpp
+from app.config import format_multiline_log
+from app.datamodel.dpp import DigitalProductPassport, Entity, Facility
+from app.datamodel.serde import deserialize_dpp, import_dpp_into_storage
 from app.datastores.attachments.baseattachmentstore import BaseAttachmentStore
 from app.datastores.data.basedatastore import (
     BaseDataStore,
+    BaseStoreStatistics,
     DPPResponseContentFormats,
     DPPResponseFormats,
     DPPResponseSignatureFormats,
     FilterConditions,
 )
 
-logger = logging.getLogger("Immemorydatastore")
+logger = logging.getLogger("in-memory-data")
 
 
 class InMemoryStore(BaseDataStore):
@@ -56,7 +60,29 @@ class InMemoryStore(BaseDataStore):
 
     # TODO: Sort by creation date.
     def get_latest_added_dpp_document_id(self) -> str | None:
-        return list(self.dpp_store.keys())[-1] if self.dpp_store else None
+        # dpp_list = list(self.dpp_store.keys())
+        # creation_timestamp_list = [self.dpp_store[dpp_id].creation_timestamp for dpp_id in dpp_list]
+        dpp_creation_timestamps = [
+            (dpp_id, self.dpp_store[dpp_id].creation_timestamp)
+            for dpp_id in self.dpp_store.keys()
+        ]
+        # Filter out entries with None as creation_timestamp and convert the remaining timestamps to datetime objects
+        valid_dpp_creation_timestamps = [
+            (dpp_id, datetime.strptime(creation_timestamp, "%Y-%m-%dT%H:%M:%SZ"))
+            for dpp_id, creation_timestamp in dpp_creation_timestamps
+            if creation_timestamp is not None
+        ]
+        # If no valid timestamps, return None
+        if not valid_dpp_creation_timestamps:
+            return None
+        # log_string = "Timestamps :\n"
+        # for i in valid_dpp_creation_timestamps:
+        #     log_string += i[0] + " -> " + i[1].isoformat() + "\n"
+        # logger.debug(format_multiline_log(log_string))
+        latest_dpp_id, _ = max(valid_dpp_creation_timestamps, key=lambda item: item[1])
+        return latest_dpp_id
+
+        # return list(self.dpp_store.keys())[-1] if self.dpp_store else None
 
     def get_dpp_database_metadata(self) -> Dict:
         return {
@@ -102,10 +128,10 @@ class InMemoryStore(BaseDataStore):
         self,
         document_id: str,
         dpp_document: Dict,
-        template_id: str | None,
+        template_id: str | None = None,
         template_version: str | None = "latest",
     ) -> None:
-        raise NotImplementedError
+        import_dpp_into_storage(dpp_document, self, self.attachment_store_ref)
 
     def update_dpp_document(self, document_id: str, dpp_document: str) -> None:
         raise NotImplementedError
@@ -253,6 +279,129 @@ class InMemoryStore(BaseDataStore):
         else:
             return None
 
+    def attach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
+        dpp = self.dpp_store.get(document_id, None)
+        if dpp is None:
+            raise Exception("DPP not available -> " + document_id)
+        else:
+            subdpp = self.dpp_store.get(subpassport_id, None)
+            if subdpp is None:
+                raise Exception("Subpassport not available -> " + subpassport_id)
+            else:
+                dpp.subpassports.append(subpassport_id)
+                subdpp.parent = document_id
+
+    def attach_subpassport(self, document_id: str, subpassport_document: Dict) -> None:
+        subpassport_document_data = subpassport_document[
+            list(subpassport_document.keys())[0]
+        ]
+        subpassport_id = self.get_id_value(subpassport_document_data)
+        self.add_dpp_document(subpassport_id, subpassport_document)
+        self.attach_subpassport_by_id(document_id, subpassport_id)
+
+    def detach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
+        dpp = self.dpp_store.get(document_id, None)
+        if dpp is None:
+            raise Exception("DPP not available -> " + document_id)
+        else:
+            subdpp = self.dpp_store.get(subpassport_id, None)
+            if subdpp is None:
+                raise Exception("Subpassport not available -> " + subpassport_id)
+            else:
+                if (
+                    subpassport_id not in dpp.subpassports
+                    and subdpp.parent != document_id
+                ):
+                    raise Exception("Subpassport already not attached")
+                elif (
+                    subpassport_id not in dpp.subpassports
+                    and subdpp.parent != document_id
+                ):
+                    logger.warn("Partially attached subpassport. Detaching fully.")
+                    dpp.subpassports = [
+                        x for x in dpp.subpassports if x != subpassport_id
+                    ]
+                    subdpp.parent = ""
+                else:
+                    dpp.subpassports = [
+                        x for x in dpp.subpassports if x != subpassport_id
+                    ]
+                    subdpp.parent = ""
+                    logger.debug(
+                        "Subpassport detached from -> "
+                        + document_id
+                        + ", not removed ->"
+                        + subpassport_id
+                    )
+
+    # Define helper function to get country code from entity
+    @staticmethod
+    def get_country_code(entity: Entity):
+        if not entity or not entity.facility:
+            return "None"
+        elif isinstance(entity.facility, list):
+            return entity.facility[0].country_code
+        else:
+            return entity.facility.country_code
+
+    def search_for_dpp(self, filters: FilterConditions) -> List[Dict[str, str]]:
+        # Holds the filtered results
+        filtered_results = []
+
+        # Iterate through the DPP store
+        for id, dpp in self.dpp_store.items():
+            match = True
+
+            # Check if name_contains present in ID
+            if (
+                filters.name_contains
+                and filters.name_contains.lower() not in dpp.id.lower()
+            ):
+                match = False
+
+            # Check passport_type
+            if filters.passport_type and dpp.passport_type not in filters.passport_type:
+                match = False
+
+            # Check tags
+            if filters.tags and not set(filters.tags).issubset(set(dpp.tags)):
+                match = False
+
+            # Check batch_id
+            if filters.batch_ids and dpp.batch_id not in filters.batch_ids:
+                match = False
+
+            # Check registration_id
+            if (
+                filters.registration_id
+                and dpp.registration_id
+                and filters.registration_id not in dpp.registration_id
+            ):
+                match = False
+
+            # Check current_country_codes
+            if (
+                filters.current_country_codes
+                and dpp.current_owner
+                and self.get_country_code(dpp.current_owner)
+                not in filters.current_country_codes
+            ):
+                match = False
+
+            # Check origin_country_codes
+            if (
+                filters.origin_country_codes
+                and dpp.manufacturer
+                and self.get_country_code(dpp.manufacturer)
+                not in filters.origin_country_codes
+            ):
+                match = False
+
+            if match:
+                filtered_results.append({"label": id, "value": id})
+
+        return filtered_results
+
     # TODO: Handle updating events independently
     def update_event(self, event_id: str, event: Dict) -> None:
         raise NotImplementedError
@@ -265,18 +414,6 @@ class InMemoryStore(BaseDataStore):
         return {
             "total_events": sum(len(events) for events in self.event_store.values()),
         }
-
-    def attach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
-        raise NotImplementedError
-
-    def attach_subpassport(self, document_id: str, subpassport_document: Dict) -> None:
-        raise NotImplementedError
-
-    def detach_subpassport_by_id(self, document_id: str, subpassport_id: str) -> None:
-        raise NotImplementedError
-
-    def search_for_dpp(self, filter_conditions: FilterConditions) -> List[str]:
-        raise NotImplementedError
 
     # TODO: Handle all DPP template endpoints
     def get_dpp_template(self, template_id: str, version="latest") -> Dict:
@@ -296,3 +433,144 @@ class InMemoryStore(BaseDataStore):
 
     def get_dpp_template_ids_with_metadata(self) -> Dict:
         raise NotImplementedError
+
+
+class InMemoryStoreStatistics(BaseStoreStatistics):
+    def __init__(self, store: InMemoryStore):
+        self.store = store
+
+    def passports_by_batch(self) -> Dict[str, int]:
+        batches = defaultdict(int)
+        for passport in self.store.dpp_store.values():
+            if passport.batch_id:
+                batches[passport.batch_id] += 1
+        return dict(batches)
+
+    def number_of_batches(self) -> int:
+        return len(
+            set(
+                passport.batch_id
+                for passport in self.store.dpp_store.values()
+                if passport.batch_id
+            )
+        )
+
+    def number_of_unique_tags(self) -> int:
+        tags = set(
+            tag for passport in self.store.dpp_store.values() for tag in passport.tags
+        )
+        return len(tags)
+
+    def passports_by_tag(self) -> Dict[str, int]:
+        tags = defaultdict(int)
+        for passport in self.store.dpp_store.values():
+            if len(passport.tags) > 0:
+                for tag in passport.tags:
+                    tags[tag] += 1
+                    # batches[passport.batch_id] += 1
+        return dict(tags)
+
+    def passports_by_type(self) -> Dict[str, int]:
+        passport_types = defaultdict(int)
+        for passport in self.store.dpp_store.values():
+            passport_types[passport.passport_type] += 1
+
+        return dict(passport_types)
+
+    def number_of_single_passports(self) -> int:
+        return sum(
+            1
+            for passport in self.store.dpp_store.values()
+            if not passport.subpassports and not passport.parent
+        )
+
+    def number_of_connected_passports(self) -> int:
+        return sum(
+            1
+            for passport in self.store.dpp_store.values()
+            if passport.subpassports or passport.parent
+        )
+
+    def passports_created_in_time_range(
+        self, start_time: datetime, end_time: datetime
+    ) -> int:
+        return sum(
+            1
+            for passport in self.store.dpp_store.values()
+            if passport.creation_timestamp
+            and start_time
+            <= datetime.fromisoformat(
+                passport.creation_timestamp.replace("Z", "+00:00")
+            )
+            <= end_time
+        )
+
+    def passports_created_last_day(self) -> int:
+        now = datetime.now(timezone.utc)
+        return self.passports_created_in_time_range(now - timedelta(days=1), now)
+
+    def passports_created_last_week(self) -> int:
+        now = datetime.now(timezone.utc)
+        return self.passports_created_in_time_range(now - timedelta(weeks=1), now)
+
+    def passports_created_last_month(self) -> int:
+        now = datetime.now(timezone.utc)
+        return self.passports_created_in_time_range(now - timedelta(days=30), now)
+
+    def passports_created_last_year(self) -> int:
+        now = datetime.now(timezone.utc)
+        return self.passports_created_in_time_range(now - timedelta(days=365), now)
+
+    def passports_created_last_5_years(self) -> int:
+        now = datetime.now(timezone.utc)
+        return self.passports_created_in_time_range(now - timedelta(days=365 * 5), now)
+
+    def passports_created_all_time(self) -> int:
+        return sum(
+            1
+            for passport in self.store.dpp_store.values()
+            if passport.creation_timestamp
+        )
+
+    def events_all_time(self) -> int:
+        return len(self.store.event_store.values())
+
+    def number_per_event_type(self) -> Dict[str, int]:
+        output = defaultdict(int)
+
+        for event in self.store.event_store.values():
+            event_type = event.get("@type", event.get("type", None))
+            output[event_type] += 1
+        return output
+
+    def to_dict(self):
+        passport_stats = {}
+        passport_stats["passports_by_batch"] = self.passports_by_batch()
+        passport_stats["number_batches"] = self.number_of_batches()
+        passport_stats["passports_by_tag"] = self.passports_by_tag()
+        passport_stats["number_tags"] = self.number_of_unique_tags()
+        passport_stats["passports_by_type"] = self.passports_by_type()
+        passport_stats["number_single_passports"] = self.number_of_single_passports()
+        passport_stats["number_connected_passports"] = (
+            self.number_of_connected_passports()
+        )
+        passport_stats["passports_created_last_day"] = self.passports_created_last_day()
+        passport_stats["passports_created_last_week"] = (
+            self.passports_created_last_week()
+        )
+        passport_stats["passports_created_last_month"] = (
+            self.passports_created_last_month()
+        )
+        passport_stats["passports_created_last_year"] = (
+            self.passports_created_last_year()
+        )
+        passport_stats["passports_created_last_5_years"] = (
+            self.passports_created_last_5_years()
+        )
+        passport_stats["passports_created_all_time"] = self.passports_created_all_time()
+        passport_stats["total_dpp_documents"] = (len(self.store.dpp_store),)
+
+        event_stats = {}
+        event_stats["events_all_time"] = self.events_all_time()
+        event_stats["number_event_types"] = self.number_per_event_type()
+        return {"passport": passport_stats, "event": event_stats}

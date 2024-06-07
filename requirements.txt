@@ -7,3 +7,4 @@ pillow
 genson
 colorlog
 pyjwt[crypto]
+fastapi-users[sqlalchemy,oauth]

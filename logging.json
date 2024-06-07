@@ -4,7 +4,7 @@
     "formatters": {
         "timestamped": {
             "()": "colorlog.ColoredFormatter",
-            "format": "{asctime} {log_color}{levelname:<8}{reset} {name:>15.15s} {message}",
+            "format": "{asctime} {log_color}{levelname:<8}{reset} {log_color}{name:>15.15s}{reset} {message}",
             "log_colors": {
                 "DEBUG": "blue",
                 "INFO": "green",
