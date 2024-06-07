@@ -6,4 +6,5 @@ RUN pip install -r requirements.txt
 COPY app /app/
 
 # CMD uvicorn app.main:app --port 8001
-CMD uvicorn app.main:app --port 8001 --reload --log-config logging.json
+COPY logging.json ./config/logging.json
+CMD uvicorn app.main:app --port 8001 --reload --log-config ./config/logging.json
