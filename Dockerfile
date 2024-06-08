@@ -5,7 +5,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY workdir ./workdir
 COPY app ./app
 COPY preseeded-data ./preseeded-data
 COPY logging.json ./config/logging.json

@@ -1,6 +1,9 @@
 # Application-specific
 /data
 
+# Ignore temporary working and experimentation files
+/workdir
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
