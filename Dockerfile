@@ -6,6 +6,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY app ./app
+COPY appconfig.yaml ./appconfig.yaml
 COPY preseeded-data ./preseeded-data
 COPY logging.json ./config/logging.json
 
