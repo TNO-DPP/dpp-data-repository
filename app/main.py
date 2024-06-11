@@ -13,6 +13,7 @@ origins = [
     "http://localhost:3000",
     "http://localhost:3006",
     "http://localhost:8001",
+    "http://localhost:8000",
     # Add other origins as needed
 ]
 
@@ -55,7 +56,7 @@ app.include_router(dpp_template_app)
 # Add CORSMiddleware to the app
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allow specified origins
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,  # Allow cookies and other credentials
     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
