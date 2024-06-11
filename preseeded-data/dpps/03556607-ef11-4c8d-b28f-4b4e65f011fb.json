@@ -78,16 +78,158 @@
             "supplier": {
                 "name": "Elenco"
             },
-            "type": "hierarchical",
             "manufacturer": {
                 "name": "Elenco"
             },
-            "carbon_emissions": {
-                "manufacturing": {},
-                "logistics": {}
-            },
-            "water_usage": {},
-            "waste_material_generated": {},
+            "material_composition": [
+                {
+                    "name": "Panhead Screws",
+                    "material": "Steel",
+                    "source": {
+                        "country": "China",
+                        "transport_mode": "Sea",
+                        "distance_km": 12000
+                    },
+                    "carbon_emissions_cost_kg_CO2": 1200,
+                    "water_usage_liters": 4
+                },
+                {
+                    "name": "Spacer Bolts",
+                    "material": "Aluminum",
+                    "source": {
+                        "country": "Russia",
+                        "transport_mode": "Sea",
+                        "distance_km": 2500
+                    },
+                    "carbon_emissions_cost_kg_CO2": 250,
+                    "water_usage_liters": 3
+                },
+                {
+                    "name": "Installation Housing",
+                    "material": "Recycled ABS Plastic",
+                    "source": {
+                        "country": "United States",
+                        "transport_mode": "Sea",
+                        "distance_km": 7000
+                    },
+                    "carbon_emissions_cost_kg_CO2": 700,
+                    "water_usage_liters": 2
+                },
+                {
+                    "name": "Snap Wire Group",
+                    "material": [
+                        "Copper",
+                        "Recycled PVC Plastic"
+                    ],
+                    "source": {
+                        "country": "Chile",
+                        "transport_mode": "Sea",
+                        "distance_km": 11000
+                    },
+                    "carbon_emissions_cost_kg_CO2": 1100,
+                    "water_usage_liters": 5
+                },
+                {
+                    "name": "Battery Holder",
+                    "material": [
+                        "Recycled ABS Plastic",
+                        "Copper"
+                    ],
+                    "source": {
+                        "country": "Mexico",
+                        "transport_mode": "Road",
+                        "distance_km": 2800
+                    },
+                    "carbon_emissions_cost_kg_CO2": 210,
+                    "water_usage_liters": 6
+                },
+                {
+                    "name": "Batteries",
+                    "material": [
+                        "Various Metals",
+                        "Recycled Plastic"
+                    ],
+                    "source": {
+                        "country": "Japan",
+                        "transport_mode": "Sea",
+                        "distance_km": 9500
+                    },
+                    "carbon_emissions_cost_kg_CO2": 950,
+                    "water_usage_liters": 12
+                },
+                {
+                    "name": "LED Group",
+                    "material": [
+                        "Gallium Arsenide",
+                        "Recycled Plastic"
+                    ],
+                    "source": {
+                        "country": "South Korea",
+                        "transport_mode": "Air",
+                        "distance_km": 8000
+                    },
+                    "carbon_emissions_cost_kg_CO2": 4320,
+                    "water_usage_liters": 8
+                },
+                {
+                    "name": "Capacitor Group",
+                    "material": [
+                        "Aluminum",
+                        "Electrolyte",
+                        "Recycled Plastic"
+                    ],
+                    "source": {
+                        "country": "Germany",
+                        "transport_mode": "Road",
+                        "distance_km": 700
+                    },
+                    "carbon_emissions_cost_kg_CO2": 52.5,
+                    "water_usage_liters": 7
+                },
+                {
+                    "name": "Resistor Group",
+                    "material": [
+                        "Carbon Film",
+                        "Recycled Ceramic"
+                    ],
+                    "source": {
+                        "country": "Malaysia",
+                        "transport_mode": "Sea",
+                        "distance_km": 10500
+                    },
+                    "carbon_emissions_cost_kg_CO2": 1050,
+                    "water_usage_liters": 4
+                },
+                {
+                    "name": "Transistor Group",
+                    "material": [
+                        "Silicon",
+                        "Recycled Plastic"
+                    ],
+                    "source": {
+                        "country": "Taiwan",
+                        "transport_mode": "Air",
+                        "distance_km": 10000
+                    },
+                    "carbon_emissions_cost_kg_CO2": 5400,
+                    "water_usage_liters": 6
+                },
+                {
+                    "name": "Miscellaneous Parts",
+                    "material": [
+                        "Various Metals",
+                        "Recycled Plastic",
+                        "Silicon"
+                    ],
+                    "source": {
+                        "country": "India",
+                        "transport_mode": "Sea",
+                        "distance_km": 9000
+                    },
+                    "carbon_emissions_cost_kg_CO2": 900,
+                    "water_usage_liters": 10
+                }
+            ],
             "reparability": "high"
         },
         "credentials": [],
@@ -2324,7 +2466,7 @@
                                                 "@type": "prov:Organization",
                                                 "prov:name": "Elenco"
                                             }
-                                        },                                        
+                                        },
                                         {
                                             "@context": {
                                                 "prov": "http://www.w3.org/ns/prov#",
@@ -4237,7 +4379,7 @@
                                                 "prov:name": "Elenco"
                                             },
                                             "prov:description": "Creation of Base Grid Group Product Passport concept."
-                                        },                                        
+                                        },
                                         {
                                             "@context": {
                                                 "prov": "http://www.w3.org/ns/prov#",

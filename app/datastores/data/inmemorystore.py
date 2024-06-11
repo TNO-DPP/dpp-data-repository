@@ -444,16 +444,18 @@ class InMemoryStoreStatistics(BaseStoreStatistics):
         for passport in self.store.dpp_store.values():
             if passport.batch_id:
                 batches[passport.batch_id] += 1
+            else:
+                batches["undefined"] += 1
         return dict(batches)
 
     def number_of_batches(self) -> int:
-        return len(
-            set(
-                passport.batch_id
-                for passport in self.store.dpp_store.values()
-                if passport.batch_id
-            )
-        )
+        output_list = []
+        for passport in self.store.dpp_store.values():
+            if passport.batch_id:
+                output_list.append(passport.batch_id)
+            else:
+                output_list.append("unknown")
+        return len(set(output_list))
 
     def number_of_unique_tags(self) -> int:
         tags = set(
@@ -526,11 +528,7 @@ class InMemoryStoreStatistics(BaseStoreStatistics):
         return self.passports_created_in_time_range(now - timedelta(days=365 * 5), now)
 
     def passports_created_all_time(self) -> int:
-        return sum(
-            1
-            for passport in self.store.dpp_store.values()
-            if passport.creation_timestamp
-        )
+        return sum(1 for passport in self.store.dpp_store.values())
 
     def events_all_time(self) -> int:
         return len(self.store.event_store.values())

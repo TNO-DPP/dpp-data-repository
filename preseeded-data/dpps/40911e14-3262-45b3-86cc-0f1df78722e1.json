@@ -31,6 +31,16 @@
                         "hostname": "backend.demo.digital-passport.org"
                     }
                 ]
+            },
+            {
+                "id": "urn:manufacturer:Elenco2",
+                "name": "Elenco",
+                "full_name": "Elenco Electronics, LLC",
+                "repository_address": [
+                    {
+                        "hostname": "backend2.demo.digital-passport.org"
+                    }
+                ]
             }
         ],
         "current_owner": {
