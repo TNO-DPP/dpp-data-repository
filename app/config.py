@@ -10,7 +10,7 @@ logger = logging.getLogger("config")
 logger.debug("Looking for config.")
 CONFIG_PATH = "/config.yaml"
 if not os.path.isfile(CONFIG_PATH):
-    CONFIG_PATH = "./workdir/appconfig.yaml"
+    CONFIG_PATH = "./appconfig.yaml"
     logger.debug("Dev config found at " + CONFIG_PATH)
 else:
     logger.debug("Config found at " + CONFIG_PATH)
