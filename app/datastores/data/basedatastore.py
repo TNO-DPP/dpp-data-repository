@@ -38,6 +38,12 @@ class FilterConditions:
     origin_country_codes: List[str] = field(default_factory=list)
 
 
+class EventFilterFormats(Enum):
+    ACTIVITY = "activity"
+    OWNERSHIP = "ownership"
+    ALL = "all"
+
+
 class BaseDataStore(ABC):
     ### DPPs
 

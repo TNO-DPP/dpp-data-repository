@@ -17,6 +17,7 @@ from app.datastores.data.basedatastore import (
     DPPResponseContentFormats,
     DPPResponseFormats,
     DPPResponseSignatureFormats,
+    EventFilterFormats,
     FilterConditions,
 )
 
@@ -102,17 +103,6 @@ class InMemoryStore(BaseDataStore):
     #     self.add_dpp_object(document_id, dpp_object)
     #     return document_id
 
-    # TODO: Implement robust DPP instantiation and validation.
-    # def add_dpp_document(
-    #     self,
-    #     document_id: str,
-    #     dpp_document: Dict,
-    #     template_id: str | None,
-    #     template_version: str | None = "latest",
-    # ) -> None:
-    #     dpp_object = DigitalProductPassport(**dpp_document)
-    #     self.add_dpp_object(document_id, dpp_object)
-
     # TODO: Implement update method based on DPP class functionality
     # def update_dpp_document(self, document_id: str, dpp_document: str) -> None:
     #     if document_id in self.dpp_store:
@@ -124,6 +114,7 @@ class InMemoryStore(BaseDataStore):
     ) -> str:
         raise NotImplementedError
 
+    # TODO: Implement robust DPP instantiation and validation.
     def add_dpp_document(
         self,
         document_id: str,
@@ -146,7 +137,7 @@ class InMemoryStore(BaseDataStore):
         dpp_id: str,
         dpp_store: Dict[str, DigitalProductPassport],
         event_store: Dict[str, List[Dict]],
-        event_type: str = "activity",
+        event_type: str = EventFilterFormats.ACTIVITY.value,
     ):
         list_dpp_hierarchy = []
 
@@ -159,7 +150,13 @@ class InMemoryStore(BaseDataStore):
 
         filtered_events_ids_full = set()
         for dpp_id in list_dpp_hierarchy:
-            event_id_list = self.dpp_store[dpp_id].events[event_type]
+            if event_type == EventFilterFormats.ALL.value:
+                event_id_list = (
+                    self.dpp_store[dpp_id].events["activity"]
+                    + self.dpp_store[dpp_id].events["ownership"]
+                )
+            else:
+                event_id_list = self.dpp_store[dpp_id].events[event_type]
 
             filtered_events_ids_full.update(event_id_list)
             # filtered_events_full += self.filter_events(dpp_id, event_store)
@@ -186,12 +183,19 @@ class InMemoryStore(BaseDataStore):
         return sorted_events
 
     def get_dpp_events(
-        self, document_id: str, sorted: bool = True, event_type: str = "activity"
+        self,
+        document_id: str,
+        sorted: bool = True,
+        event_type: str = EventFilterFormats.ACTIVITY.value,
     ) -> List[Dict]:
-        event_list = [
-            self.event_store[event]
-            for event in self.dpp_store[document_id].events[event_type]
-        ]
+        if event_type == EventFilterFormats.ALL.value:
+            event_id_list = (
+                self.dpp_store[document_id].events["activity"]
+                + self.dpp_store[document_id].events["ownership"]
+            )
+        else:
+            event_id_list = self.dpp_store[document_id].events[event_type]
+        event_list = [self.event_store[event] for event in event_id_list]
         # event_list = self.filter_events(document_id, self.event_store, event_type)
         return self.sort_events(event_list)
 
@@ -292,10 +296,10 @@ class InMemoryStore(BaseDataStore):
                 subdpp.parent = document_id
 
     def attach_subpassport(self, document_id: str, subpassport_document: Dict) -> None:
-        subpassport_document_data = subpassport_document[
-            list(subpassport_document.keys())[0]
-        ]
-        subpassport_id = self.get_id_value(subpassport_document_data)
+        # subpassport_document_data = subpassport_document[
+        #     list(subpassport_document.keys())[0]
+        # ]
+        subpassport_id = self.get_id_value(subpassport_document)
         self.add_dpp_document(subpassport_id, subpassport_document)
         self.attach_subpassport_by_id(document_id, subpassport_id)
 

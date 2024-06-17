@@ -34,6 +34,24 @@ logger = logging.getLogger("serde")
 # def generate_indices_and refresh_dpps():
 
 
+def get_id_value(obj):
+    if "@id" in obj:
+        return obj["@id"]
+    elif "id" in obj:
+        return obj["id"]
+    else:
+        raise Exception("Unidentifiable object ID found.")
+
+
+def get_type_value(obj):
+    if "@type" in obj:
+        return obj["@type"]
+    elif "type" in obj:
+        return obj["type"]
+    else:
+        raise Exception("Unidentifiable object type found.")
+
+
 def import_dpp_into_storage(
     input_dict,
     data_store: BaseDataStore,
@@ -44,9 +62,11 @@ def import_dpp_into_storage(
     # Data store imports
     # Attachment store compares and identifies conflicts - with priority on DPP data,
     #   if the link matches
-    passport_type = list(input_dict.keys())[0]
-    passport_data = input_dict[passport_type]
-    passport_id = passport_data["id"]
+    # passport_type = list(input_dict.keys())[0]
+    # passport_data = input_dict[passport_type]
+    passport_data = input_dict
+    passport_type = get_type_value(passport_data)
+    passport_id = get_id_value(passport_data)
     passport_obj = DigitalProductPassport(
         passport_type=passport_type,
         id=passport_id,
@@ -102,14 +122,6 @@ def import_dpp_into_storage(
     # Register in passport object
     passport_obj.attachments = attachment_ids_to_store
 
-    def get_id_value(obj):
-        if "@id" in obj:
-            return obj["@id"]
-        elif "id" in obj:
-            return obj["id"]
-        else:
-            raise Exception("Unidentifiable object found.")
-
     # Subpassports
     subpassport_ids_to_store: List[str] = []
     # Recursive calls for hierarchical objects
@@ -124,8 +136,10 @@ def import_dpp_into_storage(
         else:
             try:
                 assert type(subpassport) == dict
-                subpassport_type = list(subpassport.keys())[0]
-                subpassport_id = get_id_value(subpassport[subpassport_type])
+                subpassport_id = get_id_value(subpassport)
+                subpassport_type = get_type_value(subpassport)
+                # subpassport_type = list(subpassport.keys())[0]
+                # subpassport_id = get_id_value(subpassport[subpassport_type])
                 logger.debug(
                     "Attempting subpassport import (obj) -> "
                     + subpassport_type
@@ -283,10 +297,11 @@ def prepare_dpp_response_content(
     attachment_store: BaseAttachmentStore,
     content_format: str,
 ) -> Dict:
-    output_content = {}
+    # output_content = {}
     dpp_type = dpp_object.passport_type
-    output_content[dpp_type] = {
+    output_content = {
         "id": dpp_object.id,
+        "type": dpp_object.passport_type,
         "title": dpp_object.title,
         "attributes": dpp_object.attributes,
         "credentials": dpp_object.credentials,  # Handle this at a later time.
@@ -302,57 +317,53 @@ def prepare_dpp_response_content(
         "parent": dpp_object.parent,  # Reference to parent
     }
     if content_format == DPPResponseContentFormats.COMPACT.value:
-        output_content[dpp_type]["attachments"] = dpp_object.attachments
-        output_content[dpp_type]["events"] = dpp_object.events
-        output_content[dpp_type]["subpassports"] = dpp_object.subpassports
+        output_content["attachments"] = dpp_object.attachments
+        output_content["events"] = dpp_object.events
+        output_content["subpassports"] = dpp_object.subpassports
     elif content_format == DPPResponseContentFormats.BASE.value:
-        output_content[dpp_type]["attachments"] = []
+        output_content["attachments"] = []
 
         # Retrieve attachments
         for attachment_id in dpp_object.attachments:
             attachment_object: AttachmentReference = attachment_store.attachments_index[
                 attachment_id
             ]
-            output_content[dpp_type]["attachments"].append(
-                attachment_object.to_public_dict()
-            )
-        output_content[dpp_type]["events"] = {"activity": [], "ownership": []}
+            output_content["attachments"].append(attachment_object.to_public_dict())
+        output_content["events"] = {"activity": [], "ownership": []}
 
         # Retrieve activity and ownership events
-        output_content[dpp_type]["events"]["activity"] += data_store.get_dpp_events(
+        output_content["events"]["activity"] += data_store.get_dpp_events(
             dpp_object.id, event_type="activity"
         )
-        output_content[dpp_type]["events"]["ownership"] += data_store.get_dpp_events(
+        output_content["events"]["ownership"] += data_store.get_dpp_events(
             dpp_object.id, event_type="ownership"
         )
         # Keep references to subpassports
-        output_content[dpp_type]["subpassports"] = dpp_object.subpassports
+        output_content["subpassports"] = dpp_object.subpassports
 
     elif content_format == DPPResponseContentFormats.FULL.value:
-        output_content[dpp_type]["attachments"] = []
+        output_content["attachments"] = []
 
         # Retrieve attachments
         for attachment_id in dpp_object.attachments:
             attachment_object: AttachmentReference = attachment_store.attachments_index[
                 attachment_id
             ]
-            output_content[dpp_type]["attachments"].append(
-                attachment_object.to_public_dict()
-            )
-        output_content[dpp_type]["events"] = {"activity": [], "ownership": []}
+            output_content["attachments"].append(attachment_object.to_public_dict())
+        output_content["events"] = {"activity": [], "ownership": []}
 
         # Retrieve activity and ownership events
-        output_content[dpp_type]["events"]["activity"] += data_store.get_dpp_events(
+        output_content["events"]["activity"] += data_store.get_dpp_events(
             dpp_object.id, event_type="activity"
         )
-        output_content[dpp_type]["events"]["ownership"] += data_store.get_dpp_events(
+        output_content["events"]["ownership"] += data_store.get_dpp_events(
             dpp_object.id, event_type="ownership"
         )
         # Get basic deserializations of subpassports
-        output_content[dpp_type]["subpassports"] = []
+        output_content["subpassports"] = []
         for subpassport_id in dpp_object.subpassports:
             sub_dpp_object = data_store.get_dpp_object(subpassport_id)
-            output_content[dpp_type]["subpassports"].append(
+            output_content["subpassports"].append(
                 prepare_dpp_response_content(
                     sub_dpp_object,
                     data_store,
@@ -361,30 +372,28 @@ def prepare_dpp_response_content(
                 )
             )
     elif content_format == DPPResponseContentFormats.COMPLETE.value:
-        output_content[dpp_type]["attachments"] = []
+        output_content["attachments"] = []
 
         # Retrieve attachments
         for attachment_id in dpp_object.attachments:
             attachment_object: AttachmentReference = attachment_store.attachments_index[
                 attachment_id
             ]
-            output_content[dpp_type]["attachments"].append(
-                attachment_object.to_public_dict()
-            )
-        output_content[dpp_type]["events"] = {"activity": [], "ownership": []}
+            output_content["attachments"].append(attachment_object.to_public_dict())
+        output_content["events"] = {"activity": [], "ownership": []}
 
         # Retrieve activity and ownership events
-        output_content[dpp_type]["events"]["activity"] += data_store.get_dpp_events(
+        output_content["events"]["activity"] += data_store.get_dpp_events(
             dpp_object.id, event_type="activity"
         )
-        output_content[dpp_type]["events"]["ownership"] += data_store.get_dpp_events(
+        output_content["events"]["ownership"] += data_store.get_dpp_events(
             dpp_object.id, event_type="ownership"
         )
         # Get basic deserializations of subpassports
-        output_content[dpp_type]["subpassports"] = []
+        output_content["subpassports"] = []
         for subpassport_id in dpp_object.subpassports:
             sub_dpp_object = data_store.get_dpp_object(subpassport_id)
-            output_content[dpp_type]["subpassports"].append(
+            output_content["subpassports"].append(
                 prepare_dpp_response_content(
                     sub_dpp_object,
                     data_store,

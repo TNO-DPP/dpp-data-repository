@@ -24,6 +24,7 @@ from app.datastores.data.basedatastore import (
     BaseStoreStatistics,
     DPPResponseContentFormats,
     DPPResponseFormats,
+    EventFilterFormats,
     FilterConditions,
 )
 from app.main import get_datastores
@@ -237,6 +238,19 @@ async def get_dpp_credentials(document_id: str, datastores=Depends(get_datastore
     return JSONResponse(data_store.get_dpp_object(document_id).attributes)
 
 
+@dpp_app.get("/{document_id}/events")
+async def get_dpp_all_events(document_id: str, datastores=Depends(get_datastores)):
+    """
+    Get ownership events of a DPP sorted.
+    """
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    events = data_store.get_dpp_events(
+        document_id, event_type=EventFilterFormats.ALL.value
+    )
+    return JSONResponse(events)
+
+
 @dpp_app.post("/{document_id}/events/activity")
 async def add_dpp_activity_event(
     document_id: str, event: Dict, datastores=Depends(get_datastores)
@@ -259,7 +273,9 @@ async def add_dpp_ownership_event(
     """
     data_store: BaseDataStore = datastores[0]
     attachment_store: BaseAttachmentStore = datastores[1]
-    data_store.add_dpp_event(document_id, event, event_type="ownership")
+    data_store.add_dpp_event(
+        document_id, event, event_type=EventFilterFormats.OWNERSHIP.value
+    )
     return JSONResponse({"document_id": document_id, "event": event})
 
 
@@ -283,7 +299,22 @@ async def get_dpp_ownership_events(
     """
     data_store: BaseDataStore = datastores[0]
     attachment_store: BaseAttachmentStore = datastores[1]
-    events = data_store.get_dpp_events(document_id, event_type="ownership")
+    events = data_store.get_dpp_events(
+        document_id, event_type=EventFilterFormats.OWNERSHIP.value
+    )
+    return JSONResponse(events)
+
+
+@dpp_app.get("/{document_id}/events/full")
+async def get_dpp_full_events(document_id: str, datastores=Depends(get_datastores)):
+    """
+    Get complete activity events of a DPP sorted.
+    """
+    data_store: BaseDataStore = datastores[0]
+    attachment_store: BaseAttachmentStore = datastores[1]
+    events = data_store.get_dpp_full_events(
+        document_id, event_type=EventFilterFormats.ALL.value
+    )
     return JSONResponse(events)
 
 
@@ -309,7 +340,9 @@ async def get_dpp_full_ownership_events(
     """
     data_store: BaseDataStore = datastores[0]
     attachment_store: BaseAttachmentStore = datastores[1]
-    events = data_store.get_dpp_full_events(document_id, event_type="ownership")
+    events = data_store.get_dpp_full_events(
+        document_id, event_type=EventFilterFormats.OWNERSHIP.value
+    )
     return JSONResponse(events)
 
 
