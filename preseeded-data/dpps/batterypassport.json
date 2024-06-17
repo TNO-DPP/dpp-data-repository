@@ -1,0 +1,397 @@
+{
+    "id": "urn:manufacturer:Tuskla:065433c5-13b2-4383-9c6f-946b5b391c53",
+    "type": "BatteryProductPassport",
+    "title": "Light Motor Vehicle (LMV) Electric Battery",
+    "instantiated_from": {
+        "template_id": "BatteryProductPassport",
+        "version": "vGTDE"
+    },
+    "manufacturer": {
+        "id": "urn:manufacturer:Tuskla",
+        "name": "Tuskla",
+        "full_name": "Tuskla Batteries, BV",
+        "facility": [
+            {
+                "id": "urn:factories:ThreadLine:FAC987654",
+                "name": "ThreadLine Production Facility",
+                "address": "Plot 5, Road 2, Dhaka Export Processing Zone, Savar, Dhaka, Bangladesh",
+                "country_code": "BD",
+                "description": "Design, Cutting, Sewing, Customization, Packaging"
+            }
+        ],
+        "batch_id": "urn:batches:manufacturing:ThreadLine:BATCH4321"
+    },
+    "economic_operator": [
+        {
+            "id": "urn:manufacturer:Elenco",
+            "name": "Elenco",
+            "full_name": "Elenco Electronics, LLC",
+            "repository_address": [
+                {
+                    "hostname": "backend.demo.digital-passport.org"
+                }
+            ]
+        }
+    ],
+    "current_owner": {
+        "id": "urn:manufacturer:TNO",
+        "name": "TNO",
+        "full_name": "Nederlandse Organisatie voor Toegepast Natuurwetenschappelijk Onderzoek",
+        "facility": [
+            {
+                "id": "urn:factories:TNO:BIC771824",
+                "name": "AI Matters TEF Remanufacturing Cell",
+                "address": "BIC 1 5657 BX Eindhoven",
+                "country_code": "NL",
+                "description": "Remanufacturing"
+            }
+        ]
+    },
+    "tags": [
+        "Electric Batteries",
+        "Circularity",
+        "LMV",
+        "Automobiles"
+    ],
+    "known_past_owners": [
+        {
+            "id": "urn:manufacturer:ThreadLine",
+            "name": "ThreadLine",
+            "full_name": "ThreadLine Apparel, BV",
+            "facility": [
+                {
+                    "id": "urn:factories:ThreadLine:FAC987654",
+                    "name": "ThreadLine Production Facility",
+                    "address": "Plot 5, Road 2, Dhaka Export Processing Zone, Savar, Dhaka, Bangladesh",
+                    "country_code": "BD",
+                    "description": "Design, Cutting, Sewing, Customization, Packaging"
+                }
+            ]
+        },
+        {
+            "id": "urn:manufacturer:StyleEase",
+            "name": "StyleEase",
+            "full_name": "StyleEase, BV",
+            "facility": [
+                {
+                    "id": "urn:factories:StyleEase:FAC123789",
+                    "name": "StyleEase Headquarters",
+                    "address": "Hoogstraat 45, 3011 PP Rotterdam, Netherlands",
+                    "country_code": "NL",
+                    "description": "Headquarters and Sales"
+                }
+            ]
+        }
+    ],
+    "registration_id": "urn:registration:dppregistry:REG987654",
+    "batch_id": "urn:batches:manufacturing:Elenco:BATCH1274",
+    "creation_timestamp": "2023-01-15T10:00:00Z",
+    "destruction_timestamp": null,
+    "attributes": {
+        "batteryIDDMCCode":"ABC12345",
+        "dateOfManufacturing":"2022-05-15",
+        "dateOfService":"2022-06-01",
+        "placeOfManufacturing":"Gigafactory Berlin, Germany",
+        "cO2FootprintTotal":75.4,
+        "hasElectrochemicalProperties":{
+           "ratedCapacity":100,
+           "capacityFade":10,
+           "capacityThresholdExhaustion":80,
+           "ratioMaximumAllowedBatteryPowerAndMaximumAllowedBatteryEnergy":90,
+           "remainingCapacity":90,
+           "internalResistanceProperties":{
+              "cellInternalResistance":0.005,
+              "cellInternalResistanceCurrent":0.0045,
+              "cellInternalResistanceIncrease":0.0005,
+              "packInternalResistance":0.01,
+              "packInternalResistanceIncrease":0.001,
+              "packInternalResistanceCurrent":0.009,
+              "deepDischargeEvents":2,
+              "overchargeEvents":1,
+              "moduleInternalResistanceInitial":0.007,
+              "moduleInternalResistanceIncrease":0.0007,
+              "moduleInternalResistanceCurrent":0.0065
+           },
+           "voltageProperties":{
+              "minVoltage":"2.5V",
+              "nomimalVoltage":"3.7V",
+              "maxVoltage":"4.2V",
+              "minimalOperatinCurrent":0.5,
+              "maximumOperatingCurrent":600
+           },
+           "batteryPowerProperties":{
+              "powerFade":5,
+              "maximumAllowedBatteryPower":350,
+              "powerCapabilityAt20Charge":200,
+              "powerCapabilityAt80Charge":280,
+              "originalPowerCapability":300,
+              "originalPowerCapabilityLimits":2
+           },
+           "temperatureProperties":{
+              "environmentalOperatingTemperature":-20,
+              "averageTemperatureUsage":25,
+              "minimalTemperatureUsage":-20,
+              "maximumTemperatureUsage":45,
+              "averageTemperatureCharging":30,
+              "minimalTemperatureCharging":5,
+              "maximumTemperatureCharging":50
+           },
+           "SOCEThresholdForExhaustion":80
+        },
+        "hasPhysicalDimensionsProperties":{
+           "length":2300,
+           "width":1300,
+           "height":200,
+           "diameter":0,
+           "weight":600
+        },
+        "hasCellChemistryProperties":{
+           "cathodeActiveMaterials":[
+              {
+                 "materialPercentageMassFraction":40,
+                 "materialName":"Lithium Nickel Manganese Cobalt Oxide (NMC)",
+                 "materialWeight":240,
+                 "hazardousProperties":{
+                    "hazardCategory":"4",
+                    "hazardIdentifiers":"H400, H411",
+                    "locationHazardousSubstance":"Cathode",
+                    "concentrationRangeOfHazardousSubstances":"10-40%",
+                    "impactOfSubstances":"Environmental hazard, toxic to aquatic life"
+                 }
+              }
+           ],
+           "recyclateContentActiveMaterials":[
+              {
+                 "materialPercentageMassFraction":10,
+                 "materialName":"Recycled Aluminum",
+                 "materialWeight":60,
+                 "hazardousProperties":{
+                    "hazardCategory":"2",
+                    "hazardIdentifiers":"H319",
+                    "locationHazardousSubstance":"Structure",
+                    "concentrationRangeOfHazardousSubstances":"5-10%",
+                    "impactOfSubstances":"Eye irritant"
+                 }
+              }
+           ],
+           "anodeActiveMaterials":[
+              {
+                 "materialPercentageMassFraction":30,
+                 "materialName":"Graphite",
+                 "materialWeight":180,
+                 "hazardousProperties":{
+                    "hazardCategory":"3",
+                    "hazardIdentifiers":"H335",
+                    "locationHazardousSubstance":"Anode",
+                    "concentrationRangeOfHazardousSubstances":"20-30%",
+                    "impactOfSubstances":"May cause respiratory irritation"
+                 }
+              }
+           ],
+           "cathodeCompositionOther":[
+              {
+                 "materialPercentageMassFraction":5,
+                 "materialName":"Copper",
+                 "materialWeight":30,
+                 "hazardousProperties":{
+                    "hazardCategory":"4",
+                    "hazardIdentifiers":"H302, H332",
+                    "locationHazardousSubstance":"Cathode",
+                    "concentrationRangeOfHazardousSubstances":"2-5%",
+                    "impactOfSubstances":"Harmful if swallowed or inhaled"
+                 }
+              }
+           ],
+           "anodeCompositionOther":[
+              {
+                 "materialPercentageMassFraction":5,
+                 "materialName":"Silicon",
+                 "materialWeight":30,
+                 "hazardousProperties":{
+                    "hazardCategory":"2",
+                    "hazardIdentifiers":"H315",
+                    "locationHazardousSubstance":"Anode",
+                    "concentrationRangeOfHazardousSubstances":"1-5%",
+                    "impactOfSubstances":"Skin irritant"
+                 }
+              }
+           ],
+           "electrolyteComposition":[
+              {
+                 "materialPercentageMassFraction":10,
+                 "materialName":"Lithium Hexafluorophosphate",
+                 "materialWeight":60,
+                 "hazardousProperties":{
+                    "hazardCategory":"3",
+                    "hazardIdentifiers":"H261",
+                    "locationHazardousSubstance":"Electrolyte",
+                    "concentrationRangeOfHazardousSubstances":"5-10%",
+                    "impactOfSubstances":"Reacts violently with water"
+                 }
+              }
+           ],
+           "declarationOfConformity":{
+              "attachmentName":"declaration_of_conformity.pdf"
+           },
+           "testReportsResults":{
+              "attachmentName":"test_report_results.pdf"
+           }
+        },
+        "hasBatteryEnergyProperties":{
+           "energyRoundtripEfficiency":95,
+           "energyRoundtripEfficiencyChange":5,
+           "maximumAllowedBatteryEnergy":90,
+           "initialSelfDischargingRate":0.2,
+           "currentSelfDischargingRate":0.3,
+           "evolutionSelfDischargingRate":0.1,
+           "certifiedUsableBatteryEnergy":85,
+           "remainingUsableBatteryEnergy":80,
+           "stateOfCertifiedEnergy":90,
+           "roundTripEnergyEfficiencyAt50CycleLife":92,
+           "remainingRoundTripEnergyEfficiency":90
+        },
+        "safetyMeasures":{
+           "attachmentName":"safety_measures.pdf"
+        },
+        "hasBatteryCycleLifeProperties":{
+           "expectedLifetime":10,
+           "cycleLifeTestCRate":1,
+           "cycleLifeTestDepthOfDischarge":80,
+           "chargeDischargeCycles":3000,
+           "energyThroughput":9000,
+           "capacityThroughput":2000,
+           "cycleLifeReferenceTest":"IEC 62660"
+        },
+        "hasStateOfBatteryProperties":{
+           "statusBattery":"Active",
+           "stateOfHealth":90,
+           "stateOfCharge":75
+        },
+        "hasCompositionProperties":{
+           "componentsProperties":[
+              {
+                 "involvedSupplierComponents":{
+                    "manufacturerWebsite":"https://examplebattery.com",
+                    "manufacturerEmail":"info@examplebattery.com",
+                    "manufacturerName":"Example Battery Inc.",
+                    "manufacturerAddress":"123 Battery Ave, Electric City, EC 12345",
+                    "manufacturerPhoneNumber":"+123456789",
+                    "manufacturerTradeDetails":"Battery Manufacturer"
+                 },
+                 "involvedComponentsPartsNumber":"EB-123"
+              }
+           ],
+           "leadSymbol":true,
+           "cadmiumSymbol":false,
+           "criticalRawMaterials":"Lithium, Cobalt, Nickel",
+           "compositionOfBattery":{
+              "attachmentName":"composition_of_battery.pdf"
+           }
+        },
+        "warrantyPeriod": "8 years",
+        "meaningLabelsAndSymbols":{
+           "attachmentName":"meaning_labels_and_symbols.pdf"
+        },
+        "separateCollectionSymbol":{
+           "attachmentName":"separate_collection_symbol.pdf"
+        },
+        "carbonFootprintPerformanceClass":"A",
+        "carbonFootprintStudyLink":"https://study.carbonfootprint.com/sample",
+        "manualDissasemblyAndDismantlingBatteryPack":{
+           "attachmentName":"manual_dissasembly_dismantling_battery_pack.pdf"
+        },
+        "manualRemovalBatteryFromAppliance":{
+           "attachmentName":"manual_removal_battery_from_appliance.pdf"
+        },
+        "dueDiligenceReport":{
+           "attachmentName":"due_diligence_report.pdf"
+        },
+        "extinguishingAgent":"Class D Fire Extinguisher",
+        "remainingPowerCapability":85,
+        "hasRenewableContentShare":[
+           {
+              "recycledMaterialShareName":"Recycled Steel",
+              "recycledMaterialShareAmount":20
+           }
+        ],
+        "hasPreConsumerRecycledMaterialShare":[
+           {
+              "recycledMaterialShareName":"Recycled Lithium",
+              "recycledMaterialShareAmount":5
+           }
+        ],
+        "hasPostConsumerRecycledMaterialShare":[
+           {
+              "recycledMaterialShareName":"Recycled Plastic",
+              "recycledMaterialShareAmount":15
+           }
+        ],
+        "encounteredNegativeEvents":2,
+        "batteryCategory":"Electric Vehicle Battery",
+        "declarationOfConformityID":"DOC-2022-05-15",
+        "roleOfEndUsersInWastePrevention":{
+           "attachmentName":"role_of_end_users_in_waste_prevention.pdf"
+        },
+        "roleOfEndUsersInSeparateCollectionOfWasteBatteries":{
+           "attachmentName":"role_of_end_users_in_separate_collection.pdf"
+        },
+        "informationOnSeparateCollectionTakeBackCollectionPointsPreparingForReusePreparingForRepurposingAndRecyclingOperations":{
+           "attachmentName":"info_on_separate_collection.pdf"
+        },
+        "temperatureRangeIdleState":{
+           "lowerBound":-20,
+           "upperBound":50
+        },
+        "timeSpentInExtremeTemperatures":{
+           "lowerBound":2,
+           "upperBound":100
+        },
+        "timeSpentChargingDuringExtremeTemperatures":{
+           "lowerBound":1,
+           "upperBound":50
+        }
+     },
+    "credentials": [],
+    "parent": null,
+    "subpassports": [],
+    "attachments": [],
+    "events": {
+        "ownership": [
+            {
+                "@context": {
+                    "prov": "http://www.w3.org/ns/prov#",
+                    "dpp": "http://www.tno.nl/digitalproductpassport#",
+                    "xsd": "http://www.w3.org/2001/XMLSchema#"
+                },
+                "@id": "urn:Tuskla:events:ownership:00001",
+                "@type": "dpp:TransferEvent",
+                "prov:startedAtTime": {
+                    "@type": "xsd:dateTime",
+                    "@value": "2022-10-05T09:30:00Z"
+                },
+                "prov:endedAtTime": {
+                    "@type": "xsd:dateTime",
+                    "@value": "2022-10-05T10:00:00Z"
+                },
+                "prov:description": "Transfer of ownership of Battery from Tuskla to TNO.",
+                "prov:wasAssociatedWith": {
+                    "@type": "prov:Organization",
+                    "prov:name": "TNO"
+                },
+                "prov:used": {
+                    "@id": "urn:manufacturer:Tuskla:065433c5-13b2-4383-9c6f-946b5b391c53",
+                    "@type": "prov:Entity"
+                },
+                "dpp:previousOwner": {
+                    "@type": "prov:Organization",
+                    "prov:name": "Tuskla"
+                },
+                "dpp:newOwner": {
+                    "@type": "prov:Organization",
+                    "prov:name": "TNO"
+                }
+            }
+        ],
+        "activity": []
+    }
+}
