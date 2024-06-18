@@ -2,7 +2,7 @@
 
 This repository contains the system architecture documentation for the Digital Product Passport (DPP) Data Repository. In the accompanying chapters, the various perspectives will be explained in further detail.
 
-The documentation is based on the Arc42 template for system architecture. The chapters are below:
+The documentation was loosely intended to be based on the Arc42 template for system architecture. The chapters are below:
 
 1. [Introduction](./chapters/01-Introduction.md)
 2. [Constraints](./chapters/02-Constraints.md)
